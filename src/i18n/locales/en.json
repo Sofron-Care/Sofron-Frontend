@@ -1,0 +1,172 @@
+{
+  "landing": {
+    "hero": {
+      "title": "Outcome-Focused Practice Management for Cash Care Physical Therapy",
+      "subtitle": "Scheduling, booking, intake documentation, and analytics — built specifically for direct-to-patient clinics.",
+      "cta_primary": "Register Interest",
+      "cta_secondary": "Launch Demo"
+    },
+    "problem": {
+      "label": "The Cash Care Reality",
+      "headline": "Running a Direct-to-Patient Clinic Shouldn’t Require Five Different Tools.",
+      "intro": "Cash care clinics operate differently — but most software wasn’t built with that in mind.",
+      "items": [
+        "Too many disconnected tools to manage scheduling, intake, and payments.",
+        "Manual scheduling that leads to missed appointments and lost revenue.",
+        "Clunky intake workflows that frustrate patients.",
+        "Limited insight into performance and growth.",
+        "Software designed for insurance billing — not direct care."
+      ]
+    },
+    "solution": {
+      "label": "The Solution",
+      "headline": "One Unified Platform Built for Cash Care Clinics.",
+      "intro": "Sofron replaces disconnected tools with a streamlined system designed specifically for direct-to-patient practices.",
+      "features": [
+        {
+          "title": "Scheduling",
+          "description": "Flexible clinic scheduling built for independent practitioners."
+        },
+        {
+          "title": "Booking",
+          "description": "Simple, patient-friendly booking designed to reduce no-shows."
+        },
+        {
+          "title": "Documentation",
+          "description": "Intake forms and documentation workflows tailored for cash care."
+        },
+        {
+          "title": "Analytics",
+          "description": "Clear operational visibility into performance and growth."
+        }
+      ]
+    },
+    "howItWorks": {
+      "label": "How It Works",
+      "headline": "Set Up. Accept Bookings. Run Your Practice.",
+      "intro": "Sofron is designed to get your clinic operational quickly — without complicated onboarding.",
+      "steps": [
+        {
+          "title": "Set Up Your Clinic",
+          "description": "Configure services, availability, pricing, and intake workflows in minutes."
+        },
+        {
+          "title": "Accept Patient Bookings",
+          "description": "Patients book seamlessly through a direct, easy-to-use scheduling interface."
+        },
+        {
+          "title": "Run and Optimize",
+          "description": "Track performance, manage documentation, and operate with full visibility."
+        }
+      ]
+    },
+    "cta": {
+      "headline": "Built for Clinics That Value Independence.",
+      "subtext": "Sofron is currently in pre-release. Explore the demo or register your interest to receive early updates.",
+      "primary": "Register Interest",
+      "secondary": "Launch Demo"
+    }
+  },
+  "whyCashCare": {
+    "hero": {
+      "headline": "Why Cash Care Clinics Need Different Software.",
+      "subtext": "Cash care physical therapy operates on a different model — but most practice management tools weren’t built for it."
+    },
+    "whatIs": {
+      "label": "What Is Cash Care PT?",
+      "text": "Cash care physical therapy clinics operate without insurance billing. Patients pay directly for services, allowing clinics to focus on outcomes, transparency, and patient experience."
+    },
+    "traditional": {
+      "label": "Why Traditional Software Falls Short",
+      "points": [
+        "Built primarily for insurance workflows and claims processing.",
+        "Overcomplicated systems designed for billing complexity.",
+        "Poor patient experience with outdated intake flows.",
+        "Limited visibility into operational performance."
+      ]
+    },
+    "needs": {
+      "label": "What Cash Care Clinics Actually Need",
+      "points": [
+        "Simple, flexible scheduling.",
+        "Clear pricing and booking experience.",
+        "Streamlined digital intake.",
+        "Operational visibility without insurance complexity."
+      ]
+    }
+  },
+  "product": {
+    "hero": {
+      "headline": "A Modular Platform for Independent Clinics.",
+      "subtext": "Use what you need. Expand as you grow. Sofron is designed to adapt to the way cash care clinics operate."
+    },
+    "features": [
+      {
+        "title": "Scheduling",
+        "description": "Flexible weekly scheduling, availability controls, and override management built for direct care models."
+      },
+      {
+        "title": "Booking",
+        "description": "A simple, patient-first booking flow designed to reduce friction and no-shows."
+      },
+      {
+        "title": "Documentation",
+        "description": "Streamlined intake forms and digital documentation tailored to cash care workflows."
+      },
+      {
+        "title": "Analytics",
+        "description": "Clear operational insight into appointments, performance, and growth metrics."
+      }
+    ]
+  },
+  "interest": {
+    "hero": {
+      "headline": "Register Your Interest",
+      "subtext": "Join early access and receive updates as we prepare for launch."
+    },
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "usage": "How would you use Sofron?",
+      "usagePlaceholder": "Select one",
+      "clinicName": "Clinic Name",
+      "feedback": "Anything you'd like to share?",
+      "submit": "Submit"
+    },
+    "usageOptions": {
+      "client": "Client",
+      "freelance": "Freelance Specialist",
+      "clinic": "Clinic"
+    },
+    "success": {
+      "headline": "You're on the list.",
+      "message": "We’ll reach out once Sofron officially launches."
+    },
+    "messages": {
+      "success": "Your interest has successfully been registered! We look forward to reaching out after our official launch!",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "validation": {
+    "required": "This field is required.",
+    "email": "Please enter a valid email address."
+  },
+  "nav": {
+    "why": "Why Cash Care?",
+    "product": "Product",
+    "demo": "Demo",
+    "cta": "Register Interest"
+  },
+  "footer": {
+    "tagline": "Outcome-focused clinic management software designed specifically for cash care physical therapy.",
+    "product": "Product",
+    "overview": "Overview",
+    "demo": "Demo",
+    "company": "Company",
+    "contact": "Contact",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "rights": "All rights reserved."
+  }
+}
