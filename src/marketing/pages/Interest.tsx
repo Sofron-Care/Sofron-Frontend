@@ -31,17 +31,24 @@ export default function Interest() {
     return (
       <MarketingLayout>
         <section className="section">
-          <div className="container">
-            <div
-              className="card"
-              style={{
-                maxWidth: 600,
-                padding: 40,
-                textAlign: "center",
-              }}
-            >
-              <h2>{t("interest.success.headline")}</h2>
-              <p style={{ marginTop: 16 }}>{t("interest.success.message")}</p>
+          <div
+            className="container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <div style={{ width: "100%", maxWidth: 720 }}>
+              <div
+                className="card"
+                style={{
+                  padding: 40,
+                  textAlign: "center",
+                }}
+              >
+                <h2>{t("interest.success.headline")}</h2>
+                <p style={{ marginTop: 16 }}>{t("interest.success.message")}</p>
+              </div>
             </div>
           </div>
         </section>

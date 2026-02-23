@@ -77,7 +77,7 @@ export default function MarketingNav() {
           placement="right"
           onClose={() => setOpen(false)}
           open={open}
-          width={280}
+          size={280}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <Link
