@@ -168,5 +168,56 @@
     "terms": "Terms",
     "privacy": "Privacy",
     "rights": "All rights reserved."
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "noAccount": "Don’t have an account?",
+      "signUp": "Sign up",
+      "registerClinic": "Register as a Clinic",
+      "invalidEmail": "Enter a valid email address",
+      "requiredEmail": "Please enter your email",
+      "requiredPassword": "Please enter your password",
+      "loginFailed": "Incorrect email or password"
+    },
+    "clinicRegister": {
+      "title": "Create your clinic account",
+      "subtitle": "Admins create accounts. Staff will be invited later.",
+      "accountTypeLabel": "Account type",
+      "accountTypeClinic": "Clinic",
+      "accountTypeFreelance": "Freelance",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirm": "Confirm password",
+      "tosLabel": "I agree to the Terms of Service",
+      "submit": "Create account",
+      "alreadyHave": "Already have an account?",
+      "login": "Login",
+      "required": "This field is required",
+      "invalidEmail": "Enter a valid email address",
+      "passwordsNoMatch": "Passwords do not match",
+      "tosRequired": "You must agree to the Terms of Service",
+      "success": "Account created. Please check your email to verify your account."
+    }
+  },
+  "appnav": {
+    "dashboard": "Dashboard",
+    "appointments": "Appointments",
+    "services": "Services",
+    "schedule": "Schedule",
+    "patients": "Patients",
+    "documents": "Documents",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "help": "Help",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{name}}"
   }
 }

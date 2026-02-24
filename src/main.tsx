@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./app/auth/AuthContext";
 import { ConfigProvider } from "antd";
 import { App as AntApp } from "antd";
 import App from "./App";
@@ -20,7 +21,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     >
       <BrowserRouter>
         <AntApp>
-          <App />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </AntApp>
       </BrowserRouter>
     </ConfigProvider>

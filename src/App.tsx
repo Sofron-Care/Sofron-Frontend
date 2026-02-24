@@ -1,22 +1,40 @@
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
+
 import Home from "./marketing/pages/Home";
 import WhyCashCare from "./marketing/pages/WhyCashCare";
 import Product from "./marketing/pages/Product";
-// import Demo from "./marketing/pages/Demo";
 import Interest from "./marketing/pages/Interest";
+
+import DemoEntry from "./demo/pages/DemoEntry";
+import Login from "./app/auth/Login";
+import RegisterClinic from "./app/auth/RegisterClinic";
+import AppShell from "./app/layout/AppShell";
+// import Dashboard from "./app/dashboard/Dashboard";
+// import Appointments from "./app/appointments/Appointments";
+// import Patients from "./app/patients/Patients";
+// import Services from "./app/services/Services";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/why-cash-care" element={<WhyCashCare />} />
-        <Route path="/product" element={<Product />} />
-        {/* <Route path="/demo" element={<Demo />} /> */}
-        <Route path="/contact" element={<Interest />} />
-      </Routes>
-    </>
+    <Routes>
+      {/* Marketing */}
+      <Route path="/" element={<Home />} />
+      <Route path="/why-cash-care" element={<WhyCashCare />} />
+      <Route path="/product" element={<Product />} />
+      <Route path="/contact" element={<Interest />} />
+
+      {/* Demo Public */}
+      <Route path="/demo" element={<DemoEntry />} />
+      <Route path="/demo/login" element={<Login />} />
+      <Route path="/demo/register/clinic" element={<RegisterClinic />} />
+      {/* Demo App */}
+      <Route path="/demo/app" element={<AppShell />}>
+      {/* <Route index element={<Dashboard />} /> */}
+      {/* <Route path="appointments" element={<Appointments />} /> */}
+      {/* <Route path="patients" element={<Patients />} /> */}
+      {/* <Route path="services" element={<Services />} /> */}
+      </Route>
+    </Routes>
   );
 }
 
