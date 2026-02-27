@@ -9,6 +9,8 @@ import DemoEntry from "./demo/pages/DemoEntry";
 import Login from "./app/auth/Login";
 import RegisterClinic from "./app/auth/RegisterClinic";
 import AppShell from "./app/layout/AppShell";
+import Services from "./app/pages/services/Services";
+import Onboarding from "./app/pages/onboarding/Onboarding"
 // import Dashboard from "./app/dashboard/Dashboard";
 // import Appointments from "./app/appointments/Appointments";
 // import Patients from "./app/patients/Patients";
@@ -29,10 +31,11 @@ function App() {
       <Route path="/demo/register/clinic" element={<RegisterClinic />} />
       {/* Demo App */}
       <Route path="/demo/app" element={<AppShell />}>
-      {/* <Route index element={<Dashboard />} /> */}
-      {/* <Route path="appointments" element={<Appointments />} /> */}
-      {/* <Route path="patients" element={<Patients />} /> */}
-      {/* <Route path="services" element={<Services />} /> */}
+        <Route path="onboarding" element={<Onboarding />} />
+        {/* <Route index element={<Dashboard />} /> */}
+        {/* <Route path="appointments" element={<Appointments />} /> */}
+        {/* <Route path="patients" element={<Patients />} /> */}
+        <Route path="services" element={<Services />} />
       </Route>
     </Routes>
   );

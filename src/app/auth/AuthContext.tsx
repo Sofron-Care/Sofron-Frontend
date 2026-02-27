@@ -17,11 +17,23 @@ interface User {
   needsToAcceptTOS: boolean;
 }
 
+interface Organization {
+  publicId: string;
+  type: "Clinic" | "Freelance";
+  name: string;
+  cancellationPolicyScope: "organization" | "service";
+  schedulingMode: "organization" | "specialist";
+  publicFacing: boolean;
+}
+
 interface AuthContextType {
   user: User | null;
+  organization: Organization | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  setOrganization: React.Dispatch<React.SetStateAction<Organization | null>>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -36,20 +48,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     return stored ? JSON.parse(stored) : null;
   });
 
+  const [organization, setOrganization] = useState<Organization | null>(null);
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const validate = async () => {
+    const bootstrap = async () => {
       try {
         await api.get("/auth/validate-token");
+
+        if (user?.organizationId) {
+          const orgRes = await api.get("/organizations");
+          setOrganization(orgRes.data.data.organizationDetails);
+        }
       } catch {
         setUser(null);
+        setOrganization(null);
         localStorage.removeItem("user");
       }
     };
 
     if (user) {
-      validate();
+      bootstrap();
     }
   }, []);
 
@@ -57,15 +77,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setLoading(true);
 
     try {
-      const res = await api.post("/auth/login", {
-        email,
-        password,
-      });
+      const res = await api.post("/auth/login", { email, password });
 
       const loggedInUser = res.data.data.user;
 
       setUser(loggedInUser);
       localStorage.setItem("user", JSON.stringify(loggedInUser));
+
+      if (loggedInUser.organizationId) {
+        const orgRes = await api.get("/organizations");
+        setOrganization(orgRes.data.data.organizationDetails);
+      }
     } finally {
       setLoading(false);
     }
@@ -74,11 +96,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const logout = async () => {
     try {
       await api.post("/auth/logout");
-    } catch (error) {
-      // Even if backend fails, we still clear local state
-    }
+    } catch {}
 
     setUser(null);
+    setOrganization(null);
     localStorage.removeItem("user");
   };
 
@@ -86,9 +107,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     <AuthContext.Provider
       value={{
         user,
+        organization,
         loading,
         login,
         logout,
+        setUser,
+        setOrganization,
       }}
     >
       {children}

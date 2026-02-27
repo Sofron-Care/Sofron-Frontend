@@ -219,5 +219,38 @@
   },
   "dashboard": {
     "welcome": "Welcome, {{name}}"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Manage your clinic's offerings",
+    "create": "Create Service",
+    "featured": "Featured",
+    "table": {
+      "name": "Name",
+      "category": "Category",
+      "price": "Price",
+      "duration": "Duration",
+      "featured": "Featured"
+    },
+    "form": {
+      "name": "Service Name",
+      "description": "Description",
+      "price": "Price",
+      "duration": "Duration (minutes)",
+      "category": "Category",
+      "selectCategory": "Select category",
+      "other": "Other",
+      "otherCategory": "Custom Category",
+      "cancellationPolicy": "Cancellation Policy",
+      "minHoursBefore": "Minimum Hours Before Cancellation",
+      "feePercentage": "Fee Percentage (%)",
+      "flatFee": "Flat Fee"
+    }
+  },
+  "common": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }
