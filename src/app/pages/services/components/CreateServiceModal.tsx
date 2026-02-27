@@ -1,4 +1,14 @@
-import { Modal, Form, Input, InputNumber, Button, Select } from "antd";
+import {
+  Modal,
+  Form,
+  Input,
+  InputNumber,
+  Button,
+  Select,
+  Row,
+  Col,
+  Divider,
+} from "antd";
 import { useTranslation } from "react-i18next";
 import api from "./../../../../shared/api/axios";
 import { useState, useEffect } from "react";
@@ -93,85 +103,144 @@ export default function CreateServiceModal({
       destroyOnHidden
     >
       <Form form={form} layout="vertical">
-        <Form.Item
-          label={t("services.form.name")}
-          name="name"
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item label={t("services.form.category")} name="category">
-          <Select
-            placeholder={t("services.form.selectCategory")}
-            onChange={(value) => setSelectedCategory(value)}
-            options={[
-              ...categories.map((cat) => ({
-                label: cat.title,
-                value: cat.id,
-              })),
-              {
-                label: t("services.form.other"),
-                value: "other",
-              },
-            ]}
-          />
-        </Form.Item>
-        {selectedCategory === "other" && (
-          <Form.Item
-            label={t("services.form.otherCategory")}
-            name="otherCategory"
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
-        )}
-        <Form.Item label={t("services.form.description")} name="description">
-          <Input.TextArea rows={3} />
-        </Form.Item>
-
-        <Form.Item
-          label={t("services.form.price")}
-          name="price"
-          rules={[{ required: true }]}
-        >
-          <InputNumber min={0} style={{ width: "100%" }} />
-        </Form.Item>
-
-        <Form.Item
-          label={t("services.form.duration")}
-          name="duration"
-          rules={[{ required: true }]}
-        >
-          <InputNumber min={5} style={{ width: "100%" }} />
-        </Form.Item>
-        {requiresServicePolicy && (
-          <div className="service-policy-section">
-            <div style={{ marginTop: 16, marginBottom: 8, fontWeight: 600 }}>
-              {t("services.form.cancellationPolicy")}
-            </div>
-
+        {/* Service Name */}
+        <Row gutter={16}>
+          <Col span={24}>
             <Form.Item
-              label={t("services.form.minHoursBefore")}
-              name={["cancellationPolicy", "minHoursBefore"]}
+              label={t("services.form.name")}
+              name="name"
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        {/* Category + Duration */}
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item label={t("services.form.category")} name="category">
+              <Select
+                placeholder={t("services.form.selectCategory")}
+                onChange={(value) => setSelectedCategory(value)}
+                options={[
+                  ...categories.map((cat) => ({
+                    label: cat.title,
+                    value: cat.id,
+                  })),
+                  { label: t("services.form.other"), value: "other" },
+                ]}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col span={12}>
+            <Form.Item
+              label={t("services.form.duration")}
+              name="duration"
+              rules={[{ required: true }]}
+            >
+              <InputNumber min={5} style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        {/* Other Category (if needed) */}
+        {selectedCategory === "other" && (
+          <Row gutter={16}>
+            <Col span={24}>
+              <Form.Item
+                label={t("services.form.otherCategory")}
+                name="otherCategory"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+        )}
+
+        {/* Price */}
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              label={t("services.form.price")}
+              name="price"
               rules={[{ required: true }]}
             >
               <InputNumber min={0} style={{ width: "100%" }} />
             </Form.Item>
+          </Col>
+        </Row>
 
+        {/* Description */}
+        <Row gutter={16}>
+          <Col span={24}>
             <Form.Item
-              label={t("services.form.feePercentage")}
-              name={["cancellationPolicy", "feePercentage"]}
+              label={t("services.form.description")}
+              name="description"
             >
-              <InputNumber min={0} max={100} style={{ width: "100%" }} />
+              <Input.TextArea rows={3} />
             </Form.Item>
+          </Col>
+        </Row>
 
-            <Form.Item
-              label={t("services.form.flatFee")}
-              name={["cancellationPolicy", "flatFee"]}
-            >
-              <InputNumber min={0} style={{ width: "100%" }} />
+        {organization?.cancellationPolicyScope === "service" && (
+          <>
+            <Divider />
+
+            <h4>Cancellation Policy</h4>
+
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item
+                  label="Minimum Hours Before"
+                  name={["cancellationPolicy", "minHoursBefore"]}
+                  rules={[{ required: true }]}
+                >
+                  <InputNumber min={0} style={{ width: "100%" }} />
+                </Form.Item>
+              </Col>
+
+              <Col span={12}>
+                <Form.Item label="Fee Type" name="feeType">
+                  <Select
+                    options={[
+                      { label: "None", value: "none" },
+                      { label: "Percentage", value: "percentage" },
+                      { label: "Flat Fee", value: "flat" },
+                    ]}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Form.Item shouldUpdate>
+              {({ getFieldValue }) => {
+                const feeType = getFieldValue("feeType");
+
+                if (!feeType || feeType === "none") return null;
+
+                return (
+                  <Form.Item
+                    label={
+                      feeType === "percentage"
+                        ? "Fee Percentage (%)"
+                        : "Flat Fee"
+                    }
+                    name="feeValue"
+                    rules={[{ required: true }]}
+                  >
+                    <InputNumber
+                      min={0}
+                      max={feeType === "percentage" ? 100 : undefined}
+                      style={{ width: "100%" }}
+                    />
+                  </Form.Item>
+                );
+              }}
             </Form.Item>
-          </div>
+          </>
         )}
       </Form>
     </Modal>

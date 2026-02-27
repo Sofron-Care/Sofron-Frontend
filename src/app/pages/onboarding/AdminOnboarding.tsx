@@ -75,8 +75,30 @@ export default function AdminOnboarding() {
             </Col>
 
             <Col span={12}>
-              <Form.Item name="EIN" label="EIN" rules={[{ required: true }]}>
-                <Input />
+              <Form.Item
+                name="EIN"
+                label="EIN"
+                rules={[
+                  { required: true },
+                  {
+                    pattern: /^\d{2}-\d{7}$/,
+                    message: "EIN must be in format XX-XXXXXXX",
+                  },
+                ]}
+                extra="Format: 12-3456789"
+              >
+                <Input
+                  maxLength={10}
+                  onChange={(e) => {
+                    let value = e.target.value.replace(/\D/g, "");
+
+                    if (value.length > 2) {
+                      value = value.slice(0, 2) + "-" + value.slice(2, 9);
+                    }
+
+                    form.setFieldsValue({ EIN: value });
+                  }}
+                />
               </Form.Item>
             </Col>
           </Row>
