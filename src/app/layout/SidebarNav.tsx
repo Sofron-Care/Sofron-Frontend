@@ -11,6 +11,10 @@ export default function SidebarNav() {
   const items: MenuProps["items"] = [
     { key: "/demo/app", label: t("appnav.dashboard") },
     { key: "/demo/app/appointments", label: t("appnav.appointments") },
+    {
+      key: "/demo/app/specialists",
+      label: t("appnav.specialists"),
+    },
     { key: "/demo/app/services", label: t("appnav.services") },
     { key: "/demo/app/schedule", label: t("appnav.schedule") },
     { key: "/demo/app/patients", label: t("appnav.patients") },

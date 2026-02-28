@@ -208,6 +208,7 @@
   "appnav": {
     "dashboard": "Dashboard",
     "appointments": "Appointments",
+    "specialists": "Specialists",
     "services": "Services",
     "schedule": "Schedule",
     "patients": "Patients",
