@@ -10,22 +10,26 @@ import {
   Divider,
 } from "antd";
 import { useTranslation } from "react-i18next";
-import api from "./../../../../shared/api/axios";
+import api from "../../../../shared/api/axios";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../auth/AuthContext";
 
 interface Props {
   open: boolean;
   onClose: () => void;
-  onCreated: () => void;
+  onSuccess: () => void;
+  service?: any; // if provided → edit mode
 }
 
-export default function CreateServiceModal({
+export default function ServiceModal({
   open,
   onClose,
-  onCreated,
+  onSuccess,
+  service,
 }: Props) {
   const { t } = useTranslation();
+  const { organization } = useAuth();
+
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState<any[]>([]);
@@ -33,8 +37,7 @@ export default function CreateServiceModal({
     string | number | null
   >(null);
 
-  const { organization } = useAuth();
-
+  const isEditMode = !!service;
   const requiresServicePolicy =
     organization?.cancellationPolicyScope === "service";
 
@@ -42,14 +45,52 @@ export default function CreateServiceModal({
     if (open) fetchCategories();
   }, [open]);
 
+  useEffect(() => {
+    if (!service || !open) return;
+    const policy = service.cancellationPolicies?.[0];
+
+    let formattedPolicy: any = undefined;
+
+    if (policy) {
+      let feeType = "none";
+      let feeValue: number | undefined = undefined;
+
+      if (policy.feePercentage != null) {
+        feeType = "percentage";
+        feeValue = Number(policy.feePercentage);
+      } else if (policy.flatFee != null) {
+        feeType = "flat";
+        feeValue = Number(policy.flatFee);
+      }
+
+      formattedPolicy = {
+        minHoursBefore: policy.minHoursBefore,
+        feeType,
+        feeValue,
+      };
+    }
+
+    form.setFieldsValue({
+      name: service.name,
+      description: service.description,
+      price: Number(service.price),
+      duration: service.duration,
+      category: service.categoryId || undefined,
+      otherCategory: service.otherCategory,
+      cancellationPolicy: formattedPolicy,
+    });
+
+    setSelectedCategory(service.categoryId ?? null);
+  }, [service, open]);
+
   const fetchCategories = async () => {
     const res = await api.get("/services/categories");
     setCategories(res.data.data.categories);
   };
+
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
-
       setLoading(true);
 
       const payload: any = {
@@ -68,14 +109,36 @@ export default function CreateServiceModal({
       }
 
       if (requiresServicePolicy) {
-        payload.cancellationPolicy = values.cancellationPolicy;
+        const policy = values.cancellationPolicy || {};
+        const feeType = policy.feeType;
+
+        const formattedPolicy: any = {
+          minHoursBefore: policy.minHoursBefore,
+        };
+
+        if (feeType === "percentage") {
+          formattedPolicy.feePercentage = policy.feeValue;
+          formattedPolicy.flatFee = null;
+        } else if (feeType === "flat") {
+          formattedPolicy.flatFee = policy.feeValue;
+          formattedPolicy.feePercentage = null;
+        } else {
+          formattedPolicy.feePercentage = null;
+          formattedPolicy.flatFee = null;
+        }
+
+        payload.cancellationPolicy = formattedPolicy;
       }
 
-      await api.post("/services", payload);
+      if (isEditMode) {
+        await api.patch(`/services/${service.id}`, payload);
+      } else {
+        await api.post("/services", payload);
+      }
 
       form.resetFields();
       setSelectedCategory(null);
-      onCreated();
+      onSuccess();
       onClose();
     } finally {
       setLoading(false);
@@ -84,9 +147,10 @@ export default function CreateServiceModal({
 
   return (
     <Modal
-      title={t("services.create")}
+      title={isEditMode ? t("services.edit") : t("services.create")}
       open={open}
       onCancel={onClose}
+      destroyOnHidden
       footer={[
         <Button key="cancel" onClick={onClose}>
           {t("common.cancel")}
@@ -100,10 +164,9 @@ export default function CreateServiceModal({
           {t("common.save")}
         </Button>,
       ]}
-      destroyOnHidden
     >
       <Form form={form} layout="vertical">
-        {/* Service Name */}
+        {/* Name */}
         <Row gutter={16}>
           <Col span={24}>
             <Form.Item
@@ -128,7 +191,10 @@ export default function CreateServiceModal({
                     label: cat.title,
                     value: cat.id,
                   })),
-                  { label: t("services.form.other"), value: "other" },
+                  {
+                    label: t("services.form.other"),
+                    value: "other",
+                  },
                 ]}
               />
             </Form.Item>
@@ -145,7 +211,7 @@ export default function CreateServiceModal({
           </Col>
         </Row>
 
-        {/* Other Category (if needed) */}
+        {/* Other Category */}
         {selectedCategory === "other" && (
           <Row gutter={16}>
             <Col span={24}>
@@ -185,16 +251,16 @@ export default function CreateServiceModal({
           </Col>
         </Row>
 
-        {organization?.cancellationPolicyScope === "service" && (
+        {/* Cancellation Policy (Service-Level Only) */}
+        {requiresServicePolicy && (
           <>
             <Divider />
-
-            <h4>Cancellation Policy</h4>
+            <h4>{t("services.form.cancellationPolicy")}</h4>
 
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item
-                  label="Minimum Hours Before"
+                  label={t("services.form.minHoursBefore")}
                   name={["cancellationPolicy", "minHoursBefore"]}
                   rules={[{ required: true }]}
                 >
@@ -203,12 +269,25 @@ export default function CreateServiceModal({
               </Col>
 
               <Col span={12}>
-                <Form.Item label="Fee Type" name="feeType">
+                <Form.Item
+                  label={t("services.form.feeType")}
+                  name={["cancellationPolicy", "feeType"]}
+                  initialValue="none"
+                >
                   <Select
                     options={[
-                      { label: "None", value: "none" },
-                      { label: "Percentage", value: "percentage" },
-                      { label: "Flat Fee", value: "flat" },
+                      {
+                        label: t("services.form.none"),
+                        value: "none",
+                      },
+                      {
+                        label: t("services.form.feePercentage"),
+                        value: "percentage",
+                      },
+                      {
+                        label: t("services.form.flatFee"),
+                        value: "flat",
+                      },
                     ]}
                   />
                 </Form.Item>
@@ -217,7 +296,10 @@ export default function CreateServiceModal({
 
             <Form.Item shouldUpdate>
               {({ getFieldValue }) => {
-                const feeType = getFieldValue("feeType");
+                const feeType = getFieldValue([
+                  "cancellationPolicy",
+                  "feeType",
+                ]);
 
                 if (!feeType || feeType === "none") return null;
 
@@ -225,10 +307,10 @@ export default function CreateServiceModal({
                   <Form.Item
                     label={
                       feeType === "percentage"
-                        ? "Fee Percentage (%)"
-                        : "Flat Fee"
+                        ? t("services.form.feePercentage")
+                        : t("services.form.flatFee")
                     }
-                    name="feeValue"
+                    name={["cancellationPolicy", "feeValue"]}
                     rules={[{ required: true }]}
                   >
                     <InputNumber

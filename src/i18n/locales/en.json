@@ -224,7 +224,15 @@
     "title": "Services",
     "subtitle": "Manage your clinic's offerings",
     "create": "Create Service",
+    "edit": "Edit Service",
     "featured": "Featured",
+    "unfeatured": "Unfeatured",
+    "feature": "Feature",
+    "unfeature": "Unfeature",
+    "deleteConfirmTitle": "Delete Service",
+    "deleteConfirmMessage": "Are you sure you want to delete \"{{name}}\"?",
+    "deleteSuccess": "Service deleted",
+    "featureSuccess": "Service updated successfully",
     "table": {
       "name": "Name",
       "category": "Category",
@@ -243,14 +251,19 @@
       "otherCategory": "Custom Category",
       "cancellationPolicy": "Cancellation Policy",
       "minHoursBefore": "Minimum Hours Before Cancellation",
+      "feeType": "Fee Type",
+      "none": "None",
       "feePercentage": "Fee Percentage (%)",
-      "flatFee": "Flat Fee"
+      "flatFee": "Flat Fee",
+      "durationMinutes": "Duration (minutes)"
     }
   },
   "common": {
     "edit": "Edit",
     "delete": "Delete",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "feature": "Feature",
+    "unfeature": "Unfeature"
   }
 }
