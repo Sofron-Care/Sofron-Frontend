@@ -250,7 +250,7 @@
       "other": "Other",
       "otherCategory": "Custom Category",
       "cancellationPolicy": "Cancellation Policy",
-      "minHoursBefore": "Minimum Hours Before Cancellation",
+      "minHoursBefore": "Min. Hours Before Cancellation",
       "feeType": "Fee Type",
       "none": "None",
       "feePercentage": "Fee Percentage (%)",

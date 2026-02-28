@@ -258,16 +258,19 @@ export default function ServiceModal({
             <h4>{t("services.form.cancellationPolicy")}</h4>
 
             <Row gutter={16}>
+              {/* Min Hours */}
               <Col span={12}>
                 <Form.Item
                   label={t("services.form.minHoursBefore")}
                   name={["cancellationPolicy", "minHoursBefore"]}
                   rules={[{ required: true }]}
+                  labelCol={{ style: { whiteSpace: "nowrap" } }}
                 >
                   <InputNumber min={0} style={{ width: "100%" }} />
                 </Form.Item>
               </Col>
 
+              {/* Fee Type */}
               <Col span={12}>
                 <Form.Item
                   label={t("services.form.feeType")}
@@ -276,25 +279,19 @@ export default function ServiceModal({
                 >
                   <Select
                     options={[
-                      {
-                        label: t("services.form.none"),
-                        value: "none",
-                      },
+                      { label: t("services.form.none"), value: "none" },
                       {
                         label: t("services.form.feePercentage"),
                         value: "percentage",
                       },
-                      {
-                        label: t("services.form.flatFee"),
-                        value: "flat",
-                      },
+                      { label: t("services.form.flatFee"), value: "flat" },
                     ]}
                   />
                 </Form.Item>
               </Col>
             </Row>
 
-            <Form.Item shouldUpdate>
+            <Form.Item shouldUpdate noStyle>
               {({ getFieldValue }) => {
                 const feeType = getFieldValue([
                   "cancellationPolicy",
@@ -304,21 +301,32 @@ export default function ServiceModal({
                 if (!feeType || feeType === "none") return null;
 
                 return (
-                  <Form.Item
-                    label={
-                      feeType === "percentage"
-                        ? t("services.form.feePercentage")
-                        : t("services.form.flatFee")
-                    }
-                    name={["cancellationPolicy", "feeValue"]}
-                    rules={[{ required: true }]}
-                  >
-                    <InputNumber
-                      min={0}
-                      max={feeType === "percentage" ? 100 : undefined}
-                      style={{ width: "100%" }}
-                    />
-                  </Form.Item>
+                  <Row gutter={16}>
+                    <Col span={12}>
+                      <Form.Item
+                        label={
+                          feeType === "percentage"
+                            ? t("services.form.feePercentage")
+                            : t("services.form.flatFee")
+                        }
+                        name={["cancellationPolicy", "feeValue"]}
+                        rules={[{ required: true }]}
+                      >
+                        <InputNumber
+                          min={0}
+                          max={feeType === "percentage" ? 100 : undefined}
+                          style={{ width: "100%" }}
+                          addonBefore={feeType === "flat" ? "$" : undefined}
+                          addonAfter={
+                            feeType === "percentage" ? "%" : undefined
+                          }
+                        />
+                      </Form.Item>
+                    </Col>
+
+                    {/* keeps alignment clean */}
+                    <Col span={12} />
+                  </Row>
                 );
               }}
             </Form.Item>
