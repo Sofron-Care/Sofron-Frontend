@@ -16,11 +16,11 @@ export default function SpecialistsPage() {
   const { user } = useAuth();
 
   const fetchEmployees = async () => {
-    console.log("FETCHING EMPLOYEES"); // 🔍 Add this
+    console.log("FETCHING EMPLOYEES");
     setLoading(true);
     try {
       const res = await axios.get("/organizations/employees");
-      console.log("API RESULT:", res.data.data.employees); // 🔍 Add this
+      console.log("API RESULT:", res.data.data.employees);
       setEmployees(res.data.data.employees);
     } finally {
       setLoading(false);
@@ -30,6 +30,16 @@ export default function SpecialistsPage() {
   useEffect(() => {
     fetchEmployees();
   }, []);
+
+  const handleSuspend = async (id: string) => {
+    await axios.patch(`/organizations/employees/${id}/deactivate`);
+    fetchEmployees();
+  };
+
+  const handleReactivate = async (id: string) => {
+    await axios.patch(`/organizations/employees/${id}/reactivate`);
+    fetchEmployees();
+  };
 
   return (
     <>
@@ -45,7 +55,13 @@ export default function SpecialistsPage() {
         }
       >
         <div className="card card-table">
-          <EmployeeTable employees={employees} loading={loading} />
+          <EmployeeTable
+            employees={employees}
+            loading={loading}
+            onSuspend={handleSuspend}
+            onReactivate={handleReactivate}
+            currentUserId={user?.id}
+          />
         </div>
       </PageLayout>
 
