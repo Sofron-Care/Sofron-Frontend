@@ -4,7 +4,7 @@ import { MoreOutlined } from "@ant-design/icons";
 interface Props {
   overrides: any[];
   loading: boolean;
-  onDelete: (id: string) => void;
+  onDelete?: (id: string) => void;
 }
 
 export default function OverridesTable({
@@ -12,7 +12,7 @@ export default function OverridesTable({
   loading,
   onDelete,
 }: Props) {
-  const columns = [
+  const columns: any[] = [
     {
       title: "Date",
       dataIndex: "date",
@@ -37,7 +37,10 @@ export default function OverridesTable({
       dataIndex: "reason",
       render: (reason: string) => reason || "—",
     },
-    {
+  ];
+
+  if (onDelete) {
+    columns.push({
       key: "actions",
       render: (_: any, record: any) => (
         <Dropdown
@@ -56,8 +59,8 @@ export default function OverridesTable({
           <Button type="text" icon={<MoreOutlined />} />
         </Dropdown>
       ),
-    },
-  ];
+    });
+  }
 
   return (
     <Table

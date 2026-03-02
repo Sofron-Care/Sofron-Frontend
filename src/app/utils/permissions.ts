@@ -3,7 +3,8 @@ export type Permission =
   | "edit:service"
   | "delete:service"
   | "feature:service"
-  | "create:employee";
+  | "create:employee"
+  | "manage:schedule";
 
 export const rolePermissions: Record<string, Permission[]> = {
   clinicAdmin: [
@@ -12,6 +13,7 @@ export const rolePermissions: Record<string, Permission[]> = {
     "delete:service",
     "feature:service",
     "create:employee",
+    "manage:schedule",
   ],
   freelanceAdmin: [
     "create:service",
@@ -19,8 +21,9 @@ export const rolePermissions: Record<string, Permission[]> = {
     "delete:service",
     "feature:service",
     "create:employee",
+    "manage:schedule",
   ],
-  specialist: [],
+  specialist: ["manage:schedule"],
   frontDesk: [],
 };
 

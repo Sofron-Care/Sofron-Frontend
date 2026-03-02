@@ -66,16 +66,6 @@ export default function AdminOnboarding() {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
-                name="businessEmail"
-                label="Business Email"
-                rules={[{ required: true }]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-
-            <Col span={12}>
-              <Form.Item
                 name="EIN"
                 label="EIN"
                 rules={[
@@ -123,14 +113,6 @@ export default function AdminOnboarding() {
               </Form.Item>
             </Col>
           </Row>
-
-          <Form.Item
-            name="streetAddress"
-            label="Street Address"
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
           <Row gutter={16}>
             <Col span={16}>
               <Form.Item
@@ -176,6 +158,28 @@ export default function AdminOnboarding() {
               </Form.Item>
             </Col>
           </Row>
+
+          {/* --- Scheduling Mode --- */}
+          <h2 style={{ marginTop: 32, marginBottom: 16 }}>
+            Scheduling Configuration
+          </h2>
+
+          <Form.Item
+            name="schedulingMode"
+            label="How should scheduling work?"
+            rules={[{ required: true }]}
+            initialValue="organization"
+            extra="This determines whether scheduling is controlled at the clinic level or per specialist. You can change this later, but existing schedules will be cleared."
+          >
+            <Select>
+              <Select.Option value="organization">
+                Organization Level — One shared schedule for the entire clinic
+              </Select.Option>
+              <Select.Option value="specialist">
+                Specialist Level — Each specialist manages their own schedule
+              </Select.Option>
+            </Select>
+          </Form.Item>
 
           {/* --- Professional Info --- */}
           <h2 style={{ marginTop: 32, marginBottom: 16 }}>

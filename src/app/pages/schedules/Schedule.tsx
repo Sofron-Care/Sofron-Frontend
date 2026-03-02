@@ -6,6 +6,8 @@ import WeeklyAvailabilityTable from "./components/WeeklyAvailabilityTable";
 import AvailabilityEditorModal from "./components/AvailabilityEditorModal";
 import OverridesTable from "./components/OverridesTable";
 import OverrideModal from "./components/OverrideModal";
+import { useAuth } from "../../auth/AuthContext";
+import { can } from "../../utils/permissions";
 
 export default function Schedule() {
   const [activeTab, setActiveTab] = useState("availability");
@@ -15,6 +17,25 @@ export default function Schedule() {
   const [loadingOverrides, setLoadingOverrides] = useState(false);
   const [editorOpen, setEditorOpen] = useState(false);
   const [overrideOpen, setOverrideOpen] = useState(false);
+
+  const { user, organization } = useAuth();
+
+  const canManageSchedule = () => {
+    if (!user || !organization) return false;
+
+    if (organization.schedulingMode === "organization") {
+      return (
+        can(user.role, "manage:schedule") &&
+        (user.role === "clinicAdmin" || user.role === "freelanceAdmin")
+      );
+    }
+
+    if (organization.schedulingMode === "specialist") {
+      return can(user.role, "manage:schedule");
+    }
+
+    return false;
+  };
 
   useEffect(() => {
     fetchSchedule();
@@ -50,6 +71,8 @@ export default function Schedule() {
   };
 
   const renderPrimaryAction = () => {
+    if (!canManageSchedule()) return null;
+
     if (activeTab === "availability") {
       return (
         <Button type="primary" onClick={() => setEditorOpen(true)}>
@@ -111,9 +134,14 @@ export default function Schedule() {
                     description="No availability set yet."
                     image={Empty.PRESENTED_IMAGE_SIMPLE}
                   >
-                    <Button type="primary" onClick={() => setEditorOpen(true)}>
-                      Set Availability
-                    </Button>
+                    {canManageSchedule() && (
+                      <Button
+                        type="primary"
+                        onClick={() => setEditorOpen(true)}
+                      >
+                        Set Availability
+                      </Button>
+                    )}
                   </Empty>
                 )}
               </div>
@@ -131,7 +159,7 @@ export default function Schedule() {
                     <OverridesTable
                       overrides={overrides}
                       loading={loadingOverrides}
-                      onDelete={handleDelete}
+                      onDelete={canManageSchedule() ? handleDelete : undefined}
                     />
                   </div>
                 ) : (
@@ -139,12 +167,14 @@ export default function Schedule() {
                     description="No overrides created yet."
                     image={Empty.PRESENTED_IMAGE_SIMPLE}
                   >
-                    <Button
-                      type="primary"
-                      onClick={() => setOverrideOpen(true)}
-                    >
-                      Create Override
-                    </Button>
+                    {canManageSchedule() && (
+                      <Button
+                        type="primary"
+                        onClick={() => setOverrideOpen(true)}
+                      >
+                        Create Override
+                      </Button>
+                    )}
                   </Empty>
                 )}
               </div>
