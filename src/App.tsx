@@ -10,12 +10,12 @@ import Login from "./app/auth/Login";
 import RegisterClinic from "./app/auth/RegisterClinic";
 import AppShell from "./app/layout/AppShell";
 import Services from "./app/pages/services/Services";
-import Onboarding from "./app/pages/onboarding/Onboarding"
-import Specialists from "./app/pages/specialists/Specialists"
+import Onboarding from "./app/pages/onboarding/Onboarding";
+import Specialists from "./app/pages/specialists/Specialists";
+import Schedule from "./app/pages/schedules/Schedule";
 // import Dashboard from "./app/dashboard/Dashboard";
 // import Appointments from "./app/appointments/Appointments";
 // import Patients from "./app/patients/Patients";
-// import Services from "./app/services/Services";
 
 function App() {
   return (
@@ -38,6 +38,7 @@ function App() {
         <Route path="specialists" element={<Specialists />} />
         {/* <Route path="patients" element={<Patients />} /> */}
         <Route path="services" element={<Services />} />
+        <Route path="schedule" element={<Schedule />} />
       </Route>
     </Routes>
   );
