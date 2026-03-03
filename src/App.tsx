@@ -14,7 +14,7 @@ import Onboarding from "./app/pages/onboarding/Onboarding";
 import Specialists from "./app/pages/specialists/Specialists";
 import Schedule from "./app/pages/schedules/Schedule";
 import Dashboard from "./app/pages/dashboard/Dashboard";
-// import Appointments from "./app/appointments/Appointments";
+import Appointments from "./app/pages/appointments/Appointments";
 // import Patients from "./app/patients/Patients";
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
       <Route path="/demo/app" element={<AppShell />}>
         <Route path="onboarding" element={<Onboarding />} />
         <Route index element={<Dashboard />} />
-        {/* <Route path="appointments" element={<Appointments />} /> */}
+        <Route path="appointments" element={<Appointments />} />
         <Route path="specialists" element={<Specialists />} />
         {/* <Route path="patients" element={<Patients />} /> */}
         <Route path="services" element={<Services />} />

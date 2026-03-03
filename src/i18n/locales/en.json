@@ -388,15 +388,121 @@
       "deleteOverrideError": "Failed to delete override"
     }
   },
+  "appointments": {
+    "title": "Appointments",
+    "reschedule": {
+      "title": "Reschedule Appointment",
+      "fields": {
+        "date": "New Date",
+        "time": "New Time"
+      },
+      "messages": {
+        "success": "Appointment rescheduled successfully.",
+        "failed": "Failed to reschedule appointment.",
+        "availabilityFailed": "Failed to load availability.",
+        "timeRequired": "Please select a new time."
+      }
+    },
+    "create": {
+      "title": "Create Appointment",
+      "clientType": "Client Type",
+      "submit": "Submit",
+      "clientTypeOptions": {
+        "existing": "Existing Client",
+        "newUser": "Create New Client",
+        "guest": "Guest"
+      },
+      "fields": {
+        "selectClient": "Select Client",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "service": "Service",
+        "specialist": "Specialist",
+        "date": "Date",
+        "time": "Time"
+      },
+      "messages": {
+        "availabilityFailed": "Unable to load available times.",
+        "timeRequired": "Please select a time slot.",
+        "servicesFailed": "Failed to load services.",
+        "specialistsFailed": "Failed to load specialists.",
+        "patientsFailed": "Failed to load patients.",
+        "success": "Appointment successfully created."
+      }
+    },
+    "filters": {
+      "viewAll": "All Appointments",
+      "viewMine": "My Appointments",
+      "dateRange": "Date Range",
+      "status": "Status",
+      "search": "Search client..."
+    },
+    "columns": {
+      "date": "Date",
+      "time": "Time",
+      "client": "Client",
+      "service": "Service",
+      "specialist": "Specialist",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "actions": {
+      "view": "View",
+      "reschedule": "Reschedule",
+      "cancel": "Cancel",
+      "checkin": "Check In",
+      "noshow": "Mark No-Show",
+      "addNote": "Add Note"
+    },
+    "status": {
+      "Tentative": "Tentative",
+      "Confirmed": "Confirmed",
+      "Scheduled": "Scheduled",
+      "Completed": "Completed",
+      "Checked-In": "Checked In",
+      "Cancelled": "Cancelled",
+      "No-Show": "No Show",
+      "Rescheduled": "Rescheduled"
+    },
+    "messages": {
+      "checkedIn": "Client checked in successfully",
+      "cancelled": "Appointment cancelled successfully",
+      "noShow": "Marked as no-show",
+      "actionFailed": "Action failed",
+      "success": "Appointment created successfully.",
+      "failed": "Failed to create appointment."
+    },
+    "confirmations": {
+      "cancelTitle": "Cancel Appointment?",
+      "cancelContent": "This appointment will be cancelled and the client may be notified.",
+      "noShowTitle": "Mark as No-Show?",
+      "noShowContent": "This will mark the appointment as a no-show.",
+      "checkInTitle": "Check In Client?",
+      "checkInContent": "Confirm that the client has arrived."
+    },
+    "details": {
+      "title": "Appointment Details"
+    },
 
+    "notes": {
+      "title": "Add Notes",
+      "add": "Add Note",
+      "empty": "No notes have been added for this appointment.",
+      "placeholder": "Enter appointment notes..."
+    }
+  },
   "common": {
     "edit": "Edit",
     "delete": "Delete",
     "confirm": "Confirm",
     "save": "Save",
     "cancel": "Cancel",
+    "close": "Close",
     "feature": "Feature",
     "unfeature": "Unfeature",
+    "loading": "Loading...",
     "days": {
       "sunday": "Sunday",
       "monday": "Monday",

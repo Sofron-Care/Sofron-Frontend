@@ -24,6 +24,7 @@ interface Organization {
   cancellationPolicyScope: "organization" | "service";
   schedulingMode: "organization" | "specialist";
   publicFacing: boolean;
+  timeZone: string;
 }
 
 interface AuthContextType {
