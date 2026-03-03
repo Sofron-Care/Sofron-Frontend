@@ -8,6 +8,7 @@ import {
   message,
 } from "antd";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   open: boolean;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export default function OverrideModal({ open, onClose, onSave }: Props) {
+  const { t } = useTranslation();
   const [date, setDate] = useState<any>(null);
   const [start, setStart] = useState<any>(null);
   const [end, setEnd] = useState<any>(null);
@@ -24,12 +26,12 @@ export default function OverrideModal({ open, onClose, onSave }: Props) {
 
   const handleSave = () => {
     if (!date || !start || !end) {
-      message.error("Date and time range are required.");
+      message.error(t("schedule.overrides.errors.required"));
       return;
     }
 
     if (start.isAfter(end) || start.isSame(end)) {
-      message.error("Start time must be before end time.");
+      message.error(t("schedule.overrides.errors.invalidTime"));
       return;
     }
 
@@ -44,15 +46,15 @@ export default function OverrideModal({ open, onClose, onSave }: Props) {
 
   return (
     <Modal
-      title="Create Override"
+      title={t("schedule.overrides.modalTitle")}
       open={open}
       onCancel={onClose}
       footer={[
         <Button key="cancel" onClick={onClose}>
-          Cancel
+          {t("common.cancel")}
         </Button>,
         <Button key="save" type="primary" onClick={handleSave}>
-          Save
+          {t("common.save")}
         </Button>,
       ]}
     >
@@ -65,12 +67,16 @@ export default function OverrideModal({ open, onClose, onSave }: Props) {
         </div>
 
         <Select value={type} onChange={setType}>
-          <Select.Option value="unavailable">Unavailable</Select.Option>
-          <Select.Option value="available">Available</Select.Option>
+          <Select.Option value="unavailable">
+            {t("schedule.overrides.types.unavailable")}
+          </Select.Option>
+          <Select.Option value="available">
+            {t("schedule.overrides.types.available")}
+          </Select.Option>
         </Select>
 
         <Input
-          placeholder="Reason (optional)"
+          placeholder={t("schedule.overrides.reasonPlaceholder")}
           value={reason}
           onChange={(e) => setReason(e.target.value)}
         />

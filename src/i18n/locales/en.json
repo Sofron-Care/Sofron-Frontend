@@ -259,12 +259,86 @@
       "durationMinutes": "Duration (minutes)"
     }
   },
+  "schedule": {
+    "title": "Scheduling",
+    "subtitle": "Manage your weekly availability and overrides",
+
+    "tabs": {
+      "availability": "Availability",
+      "overrides": "Overrides"
+    },
+
+    "actions": {
+      "setAvailability": "Set Availability",
+      "editAvailability": "Edit Availability",
+      "createOverride": "Create Override"
+    },
+
+    "empty": {
+      "noAvailability": "No availability set yet.",
+      "noOverrides": "No overrides created yet."
+    },
+
+    "overrides": {
+      "deleteTitle": "Delete Override",
+      "deleteConfirm": "Are you sure you want to delete this override?",
+      "modalTitle": "Create Override",
+      "reasonPlaceholder": "Reason (optional)",
+      "errors": {
+        "required": "Date and time range are required.",
+        "invalidTime": "Start time must be before end time."
+      },
+      "types": {
+        "available": "Available",
+        "unavailable": "Unavailable"
+      },
+      "table": {
+        "date": "Date",
+        "timeRange": "Time Range",
+        "type": "Type",
+        "reason": "Reason"
+      }
+    },
+    "availability": {
+      "modalTitle": "Set Weekly Availability",
+      "addTimeBlock": "Add Time Block",
+      "errors": {
+        "missingTime": "All time blocks must have start and end times.",
+        "invalidOrder": "Start time must be before end time.",
+        "overlap": "Time blocks on {{day}} overlap."
+      },
+      "table": {
+        "day": "Day",
+        "availability": "Availability",
+        "unavailable": "Unavailable"
+      }
+    },
+
+    "messages": {
+      "loadScheduleError": "Failed to load schedule",
+      "loadOverridesError": "Failed to load overrides",
+      "saveError": "Failed to save schedule",
+      "overrideCreated": "Override created",
+      "overrideDeleted": "Override deleted",
+      "createOverrideError": "Failed to create override",
+      "deleteOverrideError": "Failed to delete override"
+    }
+  },
   "common": {
     "edit": "Edit",
     "delete": "Delete",
     "save": "Save",
     "cancel": "Cancel",
     "feature": "Feature",
-    "unfeature": "Unfeature"
+    "unfeature": "Unfeature",
+    "days": {
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday"
+    }
   }
 }

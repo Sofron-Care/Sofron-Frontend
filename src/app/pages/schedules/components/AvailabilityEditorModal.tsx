@@ -1,6 +1,7 @@
 import { Modal, Button, TimePicker, Row, Col, message } from "antd";
 import dayjs from "dayjs";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   open: boolean;
@@ -9,16 +10,6 @@ interface Props {
   onSave: (weeklyPattern: any[]) => void;
 }
 
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
 export default function AvailabilityEditorModal({
   open,
   onClose,
@@ -26,6 +17,17 @@ export default function AvailabilityEditorModal({
   onSave,
 }: Props) {
   const [weekly, setWeekly] = useState<any>({});
+  const { t } = useTranslation();
+
+  const days = [
+    t("common.days.sunday"),
+    t("common.days.monday"),
+    t("common.days.tuesday"),
+    t("common.days.wednesday"),
+    t("common.days.thursday"),
+    t("common.days.friday"),
+    t("common.days.saturday"),
+  ];
 
   useEffect(() => {
     const grouped: any = {};
@@ -71,12 +73,12 @@ export default function AvailabilityEditorModal({
     for (const day of Object.keys(weekly)) {
       for (const block of weekly[day]) {
         if (!block.start || !block.end) {
-          message.error("All time blocks must have start and end times.");
+          message.error(t("schedule.availability.errors.missingTime"));
           return;
         }
 
         if (block.start >= block.end) {
-          message.error("Start time must be before end time.");
+          message.error(t("schedule.availability.errors.missingTime"));
           return;
         }
       }
@@ -89,7 +91,11 @@ export default function AvailabilityEditorModal({
 
       for (let i = 0; i < blocks.length - 1; i++) {
         if (blocks[i].end > blocks[i + 1].start) {
-          message.error(`Time blocks on ${days[Number(day)]} overlap.`);
+          message.error(
+            t("schedule.availability.errors.overlap", {
+              day: days[Number(day)],
+            }),
+          );
           return;
         }
       }
@@ -114,16 +120,16 @@ export default function AvailabilityEditorModal({
 
   return (
     <Modal
-      title="Set Weekly Availability"
+      title={t("schedule.availability.modalTitle")}
       open={open}
       onCancel={onClose}
       width={700}
       footer={[
         <Button key="cancel" onClick={onClose}>
-          Cancel
+          {t("common.cancel")}
         </Button>,
         <Button key="save" type="primary" onClick={handleSave}>
-          Save
+          {t("common.save")}
         </Button>,
       ]}
     >
@@ -165,7 +171,7 @@ export default function AvailabilityEditorModal({
 
               <Col>
                 <Button danger onClick={() => removeBlock(dayIndex, index)}>
-                  Remove
+                  {t("common.remove")}
                 </Button>
               </Col>
             </Row>
@@ -176,7 +182,7 @@ export default function AvailabilityEditorModal({
             onClick={() => addBlock(dayIndex)}
             style={{ paddingLeft: 0 }}
           >
-            + Add Time Block
+            {t("schedule.availability.addTimeBlock")}
           </Button>
         </div>
       ))}

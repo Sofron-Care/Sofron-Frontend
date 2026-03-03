@@ -1,5 +1,6 @@
 import { Table, Tag, Button, Dropdown } from "antd";
 import { MoreOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   overrides: any[];
@@ -12,28 +13,30 @@ export default function OverridesTable({
   loading,
   onDelete,
 }: Props) {
+  const { t } = useTranslation();
+
   const columns: any[] = [
     {
-      title: "Date",
+      title: t("schedule.overrides.table.date"),
       dataIndex: "date",
       render: (date: string) => new Date(date).toLocaleDateString(),
     },
     {
-      title: "Time Range",
+      title: t("schedule.overrides.table.timeRange"),
       render: (record: any) => `${record.startTime} - ${record.endTime}`,
     },
     {
-      title: "Type",
+      title: t("schedule.overrides.table.type"),
       dataIndex: "type",
       render: (type: string) =>
         type === "available" ? (
-          <Tag color="green">Available</Tag>
+          <Tag color="green">{t("schedule.overrides.types.available")}</Tag>
         ) : (
-          <Tag color="red">Unavailable</Tag>
+          <Tag color="red">{t("schedule.overrides.types.unavailable")}</Tag>
         ),
     },
     {
-      title: "Reason",
+      title: t("schedule.overrides.table.reason"),
       dataIndex: "reason",
       render: (reason: string) => reason || "—",
     },
@@ -48,7 +51,7 @@ export default function OverridesTable({
             items: [
               {
                 key: "delete",
-                label: "Delete",
+                label: t("common.delete"),
                 danger: true,
                 onClick: () => onDelete(record.id),
               },

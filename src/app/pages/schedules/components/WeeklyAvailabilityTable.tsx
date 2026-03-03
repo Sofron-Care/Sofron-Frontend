@@ -1,20 +1,22 @@
 import { Table, Tag } from "antd";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   weeklyPattern: any[];
 }
 
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
 export default function WeeklyAvailabilityTable({ weeklyPattern }: Props) {
+  const { t } = useTranslation();
+
+  const days = [
+    t("common.days.sunday"),
+    t("common.days.monday"),
+    t("common.days.tuesday"),
+    t("common.days.wednesday"),
+    t("common.days.thursday"),
+    t("common.days.friday"),
+    t("common.days.saturday"),
+  ];
   const grouped = days.map((day, index) => {
     const blocks = weeklyPattern
       .filter((entry) => entry.day === index)
@@ -29,11 +31,11 @@ export default function WeeklyAvailabilityTable({ weeklyPattern }: Props) {
 
   const columns = [
     {
-      title: "Day",
+      title: t("schedule.availability.table.day"),
       dataIndex: "day",
     },
     {
-      title: "Availability",
+      title: t("schedule.availability.table.availability"),
       render: (record: any) =>
         record.blocks.length > 0 ? (
           record.blocks.map((b: string) => (
@@ -42,7 +44,9 @@ export default function WeeklyAvailabilityTable({ weeklyPattern }: Props) {
             </Tag>
           ))
         ) : (
-          <Tag color="default">Unavailable</Tag>
+          <Tag color="default">
+            {t("schedule.availability.table.unavailable")}
+          </Tag>
         ),
     },
   ];

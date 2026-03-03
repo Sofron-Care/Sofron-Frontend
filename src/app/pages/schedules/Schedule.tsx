@@ -8,8 +8,10 @@ import OverridesTable from "./components/OverridesTable";
 import OverrideModal from "./components/OverrideModal";
 import { useAuth } from "../../auth/AuthContext";
 import { can } from "../../utils/permissions";
+import { useTranslation } from "react-i18next";
 
 export default function Schedule() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("availability");
   const [schedule, setSchedule] = useState<any | null>(null);
   const [overrides, setOverrides] = useState<any[]>([]);
@@ -51,7 +53,7 @@ export default function Schedule() {
       if (err.response?.status === 404) {
         setSchedule(null);
       } else {
-        message.error("Failed to load schedule");
+        message.error(t("schedule.messages.loadScheduleError"));
       }
     } finally {
       setLoadingSchedule(false);
@@ -64,7 +66,7 @@ export default function Schedule() {
       const res = await api.get("/schedules/schedule-overrides");
       setOverrides(res.data.data);
     } catch {
-      message.error("Failed to load overrides");
+      message.error(t("schedule.messages.loadOverridesError"));
     } finally {
       setLoadingOverrides(false);
     }
@@ -76,31 +78,33 @@ export default function Schedule() {
     if (activeTab === "availability") {
       return (
         <Button type="primary" onClick={() => setEditorOpen(true)}>
-          {schedule ? "Edit Availability" : "Set Availability"}
+          {schedule
+            ? t("schedule.actions.editAvailability")
+            : t("schedule.actions.setAvailability")}
         </Button>
       );
     }
 
     return (
       <Button type="primary" onClick={() => setOverrideOpen(true)}>
-        Create Override
+        {t("schedule.actions.createOverride")}
       </Button>
     );
   };
 
   const handleDelete = (id: string) => {
     Modal.confirm({
-      title: "Delete Override",
-      content: "Are you sure you want to delete this override?",
-      okText: "Delete",
+      title: t("schedule.overrides.deleteTitle"),
+      content: t("schedule.overrides.deleteConfirm"),
+      okText: t("common.delete"),
       okButtonProps: { danger: true },
       onOk: async () => {
         try {
           await api.delete(`/schedules/schedule-overrides/${id}`);
-          message.success("Override deleted");
+          message.success(t("schedule.messages.overrideDeleted"));
           fetchOverrides();
         } catch {
-          message.error("Failed to delete override");
+          message.error(t("schedule.messages.deleteOverrideError"));
         }
       },
     });
@@ -108,8 +112,8 @@ export default function Schedule() {
 
   return (
     <PageLayout
-      title="Scheduling"
-      subtitle="Manage your weekly availability and overrides"
+      title={t("schedule.title")}
+      subtitle={t("schedule.subtitle")}
       primaryAction={renderPrimaryAction()}
     >
       <Tabs
@@ -118,7 +122,7 @@ export default function Schedule() {
         items={[
           {
             key: "availability",
-            label: "Availability",
+            label: t("schedule.tabs.availability"),
             children: (
               <div style={{ padding: 24 }}>
                 {loadingSchedule ? (
@@ -131,7 +135,7 @@ export default function Schedule() {
                   </div>
                 ) : (
                   <Empty
-                    description="No availability set yet."
+                    description={t("schedule.empty.noAvailability")}
                     image={Empty.PRESENTED_IMAGE_SIMPLE}
                   >
                     {canManageSchedule() && (
@@ -139,7 +143,7 @@ export default function Schedule() {
                         type="primary"
                         onClick={() => setEditorOpen(true)}
                       >
-                        Set Availability
+                        {t("schedule.actions.setAvailability")}
                       </Button>
                     )}
                   </Empty>
@@ -149,7 +153,7 @@ export default function Schedule() {
           },
           {
             key: "overrides",
-            label: "Overrides",
+            label: t("schedule.tabs.overrides"),
             children: (
               <div style={{ padding: 24 }}>
                 {loadingOverrides ? (
@@ -164,7 +168,7 @@ export default function Schedule() {
                   </div>
                 ) : (
                   <Empty
-                    description="No overrides created yet."
+                    description={t("schedule.empty.noOverrides")}
                     image={Empty.PRESENTED_IMAGE_SIMPLE}
                   >
                     {canManageSchedule() && (
@@ -172,7 +176,7 @@ export default function Schedule() {
                         type="primary"
                         onClick={() => setOverrideOpen(true)}
                       >
-                        Create Override
+                        {t("schedule.actions.createOverride")}
                       </Button>
                     )}
                   </Empty>
@@ -201,7 +205,7 @@ export default function Schedule() {
             setEditorOpen(false);
             fetchSchedule();
           } catch {
-            message.error("Failed to save schedule");
+            message.error(t("schedule.messages.saveError"));
           }
         }}
       />
@@ -212,11 +216,11 @@ export default function Schedule() {
         onSave={async (data) => {
           try {
             await api.post("/schedules/schedule-overrides", data);
-            message.success("Override created");
+            message.success(t("schedule.messages.overrideCreated"));
             setOverrideOpen(false);
             fetchOverrides();
           } catch {
-            message.error("Failed to create override");
+            message.error(t("schedule.messages.createOverrideError"));
           }
         }}
       />
