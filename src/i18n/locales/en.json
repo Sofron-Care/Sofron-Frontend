@@ -219,7 +219,71 @@
     "logout": "Logout"
   },
   "dashboard": {
-    "welcome": "Welcome, {{name}}"
+    "welcome": "Welcome, {{name}}",
+    "title": "Dashboard",
+    "subtitle": "Overview of today's clinic activity",
+
+    "stats": {
+      "appointmentsToday": "Appointments Today",
+      "checkedIn": "Checked In",
+      "noShows": "No-Shows",
+      "remaining_today": "Remaining Today"
+    },
+
+    "filters": {
+      "all": "All",
+      "scheduled": "Scheduled",
+      "checkedIn": "Checked In",
+      "noShow": "No Show",
+      "cancelled": "Cancelled",
+      "remaining": "Remaining"
+    },
+
+    "table": {
+      "time": "Time",
+      "patient": "Patient",
+      "service": "Service",
+      "specialist": "Specialist",
+      "status": "Status",
+      "actions": "Actions",
+      "empty": "No appointments scheduled for today."
+    },
+    "confirm": {
+      "checkIn": {
+        "title": "Check in client?",
+        "content": "This will mark the appointment as checked in."
+      },
+      "noShow": {
+        "title": "Mark as no-show?",
+        "content": "This will mark the appointment as a no-show. This action can be reversed."
+      },
+      "cancel": {
+        "title": "Cancel appointment?",
+        "content": "This will cancel the appointment for today."
+      }
+    },
+
+    "actions": {
+      "checkIn": "Check In",
+      "noShow": "Mark No-Show",
+      "cancel": "Cancel"
+    },
+    "messages": {
+      "loadError": "Failed to load today's appointments",
+      "checkedInSuccess": "Client checked in successfully",
+      "noShowSuccess": "Appointment marked as no-show",
+      "actionError": "Failed to update appointment"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "checked_in": "Checked In",
+      "no_show": "No-Show",
+      "cancelled": "Cancelled"
+    },
+    "view": {
+      "mine": "View My Appointments",
+      "all": "View All Appointments"
+    }
   },
   "services": {
     "title": "Services",
@@ -324,9 +388,11 @@
       "deleteOverrideError": "Failed to delete override"
     }
   },
+
   "common": {
     "edit": "Edit",
     "delete": "Delete",
+    "confirm": "Confirm",
     "save": "Save",
     "cancel": "Cancel",
     "feature": "Feature",

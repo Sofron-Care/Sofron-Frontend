@@ -13,7 +13,7 @@ import Services from "./app/pages/services/Services";
 import Onboarding from "./app/pages/onboarding/Onboarding";
 import Specialists from "./app/pages/specialists/Specialists";
 import Schedule from "./app/pages/schedules/Schedule";
-// import Dashboard from "./app/dashboard/Dashboard";
+import Dashboard from "./app/pages/dashboard/Dashboard";
 // import Appointments from "./app/appointments/Appointments";
 // import Patients from "./app/patients/Patients";
 
@@ -33,7 +33,7 @@ function App() {
       {/* Demo App */}
       <Route path="/demo/app" element={<AppShell />}>
         <Route path="onboarding" element={<Onboarding />} />
-        {/* <Route index element={<Dashboard />} /> */}
+        <Route index element={<Dashboard />} />
         {/* <Route path="appointments" element={<Appointments />} /> */}
         <Route path="specialists" element={<Specialists />} />
         {/* <Route path="patients" element={<Patients />} /> */}
