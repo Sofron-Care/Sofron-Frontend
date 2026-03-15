@@ -856,6 +856,10 @@ p {
   font-weight: var(--font-weight-semibold);
 }
 
+/* =========================
+   Appointments
+   ========================= */
+
 .status-tag {
   font-weight: var(--font-weight-medium);
   border-radius: 999px;
@@ -896,4 +900,47 @@ p {
 
 .clickable-row:hover {
   background-color: rgba(13, 148, 136, 0.04);
+}
+
+/* =========================
+   Analytics
+   ========================= */
+
+.analytics-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.analytics-loading {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.analytics-kpi-row {
+  margin-bottom: 8px;
+}
+
+.analytics-kpi-card {
+  border-radius: 8px;
+}
+
+.analytics-chart-card {
+  border-radius: 8px;
+}
+
+.analytics-filters {
+  margin-bottom: 16px;
+}
+
+.analytics-range-select {
+  width: 220px;
+}
+
+.analytics-chart-body {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  min-height: 260px;
 }

@@ -15,6 +15,7 @@ import Specialists from "./app/pages/specialists/Specialists";
 import Schedule from "./app/pages/schedules/Schedule";
 import Dashboard from "./app/pages/dashboard/Dashboard";
 import Appointments from "./app/pages/appointments/Appointments";
+import Analytics from "./app/pages/analytics/Analytics";
 // import Patients from "./app/patients/Patients";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         {/* <Route path="patients" element={<Patients />} /> */}
         <Route path="services" element={<Services />} />
         <Route path="schedule" element={<Schedule />} />
+        <Route path="analytics" element={<Analytics />} />
       </Route>
     </Routes>
   );

@@ -7,6 +7,7 @@ import { App as AntApp } from "antd";
 import App from "./App";
 import "./App.css";
 import "./i18n";
+import "./shared/charts/chartSetup";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

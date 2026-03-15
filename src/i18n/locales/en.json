@@ -493,6 +493,61 @@
       "placeholder": "Enter appointment notes..."
     }
   },
+  "analytics": {
+    "title": "Analytics",
+    "errors": {
+      "fetchFailed": "Failed to load analytics data."
+    },
+    "ranges": {
+      "all": "All Time",
+      "last7": "Last 7 Days",
+      "last30": "Last 30 Days",
+      "last90": "Last 90 Days",
+      "ytd": "Year to Date"
+    },
+    "kpis": {
+      "totalAppointments": "Total Appointments",
+      "totalRevenue": "Total Revenue",
+      "utilizationRate": "Utilization Rate",
+      "newPatients": "New Patients"
+    },
+    "tabs": {
+      "appointments": "Appointments",
+      "revenue": "Revenue",
+      "scheduling": "Scheduling",
+      "demographics": "Demographics",
+      "services": "Services"
+    },
+    "sections": {
+      "appointmentOutcomes": "Appointment Outcomes",
+      "revenueByService": "Revenue by Service",
+      "ageDistribution": "Age Distribution",
+      "genderDistribution": "Gender Distribution",
+      "activityDistribution": "Activity Level",
+      "mostBookedServices": "Most Booked Services",
+      "scheduleUtilization": "Schedule Utilization"
+    },
+    "appointments": {
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "noShow": "No Show",
+      "rescheduled": "Rescheduled"
+    },
+    "services": {
+      "service": "Service",
+      "bookings": "Bookings",
+      "mostBooked": "Most Booked Services",
+      "highestRevenue": "Highest Revenue Services",
+      "mostCancelled": "Most Cancelled Services",
+      "revenueLost": "Revenue Lost From Cancellations"
+    },
+    "demographics": {
+      "ageDistribution": "Age Distribution",
+      "genderDistribution": "Gender Distribution",
+      "activityLevel": "Activity Level",
+      "visits": "Number of Visits"
+    }
+  },
   "common": {
     "edit": "Edit",
     "delete": "Delete",
