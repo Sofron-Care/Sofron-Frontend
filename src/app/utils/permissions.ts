@@ -11,7 +11,10 @@ export type Permission =
   | "cancel:appointment"
   | "checkin:appointment"
   | "noshow:appointment"
-  | "addnote:appointment";
+  | "addnote:appointment"
+  | "create:document"
+  | "edit:document"
+  | "delete:document";
 
 export const rolePermissions: Record<string, Permission[]> = {
   clinicAdmin: [
@@ -28,6 +31,9 @@ export const rolePermissions: Record<string, Permission[]> = {
     "checkin:appointment",
     "noshow:appointment",
     "addnote:appointment",
+    "create:document",
+    "edit:document",
+    "delete:document",
   ],
   freelanceAdmin: [
     "create:service",
@@ -43,6 +49,9 @@ export const rolePermissions: Record<string, Permission[]> = {
     "checkin:appointment",
     "noshow:appointment",
     "addnote:appointment",
+    "create:document",
+    "edit:document",
+    "delete:document",
   ],
   specialist: [
     "manage:schedule",

@@ -16,6 +16,7 @@ import Schedule from "./app/pages/schedules/Schedule";
 import Dashboard from "./app/pages/dashboard/Dashboard";
 import Appointments from "./app/pages/appointments/Appointments";
 import Analytics from "./app/pages/analytics/Analytics";
+import Documents from "./app/pages/documents/Documents";
 // import Patients from "./app/patients/Patients";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="services" element={<Services />} />
         <Route path="schedule" element={<Schedule />} />
         <Route path="analytics" element={<Analytics />} />
+        <Route path="documents" element={<Documents />} />
       </Route>
     </Routes>
   );

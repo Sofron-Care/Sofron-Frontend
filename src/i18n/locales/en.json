@@ -548,6 +548,43 @@
       "visits": "Number of Visits"
     }
   },
+  "documents": {
+    "title": "Documents",
+    "subtitle": "Manage intake forms and templates",
+    "create": "Create Template",
+    "table": {
+      "title": "Title",
+      "services": "Services",
+      "status": "Status",
+      "updated": "Updated",
+      "actions": "Actions",
+      "noServices": "No services assigned"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "activate": "Activate",
+      "deactivate": "Deactivate"
+    },
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "services": "Services"
+    },
+    "messages": {
+      "created": "Document created",
+      "updated": "Document updated"
+    },
+    "builder": {
+      "title": "Form Builder",
+      "addField": "Add Field",
+      "text": "Text",
+      "textarea": "Textarea",
+      "select": "Select",
+      "checkbox": "Checkbox",
+      "empty": "Add fields to start building your form"
+    }
+  },
   "common": {
     "edit": "Edit",
     "delete": "Delete",
