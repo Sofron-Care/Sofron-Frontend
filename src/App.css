@@ -768,6 +768,7 @@ p {
 .page-primary-action {
   display: flex;
   align-items: center;
+  gap: var(--space-3);
 }
 
 .page-secondary-actions {
@@ -1006,4 +1007,120 @@ p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* NOTIFICATIONS */
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notifications-actions {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.notification-unread {
+  background-color: var(--color-primary-light);
+}
+
+.notification-read {
+  opacity: 0.7;
+}
+
+.notification-title {
+  font-weight: 500;
+}
+
+.notification-title.unread {
+  font-weight: 600;
+}
+
+.notification-dropdown {
+  width: 320px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.notification-dropdown .ant-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* List items */
+.notification-item {
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* 🔥 UNREAD */
+.notification-item.unread {
+  background: rgba(13, 148, 136, 0.06);
+  border-left: 3px solid var(--color-primary);
+}
+
+/* subtle hover */
+.notification-item:hover {
+  background: rgba(13, 148, 136, 0.08);
+}
+
+/* text styles */
+.notification-title {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+/* 🔥 unread text emphasis */
+.notification-item.unread .notification-title {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* 🔹 read state */
+.notification-item.read {
+  opacity: 0.7;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.anticon-bell {
+  transition: var(--transition-fast);
+}
+
+.anticon-bell:hover {
+  color: var(--color-primary);
+}
+
+/* Footer */
+.notification-footer {
+  padding: var(--space-3);
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+
+.notification-footer .ant-btn {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+}
+
+.notification-footer .ant-btn:hover {
+  color: var(--color-primary-hover) !important;
+}
+
+.notification-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
 }

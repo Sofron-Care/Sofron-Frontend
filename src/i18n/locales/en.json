@@ -215,6 +215,7 @@
     "documents": "Documents",
     "analytics": "Analytics",
     "settings": "Settings",
+    "notifications": "Notifications",
     "help": "Help",
     "logout": "Logout"
   },
@@ -585,6 +586,32 @@
       "empty": "Add fields to start building your form"
     }
   },
+
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark All Read",
+    "clearAll": "Clear All",
+    "markSelectedRead": "Mark Selected Read",
+    "deleteSelected": "Delete Selected",
+    "empty": "You're all caught up 🎉",
+    "columns": {
+      "status": "Status",
+      "title": "Title",
+      "message": "Message",
+      "date": "Date",
+      "actions": "Actions"
+    },
+    "status": {
+      "read": "Read",
+      "unread": "Unread"
+    },
+    "actions": {
+      "markRead": "Mark Read",
+      "delete": "Delete",
+      "viewAll": "View All"
+    }
+  },
+
   "common": {
     "edit": "Edit",
     "delete": "Delete",

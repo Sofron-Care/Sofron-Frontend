@@ -21,6 +21,7 @@ export default function SidebarNav() {
     { key: "/demo/app/documents", label: t("appnav.documents") },
     { key: "/demo/app/analytics", label: t("appnav.analytics") },
     { type: "divider" },
+    {key: "/demo/app/notifications", label: t("appnav.notifications")},
     { key: "/demo/app/settings", label: t("appnav.settings") },
     { key: "/demo/app/help", label: t("appnav.help") },
   ];

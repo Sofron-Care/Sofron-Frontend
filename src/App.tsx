@@ -17,6 +17,7 @@ import Dashboard from "./app/pages/dashboard/Dashboard";
 import Appointments from "./app/pages/appointments/Appointments";
 import Analytics from "./app/pages/analytics/Analytics";
 import Documents from "./app/pages/documents/Documents";
+import Notifications from "./app/pages/notifications/Notifications";
 // import Patients from "./app/patients/Patients";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route index element={<Dashboard />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="specialists" element={<Specialists />} />
+        <Route path="notifications" element={<Notifications />} />
         {/* <Route path="patients" element={<Patients />} /> */}
         <Route path="services" element={<Services />} />
         <Route path="schedule" element={<Schedule />} />

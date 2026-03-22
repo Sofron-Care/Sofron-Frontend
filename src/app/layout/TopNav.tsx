@@ -2,6 +2,7 @@ import { Space, Typography, Button, Avatar } from "antd";
 import { useAuth } from "../auth/AuthContext";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import NotificationBell from "../pages/notifications/components/NotificationBell";
 
 const { Text } = Typography;
 
@@ -25,9 +26,12 @@ export default function TopNav() {
       }}
     >
       <Text strong>{t("dashboard.welcome", { name: user?.firstName })}</Text>
+      <Space align="center" size={12}>
+        <Space align="center" size={8}>
+          <NotificationBell />
+          <Avatar>{user?.firstName?.[0]}</Avatar>
+        </Space>
 
-      <Space>
-        <Avatar>{user?.firstName?.[0]}</Avatar>
         <Button type="text" onClick={handleLogout}>
           {t("appnav.logout")}
         </Button>
