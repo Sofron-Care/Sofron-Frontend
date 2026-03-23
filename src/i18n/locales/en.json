@@ -586,7 +586,6 @@
       "empty": "Add fields to start building your form"
     }
   },
-
   "notifications": {
     "title": "Notifications",
     "markAllRead": "Mark All Read",
@@ -611,6 +610,59 @@
       "viewAll": "View All"
     }
   },
+  "patients": {
+    "title": "Patients",
+    "searchPlaceholder": "Search patients by name or email",
+    "drawer": {
+      "title": "Patient Details"
+    },
+    "table": {
+      "patient": "Patient",
+      "phone": "Phone",
+      "gender": "Gender",
+      "pronouns": "Pronouns",
+      "preferredCommunication": "Preferred Communication",
+      "actions": "Actions"
+    },
+    "sections": {
+      "personalInfo": "Personal Information",
+      "address": "Address",
+      "emergencyContact": "Emergency Contact",
+      "medicalInfo": "Medical Information",
+      "quickActions": "Quick Actions"
+    },
+    "fields": {
+      "dateOfBirth": "Date of Birth",
+      "occupation": "Occupation",
+      "gender": "Gender",
+      "pronouns": "Pronouns",
+      "preferredCommunication": "Preferred Communication",
+      "referralSource": "Referral Source",
+      "address": "Address",
+      "contactName": "Name",
+      "relationship": "Relationship",
+      "contactPhone": "Phone",
+      "contactEmail": "Email",
+      "activityLevel": "Activity Level",
+      "medicalNotes": "Medical Notes"
+    },
+    "actions": {
+      "view": "View",
+      "manage": "Manage",
+      "bookAppointment": "Book Appointment",
+      "viewAppointments": "View Appointments"
+    },
+    "empty": {
+      "default": "No patients found yet.",
+      "search": "No patients matched your search.",
+      "detail": "No patient details found.",
+      "emergencyContact": "No emergency contact on file."
+    },
+    "messages": {
+      "loadError": "Unable to load patients.",
+      "detailLoadError": "Unable to load patient details."
+    }
+  },
 
   "common": {
     "edit": "Edit",
@@ -621,6 +673,7 @@
     "close": "Close",
     "feature": "Feature",
     "unfeature": "Unfeature",
+    "notAvailable": "Not available",
     "loading": "Loading...",
     "days": {
       "sunday": "Sunday",

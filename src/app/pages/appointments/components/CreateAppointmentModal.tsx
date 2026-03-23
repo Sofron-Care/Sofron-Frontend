@@ -18,6 +18,14 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onSuccess: () => void;
+  initialValues?: {
+    clientId?: number;
+    appointment?: {
+      serviceId?: number;
+      specialistId?: number;
+      date?: dayjs.Dayjs;
+    };
+  };
 }
 
 interface AvailabilitySlot {
@@ -31,6 +39,7 @@ export default function CreateAppointmentModal({
   open,
   onClose,
   onSuccess,
+  initialValues = {},
 }: Props) {
   const [form] = Form.useForm();
 
@@ -57,6 +66,7 @@ export default function CreateAppointmentModal({
   const [specialistsLoading, setSpecialistsLoading] = useState(false);
   const [patients, setPatients] = useState<any[]>([]);
   const [patientsLoading, setPatientsLoading] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     if (!selectedServiceId || !selectedDate) {
@@ -79,6 +89,29 @@ export default function CreateAppointmentModal({
 
     fetchAvailability();
   }, [selectedServiceId, selectedSpecialistId, selectedDate]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    form.resetFields();
+    setSelectedTime(null);
+
+    if (initialValues?.clientId) {
+      setClientMode("existing");
+
+      form.setFieldsValue({
+        clientId: initialValues.clientId,
+      });
+    }
+
+    if (initialValues?.appointment) {
+      form.setFieldsValue({
+        appointment: {
+          ...initialValues.appointment,
+        },
+      });
+    }
+  }, [open, dataLoaded, initialValues]);
 
   useEffect(() => {
     if (!open) return;
@@ -131,9 +164,9 @@ export default function CreateAppointmentModal({
       }
     };
 
-    fetchPatients();
-    fetchSpecialists();
-    fetchServices();
+    Promise.all([fetchPatients(), fetchSpecialists(), fetchServices()]).then(
+      () => setDataLoaded(true),
+    );
   }, [open]);
 
   const fetchAvailability = async () => {
@@ -227,6 +260,7 @@ export default function CreateAppointmentModal({
     <Modal
       open={open}
       onCancel={onClose}
+      zIndex={9999}
       footer={[
         <Button key="cancel" onClick={onClose}>
           {t("common.cancel")}
@@ -279,6 +313,7 @@ export default function CreateAppointmentModal({
               loading={patientsLoading}
               placeholder={t("appointments.create.fields.selectClient")}
               optionFilterProp="label"
+              disabled={!!initialValues?.clientId}
               filterOption={(input, option) =>
                 (option?.label as string)
                   ?.toLowerCase()

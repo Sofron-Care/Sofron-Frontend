@@ -18,7 +18,7 @@ import Appointments from "./app/pages/appointments/Appointments";
 import Analytics from "./app/pages/analytics/Analytics";
 import Documents from "./app/pages/documents/Documents";
 import Notifications from "./app/pages/notifications/Notifications";
-// import Patients from "./app/patients/Patients";
+import Patients from "./app/pages/patients/Patients";
 
 function App() {
   return (
@@ -39,12 +39,12 @@ function App() {
         <Route index element={<Dashboard />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="specialists" element={<Specialists />} />
-        <Route path="notifications" element={<Notifications />} />
-        {/* <Route path="patients" element={<Patients />} /> */}
         <Route path="services" element={<Services />} />
         <Route path="schedule" element={<Schedule />} />
-        <Route path="analytics" element={<Analytics />} />
+        <Route path="patients" element={<Patients />} />
         <Route path="documents" element={<Documents />} />
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="notifications" element={<Notifications />} />
       </Route>
     </Routes>
   );
