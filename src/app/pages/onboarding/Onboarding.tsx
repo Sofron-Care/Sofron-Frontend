@@ -1,6 +1,7 @@
 import { useAuth } from "./../../auth/AuthContext";
 import AdminOnboarding from "./AdminOnboarding";
-// import EmployeeOnboarding from "./EmployeeOnboarding";
+import EmployeeOnboarding from "./EmployeeOnboarding";
+import ClientOnboarding from "./ClientOnboarding";
 
 export default function Onboarding() {
   const { user } = useAuth();
@@ -11,9 +12,13 @@ export default function Onboarding() {
     return <AdminOnboarding />;
   }
 
-//   if (user.role === "specialist" || user.role === "frontDesk") {
-//     return <EmployeeOnboarding />;
-//   }
+  if (user.role === "specialist" || user.role === "frontDesk") {
+    return <EmployeeOnboarding />;
+  }
+
+  if (user.role === "client") {
+    return <ClientOnboarding />;
+  }
 
   return null;
 }
