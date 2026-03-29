@@ -1567,3 +1567,60 @@ p {
   flex-direction: column;
   gap: 8px;
 }
+
+/* Full page wrapper */
+.booking-confirmed-page {
+  min-height: calc(100vh - 120px); /* adjust for header/footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Centered container */
+.booking-confirmed__container {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* Card-style content */
+.booking-confirmed__content {
+  background: var(--color-surface);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+/* Typography */
+.booking-confirmed__title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.booking-confirmed__subtitle {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+/* Details block */
+.booking-confirmed__details {
+  text-align: left;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Note */
+.booking-confirmed__note {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 16px;
+}
+
+/* Actions */
+.booking-confirmed__actions {
+  margin-top: 24px;
+}

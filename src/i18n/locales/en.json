@@ -825,6 +825,18 @@
       "bookingSuccess": "Appointment booked successfully.",
       "bookingError": "Unable to book appointment.",
       "orgNotFound": "Organization not found"
+    },
+    "confirmed": {
+      "title": "Appointment Confirmed",
+      "subtitle": "Your appointment has been successfully booked.",
+      "service": "Service",
+      "date": "Date",
+      "time": "Time",
+      "clinic": "Clinic",
+      "note": "A confirmation email has been sent with your appointment details.",
+      "done": "Done",
+      "errorTitle": "Something went wrong",
+      "goHome": "Go home"
     }
   },
   "common": {

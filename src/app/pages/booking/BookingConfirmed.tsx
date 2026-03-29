@@ -1,63 +1,81 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
+
+import Nav from "./../home/components/Nav";
+import Footer from "./../home/components/Footer";
 
 export default function BookingConfirmed() {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const appointment = state?.appointment;
   const service = state?.service;
   const org = state?.org;
 
-  if (!appointment) {
-    return (
-      <div className="booking-panel">
-        <h2>Something went wrong</h2>
-        <Button onClick={() => navigate("/")}>Go home</Button>
-      </div>
-    );
-  }
-
-  const start = dayjs(appointment.startTime);
+  const start = appointment ? dayjs(appointment.startTime) : null;
 
   return (
-    <div className="booking-panel booking-confirmed">
-      <div className="booking-confirmed__content">
-        <h1 className="booking-confirmed__title">Appointment Confirmed</h1>
+    <>
+      <Nav />
 
-        <p className="booking-confirmed__subtitle">
-          Your appointment has been successfully booked.
-        </p>
+      <div className="booking-confirmed-page">
+        <div className="booking-confirmed__container">
+          {!appointment ? (
+            <div className="booking-confirmed__content">
+              <h2>{t("booking.confirmed.errorTitle")}</h2>
+              <Button onClick={() => navigate("/")}>
+                {t("booking.confirmed.goHome")}
+              </Button>
+            </div>
+          ) : (
+            <div className="booking-confirmed__content">
+              <h1 className="booking-confirmed__title">
+                {t("booking.confirmed.title")}
+              </h1>
 
-        <div className="booking-confirmed__details">
-          <div>
-            <strong>Service:</strong> {service?.name}
-          </div>
+              <p className="booking-confirmed__subtitle">
+                {t("booking.confirmed.subtitle")}
+              </p>
 
-          <div>
-            <strong>Date:</strong> {start.format("MMMM D, YYYY")}
-          </div>
+              <div className="booking-confirmed__details">
+                <div>
+                  <strong>{t("booking.confirmed.service")}:</strong>{" "}
+                  {service?.name}
+                </div>
 
-          <div>
-            <strong>Time:</strong> {start.format("h:mm A")}
-          </div>
+                <div>
+                  <strong>{t("booking.confirmed.date")}:</strong>{" "}
+                  {start?.format("MMMM D, YYYY")}
+                </div>
 
-          <div>
-            <strong>Clinic:</strong> {org?.name}
-          </div>
-        </div>
+                <div>
+                  <strong>{t("booking.confirmed.time")}:</strong>{" "}
+                  {start?.format("h:mm A")}
+                </div>
 
-        <p className="booking-confirmed__note">
-          A confirmation email has been sent with your appointment details.
-        </p>
+                <div>
+                  <strong>{t("booking.confirmed.clinic")}:</strong> {org?.name}
+                </div>
+              </div>
 
-        <div className="booking-confirmed__actions">
-          <Button type="primary" onClick={() => navigate("/")}>
-            Done
-          </Button>
+              <p className="booking-confirmed__note">
+                {t("booking.confirmed.note")}
+              </p>
+
+              <div className="booking-confirmed__actions">
+                <Button type="primary" onClick={() => navigate("/")}>
+                  {t("booking.confirmed.done")}
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-    </div>
+
+      <Footer />
+    </>
   );
 }
