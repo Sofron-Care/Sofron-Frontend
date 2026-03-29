@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Spin, Empty, Input, Select, Button } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import axios from "./../../../shared/api/axios";
 import OrganizationCard from "./components/OrganizationCard";

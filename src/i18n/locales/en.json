@@ -770,6 +770,63 @@
       "secondary": "For Clinics"
     }
   },
+  "booking": {
+    "steps": {
+      "service": "Service",
+      "specialist": "Specialist",
+      "datetime": "Date & Time",
+      "details": "Details",
+      "summary": "Summary"
+    },
+    "header": {
+      "addressSeparator": "•"
+    },
+    "service": {
+      "title": "Select a service",
+      "featured": "Featured",
+      "duration": "{{duration}} min",
+      "price": "{{price}}"
+    },
+    "specialist": {
+      "title": "Select a specialist",
+      "noSpecialists": "No specialists available"
+    },
+    "datetime": {
+      "title": "Select Date",
+      "availableTimes": "Available Times",
+      "noAvailability": "No availability for selected date"
+    },
+    "details": {
+      "title": "Additional Details (Optional)",
+      "placeholder": "Add any notes for your provider...",
+      "firstVisit": "First time visit?",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "summary": {
+      "title": "Your Appointment",
+      "confirm": "Confirm Appointment",
+      "service": "Service",
+      "specialist": "Specialist",
+      "date": "Date",
+      "time": "Time",
+      "duration": "Duration",
+      "price": "Price"
+    },
+    "actions": {
+      "next": "Next",
+      "back": "Back",
+      "book": "Book Now"
+    },
+    "messages": {
+      "loadServicesError": "Unable to load services.",
+      "loadSpecialistsError": "Unable to load specialists.",
+      "loadAvailabilityError": "Unable to load availability.",
+      "bookingSuccess": "Appointment booked successfully.",
+      "bookingError": "Unable to book appointment.",
+      "orgNotFound": "Organization not found"
+    }
+  },
   "common": {
     "edit": "Edit",
     "delete": "Delete",
@@ -784,6 +841,7 @@
     "notAvailable": "Not available",
     "loading": "Loading...",
     "logout": "Logout",
+    "remove": "Remove",
     "days": {
       "sunday": "Sunday",
       "monday": "Monday",

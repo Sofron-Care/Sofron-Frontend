@@ -22,6 +22,8 @@ import Patients from "./app/pages/patients/Patients";
 import Settings from "./app/pages/settings/Settings";
 import OrgDeactivated from "./app/pages/general/OrgDeactivated";
 import SearchResultsPage from "./app/pages/searchResults/SearchResults";
+import Booking from "./app/pages/booking/Booking";
+import BookingConfirmed from "./app/pages/booking/BookingConfirmed";
 
 function App() {
   return (
@@ -37,6 +39,11 @@ function App() {
       <Route path="/demo/search" element={<SearchResultsPage />} />
       <Route path="/demo/login" element={<Login />} />
       <Route path="/demo/register/clinic" element={<RegisterClinic />} />
+      <Route path="/demo/clinic/:publicId" element={<Booking />} />
+      <Route
+        path="/book/clinic/:publicId/confirmed"
+        element={<BookingConfirmed />}
+      />
 
       {/* Demo App */}
       <Route path="/demo/app" element={<AppShell />}>
