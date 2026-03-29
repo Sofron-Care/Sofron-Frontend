@@ -181,7 +181,8 @@
       "invalidEmail": "Enter a valid email address",
       "requiredEmail": "Please enter your email",
       "requiredPassword": "Please enter your password",
-      "loginFailed": "Incorrect email or password"
+      "loginFailed": "Incorrect email or password",
+      "orgInactive": "Your organization is no longer active. You have been redirected to client mode."
     },
     "clinicRegister": {
       "title": "Create your clinic account",
@@ -663,18 +664,126 @@
       "detailLoadError": "Unable to load patient details."
     }
   },
-
+  "settings": {
+    "profile": "Profile",
+    "notifications": "Notifications",
+    "organization": "Organization",
+    "profileInfo": "Profile Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone",
+    "emailSection": "Email",
+    "changeEmail": "Change Email",
+    "security": "Security",
+    "resetPassword": "Send Password Reset Email",
+    "notificationsTitle": "Email Notifications",
+    "notificationsDescription": "Manage which emails you receive from Sofron.",
+    "notificationEmails": "Notification Emails",
+    "notificationEmailsDesc": "Receive emails about appointments, updates, and activity.",
+    "marketingEmails": "Marketing Emails",
+    "marketingEmailsDesc": "Receive product updates, tips, and promotional content.",
+    "orgName": "Organization Name",
+    "businessEmail": "Business Email",
+    "website": "Website",
+    "logoUrl": "Logo",
+    "streetAddress": "Street Address",
+    "city": "City",
+    "state": "State",
+    "zipcode": "Postal Code",
+    "cancellationPolicy": "Cancellation Policy",
+    "minHours": "Minimum Hours",
+    "feePercentage": "Fee Percentage (%)",
+    "flatFee": "Flat Fee",
+    "dangerZone": "Danger Zone",
+    "deactivateWarning": "Proceeding with this will deactivate your organization. You will need to contact administration to reactivate your business",
+    "deactivateOrg": "Deactivate Organization",
+    "confirmDeactivateTitle": "Deactivate Organization?",
+    "confirmDeactivate": "Deactivate"
+  },
+  "orgDeactivated": {
+    "title": "Organization Deactivated",
+    "description": "This organization is no longer active. Please contact Sofron support if you believe this is a mistake."
+  },
+  "entry": {
+    "hero": {
+      "title": "Find and book care without the hassle",
+      "subtitle": "Search cash-pay clinics near you, compare services, and book instantly.",
+      "searchPlaceholder": "Enter city, state, or zip code",
+      "searchButton": "Search",
+      "visualPlaceholder": "Booking UI preview"
+    },
+    "problem": {
+      "label": "The Problem",
+      "title": "Finding care shouldn’t be this hard",
+      "subtitle": "Patients struggle to find and book quality care without jumping through hoops.",
+      "items": [
+        "Endless searching with no clear pricing",
+        "Confusing booking systems and availability",
+        "Insurance-first systems that slow everything down",
+        "No easy way to compare providers"
+      ]
+    },
+    "solution": {
+      "label": "The Solution",
+      "title": "A simpler way to book care",
+      "items": [
+        {
+          "title": "Search nearby clinics",
+          "description": "Find cash-pay providers near you instantly with accurate location search."
+        },
+        {
+          "title": "Transparent services",
+          "description": "See exactly what each clinic offers with clear pricing and descriptions."
+        },
+        {
+          "title": "Real-time booking",
+          "description": "Book appointments instantly without back-and-forth emails or calls."
+        },
+        {
+          "title": "Built for direct care",
+          "description": "Designed specifically for cash-based practices, not insurance workflows."
+        }
+      ]
+    },
+    "how": {
+      "label": "How It Works",
+      "title": "Book care in minutes",
+      "items": [
+        {
+          "title": "Search",
+          "description": "Enter your location to find clinics near you."
+        },
+        {
+          "title": "Compare",
+          "description": "Browse services, availability, and providers."
+        },
+        {
+          "title": "Book",
+          "description": "Schedule instantly with no friction."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to find your next appointment?",
+      "subtitle": "Search clinics near you or join Sofron to grow your practice.",
+      "primary": "Search Clinics",
+      "secondary": "For Clinics"
+    }
+  },
   "common": {
     "edit": "Edit",
     "delete": "Delete",
     "confirm": "Confirm",
     "save": "Save",
+    "saved": "Changes saved successfully",
+    "error": "Something went wrong",
     "cancel": "Cancel",
     "close": "Close",
     "feature": "Feature",
     "unfeature": "Unfeature",
     "notAvailable": "Not available",
     "loading": "Loading...",
+    "logout": "Logout",
     "days": {
       "sunday": "Sunday",
       "monday": "Monday",

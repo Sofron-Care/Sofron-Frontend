@@ -131,7 +131,7 @@ export default function Dashboard() {
       render: (record: any) =>
         record.client
           ? `${record.client.firstName} ${record.client.lastName}`
-          : record.guestClient?.name,
+          : `${record.guestClient?.firstName} ${record.guestClient?.lastName}`,
     },
     {
       title: t("dashboard.table.service"),

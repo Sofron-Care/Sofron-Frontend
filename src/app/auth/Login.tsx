@@ -12,7 +12,14 @@ export default function Login() {
 
   const handleLogin = async (values: { email: string; password: string }) => {
     try {
-      await login(values.email, values.password);
+      const user = await login(values.email, values.password);
+
+      if (user.role !== "client" && user.orgAccessActive === false) {
+        message.warning(t("auth.login.orgInactive"));
+        navigate("/demo/client");
+        return;
+      }
+
       navigate("/demo/app");
     } catch (err: any) {
       message.error(

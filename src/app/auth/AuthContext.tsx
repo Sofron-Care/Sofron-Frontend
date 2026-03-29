@@ -15,6 +15,8 @@ interface User {
   onboardingCompleted: boolean;
   requiresOnboarding: boolean;
   needsToAcceptTOS: boolean;
+
+  orgAccessActive?: boolean;
 }
 
 interface Organization {
@@ -31,7 +33,7 @@ interface AuthContextType {
   user: User | null;
   organization: Organization | null;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<User>;
   logout: () => Promise<void>;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   setOrganization: React.Dispatch<React.SetStateAction<Organization | null>>;
@@ -74,13 +76,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string): Promise<User> => {
     setLoading(true);
 
     try {
       const res = await api.post("/auth/login", { email, password });
 
-      const loggedInUser = res.data.data.user;
+      const loggedInUser: User = res.data.data.user;
 
       setUser(loggedInUser);
       localStorage.setItem("user", JSON.stringify(loggedInUser));
@@ -89,6 +91,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         const orgRes = await api.get("/organizations");
         setOrganization(orgRes.data.data.organizationDetails);
       }
+
+      return loggedInUser; 
     } finally {
       setLoading(false);
     }

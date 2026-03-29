@@ -12,19 +12,30 @@ export default function AppShell() {
   const navigate = useNavigate();
   const location = useLocation();
 
+
+  if (!user) {
+    return <Navigate to="/demo/login" replace />;
+  }
+
+  console.log(user)
+
+  if (user.organizationId && user.orgAccessActive === false) {
+    return <Navigate to="/demo/org-deactivated" replace />;
+  }
+
+  if (user.role === "client" && location.pathname.startsWith("/demo/app")) {
+    return <Navigate to="/demo/client" replace />;
+  }
+
   useEffect(() => {
     if (
-      user?.requiresOnboarding &&
+      user.requiresOnboarding &&
       !user.onboardingCompleted &&
       location.pathname !== "/demo/app/onboarding"
     ) {
       navigate("/demo/app/onboarding", { replace: true });
     }
   }, [user, location]);
-
-  if (!user) {
-    return <Navigate to="/demo/login" replace />;
-  }
 
   return (
     <Layout className="app-layout">

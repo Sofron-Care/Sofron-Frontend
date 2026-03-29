@@ -5,7 +5,7 @@ import WhyCashCare from "./marketing/pages/WhyCashCare";
 import Product from "./marketing/pages/Product";
 import Interest from "./marketing/pages/Interest";
 
-import DemoEntry from "./demo/pages/DemoEntry";
+import Entry from "./app/pages/home/pages/Entry";
 import Login from "./app/auth/Login";
 import RegisterClinic from "./app/auth/RegisterClinic";
 import AppShell from "./app/layout/AppShell";
@@ -19,6 +19,9 @@ import Analytics from "./app/pages/analytics/Analytics";
 import Documents from "./app/pages/documents/Documents";
 import Notifications from "./app/pages/notifications/Notifications";
 import Patients from "./app/pages/patients/Patients";
+import Settings from "./app/pages/settings/Settings";
+import OrgDeactivated from "./app/pages/general/OrgDeactivated";
+import SearchResultsPage from "./app/pages/searchResults/SearchResults";
 
 function App() {
   return (
@@ -30,9 +33,11 @@ function App() {
       <Route path="/contact" element={<Interest />} />
 
       {/* Demo Public */}
-      <Route path="/demo" element={<DemoEntry />} />
+      <Route path="/demo" element={<Entry />} />
+      <Route path="/demo/search" element={<SearchResultsPage />} />
       <Route path="/demo/login" element={<Login />} />
       <Route path="/demo/register/clinic" element={<RegisterClinic />} />
+
       {/* Demo App */}
       <Route path="/demo/app" element={<AppShell />}>
         <Route path="onboarding" element={<Onboarding />} />
@@ -45,7 +50,9 @@ function App() {
         <Route path="documents" element={<Documents />} />
         <Route path="analytics" element={<Analytics />} />
         <Route path="notifications" element={<Notifications />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
+      <Route path="/demo/org-deactivated" element={<OrgDeactivated />} />
     </Routes>
   );
 }

@@ -3,7 +3,7 @@ import { Button, Drawer } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-export default function DemoNav() {
+export default function Nav() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
