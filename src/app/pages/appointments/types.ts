@@ -38,6 +38,11 @@ export interface Appointment {
     lastName: string;
     email: string;
   };
+  organization?: {
+  id: number;
+  name: string;
+  timeZone?: string;
+};
   notes?: {
     authorId: string;
     timestamp: string;

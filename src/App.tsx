@@ -24,6 +24,7 @@ import OrgDeactivated from "./app/pages/general/OrgDeactivated";
 import SearchResultsPage from "./app/pages/searchResults/SearchResults";
 import Booking from "./app/pages/booking/Booking";
 import BookingConfirmed from "./app/pages/booking/BookingConfirmed";
+import ClientDashboard from "./app/pages/client/ClientDashboard";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         path="/book/clinic/:publicId/confirmed"
         element={<BookingConfirmed />}
       />
+      <Route path="/demo/client-dashboard" element={<ClientDashboard />} />
 
       {/* Demo App */}
       <Route path="/demo/app" element={<AppShell />}>

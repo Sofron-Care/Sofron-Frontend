@@ -1624,3 +1624,130 @@ p {
 .booking-confirmed__actions {
   margin-top: 24px;
 }
+
+/* CLIENT DASHBOARD */
+.client-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.appointment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.appointment-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.appointment-card__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.organization-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.organization-card__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.organization-card__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.client-dashboard__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.client-overview__card {
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.client-overview__appointment {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.client-overview__primary {
+  font-weight: 600;
+  font-size: var(--text-lg);
+}
+
+.client-overview__secondary {
+  color: var(--color-text-secondary);
+}
+
+.client-overview__meta {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.client-overview__actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.client-reviews__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.client-reviews__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.client-reviews__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.client-reviews__primary {
+  font-weight: 600;
+}
+
+.client-reviews__secondary {
+  color: var(--color-text-secondary);
+}
+
+.client-reviews__meta {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.client-reviews__actions {
+  display: flex;
+  gap: var(--space-sm);
+}

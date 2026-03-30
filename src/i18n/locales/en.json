@@ -839,6 +839,46 @@
       "goHome": "Go home"
     }
   },
+  "clientDashboard": {
+    "title": "My Dashboard",
+    "tabs": {
+      "overview": "Overview",
+      "appointments": "Appointments",
+      "favorites": "Favorites",
+      "reviews": "Reviews"
+    },
+    "overview": {
+      "nextAppointment": "Next Appointment",
+      "noUpcoming": "You have no upcoming appointments.",
+      "quickActions": "Quick Actions"
+    },
+    "sections": {
+      "upcoming": "Upcoming Appointment",
+      "recent": "Recent Clinics",
+      "favorites": "Your Favorites",
+      "pastAppointments": "Past Appointments"
+    },
+    "actions": {
+      "bookAgain": "Book Again",
+      "leaveReview": "Leave Review",
+      "removeFavorite": "Remove",
+      "viewDocuments": "View Documents",
+      "findClinic": "Find a Clinic",
+      "viewAppointments": "View Appointments"
+    },
+    "messages": {
+      "cancelSuccess": "Appointment cancelled successfully",
+      "cancelError": "Failed to cancel appointment"
+    },
+    "reviews": {
+      "title": "Your Visits",
+      "empty": "No past visits yet.",
+      "leaveReview": "Leave Review",
+      "comingSoon": "Review system coming soon"
+    },
+    "confirmCancelTitle": "Cancel Appointment",
+    "confirmCancelMessage": "Are you sure you want to cancel this appointment?"
+  },
   "common": {
     "edit": "Edit",
     "delete": "Delete",
