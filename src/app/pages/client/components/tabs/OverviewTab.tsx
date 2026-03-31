@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "./../../../../../shared/api/axios";
 import { useTranslation } from "react-i18next";
-import { Button, message } from "antd";
+import { Button, message, Card } from "antd";
 import { useNavigate } from "react-router-dom";
-
+import { formatTime } from "../../../../utils/time";
 import type { Appointment } from "../../../appointments/types";
 
 interface AppointmentResponse {
@@ -16,8 +16,9 @@ export default function OverviewTab() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [nextAppointment, setNextAppointment] =
-    useState<Appointment | null>(null);
+  const [nextAppointment, setNextAppointment] = useState<Appointment | null>(
+    null,
+  );
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function OverviewTab() {
 
       try {
         const res = await axios.get<AppointmentResponse>(
-          "/appointments/me?filter=upcoming"
+          "/appointments/me?filter=upcoming",
         );
 
         const appointments = res.data.data.appointments;
@@ -49,9 +50,9 @@ export default function OverviewTab() {
   }
 
   return (
-    <div className="client-dashboard__section">
+    <div className="client-dashboard__section--fluid client-dashboard__overview">
       {/* NEXT APPOINTMENT */}
-      <div className="client-overview__card">
+      <Card className="client-overview__card client-overview__card--highlight">
         <h3>{t("clientDashboard.overview.nextAppointment")}</h3>
 
         {nextAppointment ? (
@@ -64,15 +65,16 @@ export default function OverviewTab() {
               {nextAppointment.organization?.name}
             </p>
 
-            <p className="client-overview__meta">
-              {nextAppointment.startTime}
+            <p className="client-overview__time">
+              {formatTime(nextAppointment.startTime)}
             </p>
 
             <div className="client-overview__actions">
               <Button
+                type="primary"
                 onClick={() =>
                   navigate(
-                    `/booking/${nextAppointment.organizationId}?serviceId=${nextAppointment.serviceBooked?.id}`
+                    `/demo/clinic/${nextAppointment.organization?.publicId}?serviceId=${nextAppointment.serviceBooked?.id}`,
                   )
                 }
               >
@@ -81,24 +83,23 @@ export default function OverviewTab() {
             </div>
           </div>
         ) : (
-          <p>{t("clientDashboard.overview.noUpcoming")}</p>
+          <p className="client-overview__empty">
+            {t("clientDashboard.overview.noUpcoming")}
+          </p>
         )}
-      </div>
+      </Card>
 
       {/* QUICK ACTIONS */}
-      <div className="client-overview__card">
-        <h3>{t("clientDashboard.overview.quickActions")}</h3>
-
+      <Card
+        className="client-overview__card"
+        title={t("clientDashboard.overview.quickActions")}
+      >
         <div className="client-overview__actions">
           <Button onClick={() => navigate("/demo/search")}>
             {t("clientDashboard.actions.findClinic")}
           </Button>
-
-          <Button onClick={() => navigate("/demo/client?tab=appointments")}>
-            {t("clientDashboard.actions.viewAppointments")}
-          </Button>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

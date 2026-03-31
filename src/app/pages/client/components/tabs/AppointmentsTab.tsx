@@ -1,16 +1,17 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "./../../../../../shared/api/axios";
 import { useTranslation } from "react-i18next";
-import { message, Modal } from "antd";
+import { message, Modal, Table, Tag, Dropdown, Button } from "antd";
+import { MoreOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 
-import AppointmentCard from "../shared/AppointmentCard";
 import RescheduleAppointmentModal from "../../../appointments/components/RescheduleAppointmentModal";
 
 import type { Appointment } from "../../../appointments/types";
 
 /* =========================
-   API RESPONSE TYPE (NO ANY)
+   TYPES
 ========================= */
 interface AppointmentApi {
   id: number;
@@ -24,10 +25,11 @@ interface AppointmentApi {
     duration: number;
   };
 
-  organization?: {
+  organization: {
     id: number;
     name: string;
     timeZone: string;
+    publicId: string;
   };
 
   specialist?: {
@@ -44,23 +46,42 @@ interface AppointmentResponse {
 }
 
 /* =========================
-   MAPPER (API → APP TYPE)
+   MAPPER
 ========================= */
 const mapAppointment = (appt: AppointmentApi): Appointment => ({
-  id: String(appt.id), // ✅ modal expects string
-  publicId: String(appt.id), // temp fallback
+  id: String(appt.id),
+  publicId: appt.organization.publicId,
   organizationId: appt.organization?.id ?? 0,
 
   status: appt.status as Appointment["status"],
 
-  date: appt.startTime, // fallback until backend adds real date
-
+  date: appt.startTime,
   startTime: appt.startTime,
   endTime: appt.endTime,
 
   serviceBooked: appt.serviceBooked,
   specialist: appt.specialist,
+  organization: appt.organization,
 });
+
+/* =========================
+   STATUS TAG
+========================= */
+const getStatusTag = (status: string, t: any) => {
+  const key = status.toLowerCase();
+
+  const colorMap: Record<string, string> = {
+    scheduled: "processing",
+    completed: "success",
+    cancelled: "error",
+  };
+
+  return (
+    <Tag color={colorMap[key] || "default"}>
+      {t(`clientDashboard.status.${key}`)}
+    </Tag>
+  );
+};
 
 export default function AppointmentsTab() {
   const { t } = useTranslation();
@@ -77,7 +98,7 @@ export default function AppointmentsTab() {
   /* =========================
      FETCH
   ========================= */
-  const fetchAppointments = useCallback(async (): Promise<void> => {
+  const fetchAppointments = useCallback(async () => {
     setLoading(true);
 
     try {
@@ -86,13 +107,8 @@ export default function AppointmentsTab() {
         axios.get<AppointmentResponse>("/appointments/me?filter=past"),
       ]);
 
-      setUpcoming(
-        upcomingRes.data.data.appointments.map(mapAppointment)
-      );
-
-      setPast(
-        pastRes.data.data.appointments.map(mapAppointment)
-      );
+      setUpcoming(upcomingRes.data.data.appointments.map(mapAppointment));
+      setPast(pastRes.data.data.appointments.map(mapAppointment));
     } catch {
       message.error(t("common.error"));
     } finally {
@@ -111,12 +127,10 @@ export default function AppointmentsTab() {
     Modal.confirm({
       title: t("clientDashboard.confirmCancelTitle"),
       content: t("clientDashboard.confirmCancelMessage"),
+      okButtonProps: { danger: true },
       onOk: async () => {
         try {
-          await axios.patch(
-            `/appointments/${Number(appointment.id)}/cancel`
-          );
-
+          await axios.patch(`/appointments/${Number(appointment.id)}/cancel`);
           message.success(t("clientDashboard.messages.cancelSuccess"));
           fetchAppointments();
         } catch {
@@ -132,55 +146,127 @@ export default function AppointmentsTab() {
   };
 
   const handleBookAgain = (appointment: Appointment) => {
-    const orgId = appointment.organizationId;
+    const publicId = appointment.organization?.publicId;
     const serviceId = appointment.serviceBooked?.id;
 
-    if (!orgId || !serviceId) return;
+    if (!publicId) return;
 
-    navigate(`/booking/${orgId}?serviceId=${serviceId}`);
+    const url = serviceId
+      ? `/demo/clinic/${publicId}?serviceId=${serviceId}`
+      : `/demo/clinic/${publicId}`;
+
+    navigate(url);
   };
 
   /* =========================
-     UI
+     TABLE CONFIG
   ========================= */
-  if (loading) {
-    return <p>{t("common.loading")}</p>;
-  }
+  const getColumns = (type: "upcoming" | "past") => [
+    {
+      title: t("clientDashboard.table.service"),
+      dataIndex: ["serviceBooked", "name"],
+      key: "service",
+    },
+    {
+      title: t("clientDashboard.table.organization"),
+      dataIndex: ["organization", "name"],
+      key: "organization",
+    },
+    {
+      title: t("clientDashboard.table.specialist"),
+      key: "specialist",
+      render: (_: any, record: Appointment) => {
+        const s = record.specialist;
+        return s ? `${s.firstName} ${s.lastName}` : "-";
+      },
+    },
+    {
+      title: t("clientDashboard.table.date"),
+      key: "date",
+      render: (_: any, record: Appointment) =>
+        dayjs(record.startTime).format("MMM D, YYYY"),
+    },
+    {
+      title: t("clientDashboard.table.time"),
+      key: "time",
+      render: (_: any, record: Appointment) =>
+        dayjs(record.startTime).format("h:mm A"),
+    },
+    {
+      title: t("clientDashboard.table.status"),
+      key: "status",
+      render: (_: any, record: Appointment) => getStatusTag(record.status, t),
+    },
+    {
+      key: "actions",
+      render: (_: any, record: Appointment) => {
+        const items =
+          type === "upcoming"
+            ? [
+                {
+                  key: "reschedule",
+                  label: t("clientDashboard.actions.reschedule"),
+                  onClick: () => handleReschedule(record),
+                },
+                {
+                  key: "cancel",
+                  label: t("clientDashboard.actions.cancel"),
+                  danger: true,
+                  onClick: () => handleCancel(record),
+                },
+              ]
+            : [
+                {
+                  key: "bookAgain",
+                  label: t("clientDashboard.actions.bookAgain"),
+                  onClick: () => handleBookAgain(record),
+                },
+              ];
+
+        return (
+          <Dropdown menu={{ items }} trigger={["click"]}>
+            <Button type="text" icon={<MoreOutlined />} />
+          </Dropdown>
+        );
+      },
+    },
+  ];
+
+  if (loading) return <p>{t("common.loading")}</p>;
 
   return (
-    <div className="client-dashboard__section">
+    <div className="client-dashboard__section--constrained">
       {/* UPCOMING */}
-      <h3>{t("clientDashboard.sections.upcoming")}</h3>
+      <div className="client-appointments-section">
+        <h3 className="client-appointments-section-title">
+          {t("clientDashboard.sections.upcoming")}
+        </h3>
 
-      {upcoming.length === 0 ? (
-        <p>{t("clientDashboard.noUpcoming")}</p>
-      ) : (
-        upcoming.map((appt) => (
-          <AppointmentCard
-            key={appt.id}
-            appointment={appt}
-            type="upcoming"
-            onCancel={handleCancel}
-            onReschedule={handleReschedule}
+        <div className="client-appointments-table-wrapper">
+          <Table
+            dataSource={upcoming}
+            columns={getColumns("upcoming")}
+            rowKey="id"
+            pagination={{ pageSize: 5 }}
           />
-        ))
-      )}
+        </div>
+      </div>
 
       {/* PAST */}
-      <h3>{t("clientDashboard.sections.pastAppointments")}</h3>
+      <div className="client-appointments-section">
+        <h3 className="client-appointments-section-title">
+          {t("clientDashboard.sections.pastAppointments")}
+        </h3>
 
-      {past.length === 0 ? (
-        <p>{t("clientDashboard.noPast")}</p>
-      ) : (
-        past.map((appt) => (
-          <AppointmentCard
-            key={appt.id}
-            appointment={appt}
-            type="past"
-            onBookAgain={handleBookAgain}
+        <div className="client-appointments-table-wrapper">
+          <Table
+            dataSource={past}
+            columns={getColumns("past")}
+            rowKey="id"
+            pagination={{ pageSize: 5 }}
           />
-        ))
-      )}
+        </div>
+      </div>
 
       {/* RESCHEDULE MODAL */}
       <RescheduleAppointmentModal

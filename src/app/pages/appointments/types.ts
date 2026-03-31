@@ -39,10 +39,11 @@ export interface Appointment {
     email: string;
   };
   organization?: {
-  id: number;
-  name: string;
-  timeZone?: string;
-};
+    id: number;
+    name: string;
+    timeZone?: string;
+    publicId: string;
+  };
   notes?: {
     authorId: string;
     timestamp: string;

@@ -213,6 +213,42 @@ p {
   font-weight: var(--font-weight-medium);
 }
 
+.ant-btn-primary {
+  --ant-btn-bg: var(--color-primary) !important;
+  --ant-btn-border-color: var(--color-primary) !important;
+
+  --ant-btn-bg-hover: var(--color-primary-hover) !important;
+  --ant-btn-border-color-hover: var(--color-primary-hover) !important;
+
+  --ant-btn-bg-active: var(--color-primary-hover) !important;
+  --ant-btn-border-color-active: var(--color-primary-hover) !important;
+}
+
+.ant-modal .ant-btn-primary {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.ant-modal .ant-btn-primary:hover {
+  background: var(--color-primary-hover) !important;
+  border-color: var(--color-primary-hover) !important;
+}
+
+.ant-modal .ant-btn-text-color-hover {
+  color: var(--color-primary-hover) !important;
+}
+
+.ant-btn-variant-outlined.ant-btn-color-default {
+  --ant-button-default-hover-bg: transparent !important;
+  --ant-button-default-hover-border-color: var(--color-primary) !important;
+  --ant-button-default-hover-color: var(--color-primary) !important;
+}
+
+.ant-btn-variant-outlined.ant-btn-color-default {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
 /* =========================
    CTA SECONDARY BUTTON
    ========================= */
@@ -1748,130 +1784,214 @@ p {
 }
 
 /* CLIENT DASHBOARD */
-.client-dashboard {
+
+.client-dashboard__overview {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--space-5);
 }
 
-.appointment-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
+.client-dashboard__section--constrained {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
-.appointment-card__info {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+.client-dashboard__section--fluid {
+  width: 100%;
+  max-width: 100%;
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
 }
 
-.appointment-card__actions {
-  display: flex;
-  gap: var(--spacing-sm);
-}
-
-.organization-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-}
-
-.organization-card__info {
-  display: flex;
-  flex-direction: column;
-}
-
-.organization-card__actions {
-  display: flex;
-  gap: var(--spacing-sm);
-}
-
-.client-dashboard__section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
+/* Let AntD handle base card styles */
 .client-overview__card {
-  background: var(--color-bg-elevated);
   border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-sm);
-  margin-bottom: var(--space-lg);
 }
 
+/* Highlight card */
+.client-overview__card--highlight {
+  border-left: 4px solid var(--color-primary);
+}
+
+/* Appointment layout */
 .client-overview__appointment {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-2);
+  margin-top: var(--space-3);
 }
-
+/* Text */
 .client-overview__primary {
+  font-size: var(--font-size-lg);
   font-weight: 600;
-  font-size: var(--text-lg);
+  margin-bottom: 2px;
 }
 
 .client-overview__secondary {
   color: var(--color-text-secondary);
 }
 
-.client-overview__meta {
-  font-size: var(--text-sm);
+.client-overview__time {
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
 
+.client-overview__appointment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* TIME EMPHASIS */
+.client-overview__time {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  text-align: right;
+}
+
+/* Actions */
 .client-overview__actions {
   display: flex;
-  gap: var(--space-sm);
-  margin-top: var(--space-md);
+  gap: var(--space-2);
+  justify-content: flex-start;
+  margin-top: var(--space-3);
+}
+
+.client-overview__card--highlight {
+  border-left: 4px solid var(--color-primary);
+  transition: var(--transition-base);
+}
+
+.client-overview__card--highlight:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* SECTION SPACING */
+.client-appointments-section {
+  margin-bottom: 32px;
+}
+
+/* SECTION TITLE */
+.client-appointments-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* TABLE WRAPPER (this is big) */
+.client-appointments-table-wrapper {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+/* TABLE HEADER */
+.client-appointments-table-wrapper .ant-table-thead > tr > th {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #fafafa;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* TABLE CELLS */
+.client-appointments-table-wrapper .ant-table-tbody > tr > td {
+  padding: 16px;
+}
+
+/* ROW HOVER (brand color) */
+.client-appointments-table-wrapper .ant-table-tbody > tr:hover > td {
+  background: rgba(13, 148, 136, 0.05);
+}
+
+/* STATUS TAG polish */
+.client-appointments-table-wrapper .ant-tag {
+  border-radius: 999px;
+  font-weight: 500;
+  padding: 2px 10px;
+}
+
+.client-favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.client-favorites-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.2s ease;
+}
+
+.client-favorites-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.client-favorites-card__name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.client-favorites-card__meta {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.client-favorites-card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.client-favorites-card__content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .client-reviews__list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 16px;
+  margin-top: 12px;
 }
 
 .client-reviews__card {
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: var(--space-md);
-  background: var(--color-bg-elevated);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  gap: 16px;
 }
 
 .client-reviews__info {
   display: flex;
   flex-direction: column;
-}
-
-.client-reviews__primary {
-  font-weight: 600;
-}
-
-.client-reviews__secondary {
-  color: var(--color-text-secondary);
-}
-
-.client-reviews__meta {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
+  gap: 6px;
 }
 
 .client-reviews__actions {
   display: flex;
-  gap: var(--space-sm);
+  flex-direction: column;
+  gap: 8px;
+}
+
+.client-dashboard__section + .client-dashboard__section {
+  margin-top: 32px;
 }
 
 /* REVIEWS */
@@ -1904,4 +2024,23 @@ p {
   max-height: 400px;
   overflow-y: auto;
   padding-right: 4px;
+}
+
+/* Reviews - Star Color */
+/* Default (empty stars) */
+/* Base (empty stars) */
+.ant-rate {
+  color: var(--color-text-tertiary);
+}
+
+/* Hover state (all stars up to hover) */
+.ant-rate-star:hover,
+.ant-rate-star:hover ~ .ant-rate-star {
+  color: var(--color-primary) !important;
+}
+
+/* Selected stars */
+.ant-rate-star-full,
+.ant-rate-star-half {
+  color: var(--color-primary) !important;
 }

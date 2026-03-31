@@ -876,6 +876,28 @@
       "favorites": "Favorites",
       "reviews": "Reviews"
     },
+    "favorites": {
+      "title": "Favorite Clinics",
+      "empty": "No favorite clinics yet. Start exploring to save your go-to providers.",
+      "subtitle": "Quick access to clinics you trust"
+    },
+
+    "table": {
+      "service": "Service",
+      "organization": "Clinic",
+      "specialist": "Provider",
+      "date": "Date",
+      "time": "Time",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "noshow": "No-show",
+      "rescheduled": "Rescheduled"
+    },
     "overview": {
       "nextAppointment": "Next Appointment",
       "noUpcoming": "You have no upcoming appointments.",
@@ -895,17 +917,37 @@
       "findClinic": "Find a Clinic",
       "viewAppointments": "View Appointments",
       "reschedule": "Reschedule",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "view": "View",
+      "book": "Book",
+      "remove": "Remove",
+      "viewClinic": "View Clinic"
     },
     "messages": {
       "cancelSuccess": "Appointment cancelled successfully",
-      "cancelError": "Failed to cancel appointment"
+      "cancelError": "Failed to cancel appointment",
+      "removedFavorite": "Removed from favorites",
+      "error": "Something went wrong"
     },
+
     "reviews": {
-      "title": "Your Visits",
-      "empty": "No past visits yet.",
+      "title": "Leave a Review",
+      "ratingRequired": "Please select a star rating.",
+      "empty": "No appointments available for review.",
       "leaveReview": "Leave Review",
-      "comingSoon": "Review system coming soon"
+      "service": "Service",
+      "clinic": "Clinic",
+      "time": "Time",
+      "modalTitle": "Write a Review",
+      "optionalText": "Share your experience (optional)",
+      "success": "Review submitted successfully",
+      "comingSoon": "Reviews coming soon",
+      "yourReviews": "Your Reviews",
+      "editTitle": "Edit Review",
+      "updated": "Review updated",
+      "deleted": "Review deleted",
+      "deleteConfirmTitle": "Delete review?",
+      "deleteConfirmDesc": "This action cannot be undone."
     },
     "confirmCancelTitle": "Cancel Appointment",
     "confirmCancelMessage": "Are you sure you want to cancel this appointment?"
