@@ -29,29 +29,17 @@ export default function Login() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#f5f7f9",
-        padding: 24,
-      }}
-    >
-      <Card
-        style={{
-          width: 420,
-          borderRadius: 12,
-          boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
-        }}
-      >
-        {/* Logo */}
-        <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <img src="/images/brand/logo-teal.svg" alt="Sofron" height={36} />
+    <div className="auth-page">
+      <Card className="auth-card auth-card--login">
+        {/* Logo (CLICKABLE) */}
+        <div
+          className="auth-logo auth-logo--clickable"
+          onClick={() => navigate("/")}
+        >
+          <img src="/images/brand/logo-teal.svg" alt="Sofron" />
         </div>
 
-        <Title level={3} style={{ textAlign: "center", marginBottom: 24 }}>
+        <Title level={3} className="auth-title">
           {t("auth.login.title")}
         </Title>
 
@@ -92,13 +80,13 @@ export default function Login() {
             size="large"
             block
             loading={loading}
-            style={{ marginTop: 8 }}
+            className="auth-submit"
           >
             {t("auth.login.submit")}
           </Button>
         </Form>
 
-        <div style={{ marginTop: 24, textAlign: "center" }}>
+        <div className="auth-footer">
           <Text>
             {t("auth.login.noAccount")}{" "}
             <a onClick={() => navigate("/demo/register/client")}>
@@ -107,7 +95,7 @@ export default function Login() {
           </Text>
         </div>
 
-        <div style={{ marginTop: 8, textAlign: "center" }}>
+        <div className="auth-footer auth-footer--secondary">
           <a onClick={() => navigate("/demo/register/clinic")}>
             {t("auth.login.registerClinic")}
           </a>

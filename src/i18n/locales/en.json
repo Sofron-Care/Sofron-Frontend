@@ -156,7 +156,14 @@
     "why": "Why Cash Care?",
     "product": "Product",
     "demo": "Demo",
-    "cta": "Register Interest"
+    "cta": "Register Interest",
+    "login": "Login",
+    "signup": "Sign Up",
+    "forClinics": "For Clinics",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "clientDashboard": "Client Dashboard",
+    "clinicDashboard": "Clinic Dashboard"
   },
   "footer": {
     "tagline": "Outcome-focused clinic management software designed specifically for cash care physical therapy.",
@@ -204,6 +211,24 @@
       "passwordsNoMatch": "Passwords do not match",
       "tosRequired": "You must agree to the Terms of Service",
       "success": "Account created. Please check your email to verify your account."
+    },
+    "clientRegister": {
+      "title": "Create Your Account",
+      "subtitle": "Book appointments and manage your care",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirm": "Confirm Password",
+      "required": "This field is required",
+      "invalidEmail": "Enter a valid email",
+      "passwordsNoMatch": "Passwords do not match",
+      "tosLabel": "I agree to the Terms of Service",
+      "tosRequired": "You must accept the Terms",
+      "submit": "Sign Up",
+      "success": "Account created successfully. Check your email.",
+      "alreadyHave": "Already have an account?",
+      "login": "Login"
     }
   },
   "appnav": {
@@ -491,6 +516,7 @@
     "notes": {
       "title": "Add Notes",
       "add": "Add Note",
+      "added": "Note added successfully.",
       "empty": "No notes have been added for this appointment.",
       "placeholder": "Enter appointment notes..."
     }
@@ -841,6 +867,9 @@
   },
   "clientDashboard": {
     "title": "My Dashboard",
+    "subtitle": "Manage your appointments, forms, and activity in one place.",
+    "noUpcoming": "You don’t have any upcoming appointments.",
+    "noPast": "You don’t have any past appointments yet.",
     "tabs": {
       "overview": "Overview",
       "appointments": "Appointments",
@@ -864,7 +893,9 @@
       "removeFavorite": "Remove",
       "viewDocuments": "View Documents",
       "findClinic": "Find a Clinic",
-      "viewAppointments": "View Appointments"
+      "viewAppointments": "View Appointments",
+      "reschedule": "Reschedule",
+      "cancel": "Cancel"
     },
     "messages": {
       "cancelSuccess": "Appointment cancelled successfully",
@@ -902,6 +933,13 @@
       "thursday": "Thursday",
       "friday": "Friday",
       "saturday": "Saturday"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Page not found",
+      "description": "The page you’re looking for doesn’t exist or may have been moved.",
+      "cta": "Go to home"
     }
   }
 }

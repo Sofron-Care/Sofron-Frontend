@@ -66,7 +66,7 @@ export default function BookingConfirmed() {
               </p>
 
               <div className="booking-confirmed__actions">
-                <Button type="primary" onClick={() => navigate("/")}>
+                <Button type="primary" onClick={() => navigate("/demo")}>
                   {t("booking.confirmed.done")}
                 </Button>
               </div>

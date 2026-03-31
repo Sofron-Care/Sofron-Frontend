@@ -29,6 +29,8 @@ export default function SpecialistStep({
     );
   }
 
+  console.log(specialists)
+
   return (
     <div className="booking-panel">
       <h2 className="booking-panel__title">Select a specialist</h2>

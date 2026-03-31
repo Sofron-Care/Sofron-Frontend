@@ -6,3 +6,7 @@ export function formatTimeRange(start: string, end: string) {
 
   return `${startFormatted} - ${endFormatted}`;
 }
+
+export function formatTime(start: string) {
+  return dayjs(start).format("h:mm A");
+}

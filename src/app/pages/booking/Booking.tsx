@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Spin, Empty, message } from "antd";
+import { Spin, Empty, message, Modal, Rate, Pagination } from "antd";
 import axios from "../../../shared/api/axios";
 import Nav from "../home/components/Nav";
 import Footer from "../home/components/Footer";
@@ -15,6 +15,7 @@ import ConfirmStep from "./components/ConfirmStep";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 
 type Organization = {
   id: number;
@@ -34,6 +35,9 @@ type Organization = {
     isEnabled: boolean;
     appliedTo: string;
   } | null;
+  reviews?: any[];
+  rating: string;
+  reviewCount: number;
 };
 
 type Service = {
@@ -94,6 +98,14 @@ export default function Booking() {
   const [step, setStep] = useState<StepKey>("service");
   const [completedSteps, setCompletedSteps] = useState<StepKey[]>([]);
 
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favLoading, setFavLoading] = useState(false);
+  const [reviewsOpen, setReviewsOpen] = useState(false);
+
+  const [page, setPage] = useState(1);
+  const pageSize = 5;
+  const reviews = org?.reviews || [];
+
   const [booking, setBooking] = useState({
     serviceId: null as number | null,
     serviceName: "",
@@ -111,13 +123,17 @@ export default function Booking() {
     email: "",
     phone: "",
     details: "",
-    firstVisit: null as boolean | null,
   });
 
   const stepOrder: StepKey[] = useMemo(
     () => ["service", "specialist", "datetime", "details", "confirm"],
     [],
   );
+
+  const paginatedReviews = useMemo(() => {
+    const start = (page - 1) * pageSize;
+    return reviews.slice(start, start + pageSize);
+  }, [reviews, page, pageSize]);
 
   useEffect(() => {
     if (!publicId) return;
@@ -139,6 +155,18 @@ export default function Booking() {
 
     fetchOrganization();
   }, [publicId]);
+
+  useEffect(() => {
+    if (user) {
+      setBooking((prev) => ({
+        ...prev,
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
+        phone: user.phone || "",
+      }));
+    }
+  }, [user]);
 
   useEffect(() => {
     if (!publicId) return;
@@ -194,6 +222,28 @@ export default function Booking() {
     fetchSpecialists();
   }, [publicId, org, booking.serviceId]);
 
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const fetchFavorites = async () => {
+      try {
+        const res = await axios.get("/client/favorites");
+
+        const ids = res.data.data.map((fav: any) => fav.organization.publicId);
+
+        setFavorites(ids);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchFavorites();
+  }, [isAuthenticated]);
+
+  const isFavorited = useMemo(() => {
+    return !!org?.publicId && favorites.includes(org.publicId);
+  }, [favorites, org]);
+
   const markComplete = (stepKey: StepKey) => {
     setCompletedSteps((prev) =>
       prev.includes(stepKey) ? prev : [...prev, stepKey],
@@ -243,6 +293,27 @@ export default function Booking() {
       setStep("datetime");
     } else {
       setStep("specialist");
+    }
+  };
+
+  const handleFavoriteToggle = async () => {
+    if (!org?.publicId) return;
+
+    setFavLoading(true);
+    try {
+      if (isFavorited) {
+        await axios.delete(`/client/favorites/${org.publicId}`);
+
+        setFavorites((prev) => prev.filter((id) => id !== org.publicId));
+      } else {
+        await axios.post(`/client/favorites/${org.publicId}`);
+
+        setFavorites((prev) => [...prev, org.publicId]);
+      }
+    } catch (err) {
+      message.error("Failed to update favorites");
+    } finally {
+      setFavLoading(false);
     }
   };
 
@@ -317,17 +388,20 @@ export default function Booking() {
 
   const handleConfirm = async () => {
     if (!org || !booking.serviceId || !booking.timeStart) return;
-
+    let res;
     try {
       if (isAuthenticated) {
-        await axios.post("/appointments", {
+        res = await axios.post("/appointments", {
           serviceId: booking.serviceId,
           organizationId: org.id,
           specialistId: booking.specialistId,
           start: booking.timeStart,
+          firstName: booking.firstName,
+          lastName: booking.lastName,
+          email: booking.email,
         });
       } else {
-        const res = await axios.post("/appointments/guest", {
+        res = await axios.post("/appointments/guest", {
           serviceId: booking.serviceId,
           organizationPublicId: org.publicId,
           specialistId: booking.specialistId,
@@ -339,15 +413,15 @@ export default function Booking() {
             phone: booking.phone,
           },
         });
-
-        navigate(`/book/clinic/${org.publicId}/confirmed`, {
-          state: {
-            appointment: res.data.data.appointment,
-            service: booking.serviceName,
-            org,
-          },
-        });
       }
+
+      navigate(`/book/clinic/${org.publicId}/confirmed`, {
+        state: {
+          appointment: res.data.data.appointment,
+          service: booking.serviceName,
+          org,
+        },
+      });
 
       message.success(t("booking.messages.bookingSuccess"));
     } catch (err: any) {
@@ -393,7 +467,17 @@ export default function Booking() {
 
       <div className="section booking-page">
         <div className="container">
-          <BookingHeader organization={org} />
+          <BookingHeader
+            organization={org}
+            isAuthenticated={isAuthenticated}
+            isFavorited={isFavorited}
+            favLoading={favLoading}
+            onToggleFavorite={handleFavoriteToggle}
+            onOpenReviews={() => {
+              setPage(1);
+              setReviewsOpen(true);
+            }}
+          />
 
           <BookingStepIndicator
             currentStep={step}
@@ -436,16 +520,12 @@ export default function Booking() {
               {step === "details" && (
                 <DetailsStep
                   details={booking.details}
-                  firstVisit={booking.firstVisit}
                   firstName={booking.firstName}
                   lastName={booking.lastName}
                   email={booking.email}
                   phone={booking.phone}
                   onDetailsChange={(value) =>
                     setBooking((prev) => ({ ...prev, details: value }))
-                  }
-                  onFirstVisitChange={(value) =>
-                    setBooking((prev) => ({ ...prev, firstVisit: value }))
                   }
                   onFirstNameChange={(value) =>
                     setBooking((prev) => ({ ...prev, firstName: value }))
@@ -479,6 +559,46 @@ export default function Booking() {
       </div>
 
       <Footer />
+
+      <Modal
+        title="Reviews"
+        open={reviewsOpen}
+        onCancel={() => setReviewsOpen(false)}
+        footer={null}
+      >
+        {reviews.length === 0 ? (
+          <Empty description="No reviews yet" />
+        ) : (
+          <>
+            <div className="reviews-modal-body">
+              {paginatedReviews.map((review: any) => (
+                <div key={review.id} className="review-item">
+                  <div className="review-item__header">
+                    <Rate
+                      disabled
+                      value={review.rating}
+                      style={{ color: "var(--color-primary)", fontSize: 14 }}
+                    />
+                    <span className="review-item__date">
+                      {dayjs(review.createdAt).format("MMM D, YYYY")}
+                    </span>
+                  </div>
+
+                  <p className="review-item__text">{review.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <Pagination
+              current={page}
+              pageSize={pageSize}
+              total={reviews.length}
+              onChange={(p) => setPage(p)}
+              style={{ marginTop: 16, textAlign: "center" }}
+            />
+          </>
+        )}
+      </Modal>
     </>
   );
 }

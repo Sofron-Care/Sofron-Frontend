@@ -1,5 +1,5 @@
 import { Button } from "antd";
-
+import { formatTime } from "../../../utils/time";
 type Props = {
   organization: {
     name: string;
@@ -40,10 +40,10 @@ export default function ConfirmStep({
           <strong>Date:</strong> {booking.date || "---"}
         </div>
         <div>
-          <strong>Time:</strong> {booking.timeStart || "---"}
+          <strong>Time:</strong> {formatTime(booking.timeStart) || "---"}
         </div>
         <div>
-          <strong>Price:</strong> {booking.price ?? "---"}
+          <strong>Price:</strong> ${booking.price ?? "---"}
         </div>
         <div>
           <strong>Additional details:</strong> {booking.details || "---"}

@@ -31,6 +31,9 @@ export default function DateTimeStep({
       <div className="booking-datetime">
         <DatePicker
           value={selectedDate ? dayjs(selectedDate) : null}
+          disabledDate={(current) => {
+            return current && current < dayjs().startOf("day");
+          }}
           onChange={(date) => {
             if (!date) return;
             onDateChange(date.format("YYYY-MM-DD"));

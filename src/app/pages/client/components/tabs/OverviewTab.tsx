@@ -90,11 +90,11 @@ export default function OverviewTab() {
         <h3>{t("clientDashboard.overview.quickActions")}</h3>
 
         <div className="client-overview__actions">
-          <Button onClick={() => navigate("/")}>
+          <Button onClick={() => navigate("/demo/search")}>
             {t("clientDashboard.actions.findClinic")}
           </Button>
 
-          <Button onClick={() => navigate("/demo/app/client?tab=appointments")}>
+          <Button onClick={() => navigate("/demo/client?tab=appointments")}>
             {t("clientDashboard.actions.viewAppointments")}
           </Button>
         </div>

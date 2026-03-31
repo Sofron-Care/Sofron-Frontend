@@ -23,7 +23,6 @@ export default function SidebarNav() {
     { type: "divider" },
     {key: "/demo/app/notifications", label: t("appnav.notifications")},
     { key: "/demo/app/settings", label: t("appnav.settings") },
-    { key: "/demo/app/help", label: t("appnav.help") },
   ];
 
   return (

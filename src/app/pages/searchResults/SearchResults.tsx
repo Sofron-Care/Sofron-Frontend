@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { Spin, Empty, Input, Select, Button } from "antd";
-import { useNavigate } from "react-router-dom";
 import axios from "./../../../shared/api/axios";
 import OrganizationCard from "./components/OrganizationCard";
 import Nav from "../home/components/Nav";
@@ -18,14 +17,15 @@ type Organization = {
 
 export default function SearchResultsPage() {
   const [params] = useSearchParams();
-
-  const [cityInput, setCityInput] = useState(params.get("city") || "");
-  const [radiusInput, setRadiusInput] = useState(params.get("radius") || "25");
   const navigate = useNavigate();
+
   const city = params.get("city") || "";
   const radius = params.get("radius") || "25";
 
-  const [loading, setLoading] = useState(true);
+  const [cityInput, setCityInput] = useState(city);
+  const [radiusInput, setRadiusInput] = useState(radius);
+
+  const [loading, setLoading] = useState(false);
   const [orgs, setOrgs] = useState<Organization[]>([]);
   const [error, setError] = useState(false);
 
@@ -47,7 +47,14 @@ export default function SearchResultsPage() {
       }
     };
 
-    if (city) fetchResults();
+    if (city) {
+      fetchResults();
+    } else {
+      // Reset state when no search
+      setOrgs([]);
+      setLoading(false);
+      setError(false);
+    }
   }, [city, radius]);
 
   return (
@@ -63,6 +70,7 @@ export default function SearchResultsPage() {
                 placeholder="City, state, or zip"
                 size="large"
               />
+
               <Select
                 value={radiusInput}
                 onChange={(value) => setRadiusInput(value)}
@@ -89,23 +97,40 @@ export default function SearchResultsPage() {
               </Button>
             </div>
           </div>
-          <h2 className="results-heading">
-            Results near "{city}" ({radius} miles)
-          </h2>
 
-          {loading && (
+          {/* Empty state BEFORE search */}
+          {!city && (
+            <div style={{ textAlign: "center", padding: "80px 0" }}>
+              <Empty description="Enter a location to find clinics near you" />
+            </div>
+          )}
+
+          {/* Results heading */}
+          {city && (
+            <h2 className="results-heading">
+              Results near "{city}" ({radius} miles)
+            </h2>
+          )}
+
+          {/* Loading */}
+          {city && loading && (
             <div style={{ textAlign: "center", padding: "80px 0" }}>
               <Spin size="large" />
             </div>
           )}
 
-          {!loading && error && <Empty description="Something went wrong" />}
+          {/* Error */}
+          {city && !loading && error && (
+            <Empty description="Something went wrong" />
+          )}
 
-          {!loading && !error && orgs.length === 0 && (
+          {/* No results */}
+          {city && !loading && !error && orgs.length === 0 && (
             <Empty description="No clinics found in this area" />
           )}
 
-          {!loading && !error && orgs.length > 0 && (
+          {/* Results */}
+          {city && !loading && !error && orgs.length > 0 && (
             <div className="results-list">
               {orgs.map((org) => (
                 <OrganizationCard key={org.publicId} org={org} />

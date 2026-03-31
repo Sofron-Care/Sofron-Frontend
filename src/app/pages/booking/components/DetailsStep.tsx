@@ -1,18 +1,14 @@
-import { Button, Input, Radio, Form } from "antd";
+import { Button, Input, Form } from "antd";
 import { useAuth } from "../../../auth/AuthContext";
 
 type Props = {
   details: string;
-  firstVisit: boolean | null;
-
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
 
   onDetailsChange: (value: string) => void;
-  onFirstVisitChange: (value: boolean) => void;
-
   onFirstNameChange: (value: string) => void;
   onLastNameChange: (value: string) => void;
   onEmailChange: (value: string) => void;
@@ -23,16 +19,12 @@ type Props = {
 
 export default function DetailsStep({
   details,
-  firstVisit,
-
   firstName,
   lastName,
   email,
   phone,
 
   onDetailsChange,
-  onFirstVisitChange,
-
   onFirstNameChange,
   onLastNameChange,
   onEmailChange,
@@ -42,16 +34,14 @@ export default function DetailsStep({
 }: Props) {
   const { user } = useAuth();
   const isAuthenticated = !!user;
-
+  console.log(user);
   const [form] = Form.useForm();
 
   const handleSubmit = async () => {
     try {
       await form.validateFields();
       onContinue();
-    } catch {
-
-    }
+    } catch {}
   };
 
   return (
@@ -59,7 +49,25 @@ export default function DetailsStep({
       <h2 className="booking-panel__title">Additional details</h2>
 
       <Form form={form} layout="vertical" className="booking-details-form">
-        {!isAuthenticated && (
+        {isAuthenticated ? (
+          <div className="booking-details-form__section">
+            <Form.Item label="First Name">
+              <Input value={firstName} disabled />
+            </Form.Item>
+
+            <Form.Item label="Last Name">
+              <Input value={lastName} disabled />
+            </Form.Item>
+
+            <Form.Item label="Email">
+              <Input value={email} disabled />
+            </Form.Item>
+
+            <Form.Item label="Phone (optional)">
+              <Input value={phone || ""} disabled />
+            </Form.Item>
+          </div>
+        ) : (
           <div className="booking-details-form__section">
             <Form.Item
               label="First Name"
@@ -108,16 +116,6 @@ export default function DetailsStep({
             onChange={(e) => onDetailsChange(e.target.value)}
             placeholder="Share anything the clinic should know before your visit"
           />
-        </Form.Item>
-
-        <Form.Item label="First time visit?">
-          <Radio.Group
-            value={firstVisit}
-            onChange={(e) => onFirstVisitChange(e.target.value)}
-          >
-            <Radio value={true}>Yes</Radio>
-            <Radio value={false}>No</Radio>
-          </Radio.Group>
         </Form.Item>
 
         <Button type="primary" onClick={handleSubmit}>

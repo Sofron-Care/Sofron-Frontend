@@ -1,10 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-
+import NotFound from "./app/pages/general/NotFound";
 import Home from "./marketing/pages/Home";
 import WhyCashCare from "./marketing/pages/WhyCashCare";
 import Product from "./marketing/pages/Product";
 import Interest from "./marketing/pages/Interest";
-
 import Entry from "./app/pages/home/pages/Entry";
 import Login from "./app/auth/Login";
 import RegisterClinic from "./app/auth/RegisterClinic";
@@ -25,10 +24,12 @@ import SearchResultsPage from "./app/pages/searchResults/SearchResults";
 import Booking from "./app/pages/booking/Booking";
 import BookingConfirmed from "./app/pages/booking/BookingConfirmed";
 import ClientDashboard from "./app/pages/client/ClientDashboard";
+import RegisterClient from "./app/auth/RegisterClient";
 
 function App() {
   return (
     <Routes>
+      <Route path="*" element={<NotFound />} />
       {/* Marketing */}
       <Route path="/" element={<Home />} />
       <Route path="/why-cash-care" element={<WhyCashCare />} />
@@ -40,12 +41,13 @@ function App() {
       <Route path="/demo/search" element={<SearchResultsPage />} />
       <Route path="/demo/login" element={<Login />} />
       <Route path="/demo/register/clinic" element={<RegisterClinic />} />
+      <Route path="/demo/register/client" element={<RegisterClient />} />
       <Route path="/demo/clinic/:publicId" element={<Booking />} />
       <Route
         path="/book/clinic/:publicId/confirmed"
         element={<BookingConfirmed />}
       />
-      <Route path="/demo/client-dashboard" element={<ClientDashboard />} />
+      <Route path="/demo/client" element={<ClientDashboard />} />
 
       {/* Demo App */}
       <Route path="/demo/app" element={<AppShell />}>
