@@ -249,6 +249,14 @@ p {
   color: var(--color-text);
 }
 
+.ant-descriptions-item-label {
+  white-space: normal; /* allow wrapping cleanly */
+}
+
+.ant-descriptions-item-content {
+  text-align: left;
+}
+
 /* =========================
    CTA SECONDARY BUTTON
    ========================= */
@@ -1222,9 +1230,12 @@ p {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+
+  align-items: center;
+  text-align: center;
 }
 
-/* 🔥 UNREAD */
+/* UNREAD */
 .notification-item.unread {
   background: rgba(13, 148, 136, 0.06);
   border-left: 3px solid var(--color-primary);
@@ -1242,12 +1253,12 @@ p {
   line-height: 1.4;
 }
 
-/* 🔥 unread text emphasis */
+/* unread text emphasis */
 .notification-item.unread .notification-title {
   font-weight: var(--font-weight-semibold);
 }
 
-/* 🔹 read state */
+/* read state */
 .notification-item.read {
   opacity: 0.7;
 }
@@ -1867,6 +1878,43 @@ p {
 
 .client-overview__card--highlight:hover {
   box-shadow: var(--shadow-md);
+}
+
+/* move actions to top right */
+.client-dashboard .page-layout__actions {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  margin-top: 0;
+}
+
+/* ensure parent allows positioning */
+.client-dashboard {
+  position: relative;
+}
+
+/* clean button look */
+.client-dashboard__header-actions .ant-btn {
+  padding: 0 8px;
+  height: auto;
+  box-shadow: none;
+}
+
+.client-dashboard-layout {
+  position: relative;
+}
+
+/* Move actions into top-right header area */
+.client-dashboard-layout .page-secondary-actions {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  margin: 0;
+}
+
+/* Optional polish */
+.client-dashboard-layout .page-secondary-actions .ant-btn {
+  padding: 0 6px;
 }
 
 /* SECTION SPACING */

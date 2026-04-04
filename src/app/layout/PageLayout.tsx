@@ -9,6 +9,7 @@ interface PageLayoutProps {
   primaryAction?: ReactNode;
   secondaryActions?: ReactNode;
   children: ReactNode;
+  className?: string; // 👈 ADD THIS
 }
 
 export default function PageLayout({
@@ -17,9 +18,10 @@ export default function PageLayout({
   primaryAction,
   secondaryActions,
   children,
+  className = "", // 👈 DEFAULT
 }: PageLayoutProps) {
   return (
-    <div>
+    <div className={`page-layout ${className}`}> {/* 👈 APPLY HERE */}
       {/* Header Row */}
       <div className="page-header">
         <div>
@@ -36,7 +38,9 @@ export default function PageLayout({
 
       {/* Secondary Row */}
       {secondaryActions && (
-        <div className="page-secondary-actions">{secondaryActions}</div>
+        <div className="page-secondary-actions">
+          {secondaryActions}
+        </div>
       )}
 
       {/* Content */}

@@ -39,7 +39,7 @@ export default function PatientDetailsDrawer({
   patientId,
   onClose,
   onBookAppointment,
-  onViewAppointment
+  onViewAppointment,
 }: Props) {
   const { t } = useTranslation();
 
@@ -93,11 +93,11 @@ export default function PatientDetailsDrawer({
       title={t("patients.drawer.title")}
       open={open}
       onClose={onClose}
-      width={720}
-      destroyOnClose
+      closable={false}
+      size={720}
+      destroyOnHidden
       extra={
         <Space>
-          <Button onClick={onClose}>{t("common.close")}</Button>
           <Button
             type="primary"
             icon={<CalendarOutlined />}
@@ -109,6 +109,7 @@ export default function PatientDetailsDrawer({
           >
             {t("patients.actions.bookAppointment")}
           </Button>
+          <Button onClick={onClose}>{t("common.close")}</Button>
         </Space>
       }
     >
@@ -176,7 +177,7 @@ export default function PatientDetailsDrawer({
           </Card>
 
           <Card title={t("patients.sections.personalInfo")}>
-            <Descriptions column={2} size="middle" labelStyle={{ width: 180 }}>
+            <Descriptions column={2} size="middle" labelStyle={{ width: 180 }} colon={false}>
               <Descriptions.Item label={t("patients.fields.dateOfBirth")}>
                 {patient.clientProfile?.dob
                   ? dayjs(patient.clientProfile.dob).format("MMM D, YYYY")
@@ -267,7 +268,10 @@ export default function PatientDetailsDrawer({
                 {t("patients.actions.bookAppointment")}
               </Button>
 
-              <Button icon={<CalendarOutlined />} onClick={() => onViewAppointment?.(patient)}>
+              <Button
+                icon={<CalendarOutlined />}
+                onClick={() => onViewAppointment?.(patient)}
+              >
                 {t("patients.actions.viewAppointments")}
               </Button>
             </Space>

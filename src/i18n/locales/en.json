@@ -691,6 +691,7 @@
     }
   },
   "settings": {
+    "orgInfo": "Organization Settings",
     "profile": "Profile",
     "notifications": "Notifications",
     "organization": "Organization",
@@ -953,6 +954,7 @@
     "confirmCancelMessage": "Are you sure you want to cancel this appointment?"
   },
   "common": {
+    "home": "Home",
     "edit": "Edit",
     "delete": "Delete",
     "confirm": "Confirm",

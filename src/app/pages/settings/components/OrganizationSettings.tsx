@@ -29,6 +29,9 @@ export default function OrganizationSettings() {
   const [savingPolicy, setSavingPolicy] = useState(false);
   const [deactivating, setDeactivating] = useState(false);
 
+  // 👇 watch fee type
+  const feeType = Form.useWatch("feeType", policyForm);
+
   useEffect(() => {
     if (organization) {
       form.setFieldsValue(organization);
@@ -44,7 +47,15 @@ export default function OrganizationSettings() {
       const policy = res.data.data.policy;
 
       if (policy) {
-        policyForm.setFieldsValue(policy);
+        policyForm.setFieldsValue({
+          ...policy,
+          feeType: policy.feePercentage ? "percentage" : "flat",
+        });
+      } else {
+        // default state
+        policyForm.setFieldsValue({
+          feeType: "flat",
+        });
       }
     } catch (err: any) {
       message.error(err?.response?.data?.message || t("common.error"));
@@ -72,8 +83,16 @@ export default function OrganizationSettings() {
 
   const handleSavePolicy = async (values: any) => {
     setSavingPolicy(true);
+
+    const payload = {
+      minHoursBefore: values.minHoursBefore,
+      feePercentage:
+        values.feeType === "percentage" ? values.feePercentage : null,
+      flatFee: values.feeType === "flat" ? values.flatFee : null,
+    };
+
     try {
-      await api.post("/organizations/cancellation-policy", values);
+      await api.post("/organizations/cancellation-policy", payload);
 
       message.success(t("common.saved"));
     } catch (err: any) {
@@ -122,6 +141,7 @@ export default function OrganizationSettings() {
 
   return (
     <Space orientation="vertical" size="large" style={{ width: "100%" }}>
+      {/* ================= ORG INFO ================= */}
       <div>
         <Title level={5}>{t("settings.orgInfo")}</Title>
 
@@ -179,10 +199,15 @@ export default function OrganizationSettings() {
 
       <Divider />
 
+      {/* ================= CANCELLATION POLICY ================= */}
       <div>
         <Title level={5}>{t("settings.cancellationPolicy")}</Title>
 
-        <Form form={policyForm} layout="vertical" onFinish={handleSavePolicy}>
+        <Form
+          form={policyForm}
+          layout="vertical"
+          onFinish={handleSavePolicy}
+        >
           <Form.Item
             label={t("settings.minHours")}
             name="minHoursBefore"
@@ -191,13 +216,57 @@ export default function OrganizationSettings() {
             <InputNumber min={1} style={{ width: "100%" }} />
           </Form.Item>
 
-          <Form.Item label={t("settings.feePercentage")} name="feePercentage">
-            <InputNumber min={0} max={100} style={{ width: "100%" }} />
+          {/* 🔥 Fee Type Toggle */}
+          <Form.Item
+            label="Fee Type"
+            name="feeType"
+            initialValue="flat"
+            rules={[{ required: true }]}
+          >
+            <Space>
+              <Button
+                type={feeType === "flat" ? "primary" : "default"}
+                onClick={() =>
+                  policyForm.setFieldsValue({ feeType: "flat" })
+                }
+              >
+                Flat Fee
+              </Button>
+              <Button
+                type={feeType === "percentage" ? "primary" : "default"}
+                onClick={() =>
+                  policyForm.setFieldsValue({ feeType: "percentage" })
+                }
+              >
+                Percentage
+              </Button>
+            </Space>
           </Form.Item>
 
-          <Form.Item label={t("settings.flatFee")} name="flatFee">
-            <InputNumber min={0} style={{ width: "100%" }} />
-          </Form.Item>
+          {/* 🔄 Conditional Inputs */}
+          {feeType === "percentage" && (
+            <Form.Item
+              label={t("settings.feePercentage")}
+              name="feePercentage"
+              rules={[{ required: true }]}
+            >
+              <InputNumber
+                min={0}
+                max={100}
+                style={{ width: "100%" }}
+              />
+            </Form.Item>
+          )}
+
+          {feeType === "flat" && (
+            <Form.Item
+              label={t("settings.flatFee")}
+              name="flatFee"
+              rules={[{ required: true }]}
+            >
+              <InputNumber min={0} style={{ width: "100%" }} />
+            </Form.Item>
+          )}
 
           <Button type="primary" htmlType="submit" loading={savingPolicy}>
             {t("common.save")}
@@ -207,6 +276,7 @@ export default function OrganizationSettings() {
 
       <Divider />
 
+      {/* ================= DANGER ZONE ================= */}
       <Card>
         <Title level={5} type="danger">
           {t("settings.dangerZone")}
