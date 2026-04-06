@@ -8,6 +8,13 @@ export type AppointmentStatus =
   | "No-Show"
   | "Rescheduled";
 
+export interface RequiredForm {
+  templateId: string;
+  title: string;
+  alreadySubmitted: boolean;
+  submissionId: string | null;
+}
+
 export interface Appointment {
   id: string;
   publicId: string;
@@ -49,4 +56,6 @@ export interface Appointment {
     timestamp: string;
     note: string;
   }[];
+
+  requiredForms?: RequiredForm[];
 }

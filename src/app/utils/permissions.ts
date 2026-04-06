@@ -59,6 +59,8 @@ export const rolePermissions: Record<string, Permission[]> = {
     "checkin:appointment",
     "noshow:appointment",
     "addnote:appointment",
+    "create:appointment",
+    "cancel:appointment",
   ],
   frontDesk: [
     "view:appointment",

@@ -16,8 +16,11 @@ import api from "../../../shared/api/axios";
 import type { ColumnsType } from "antd/es/table";
 import { useAuth } from "../../auth/AuthContext";
 import { MoreOutlined } from "@ant-design/icons";
+import CreateAppointmentModal from "../appointments/components/CreateAppointmentModal";
+import AppointmentDetailsModal from "../appointments/components/AppointmentDetailsModal";
+import type { Appointment as FullAppointment } from "../appointments/types";
 
-interface Appointment {
+interface AppointmentSummary {
   id: string;
   startTime: string;
   status: "scheduled" | "checked_in" | "no_show" | "cancelled";
@@ -63,13 +66,18 @@ const normalizeStatus = (status: string): AppointmentStatus => {
 export default function Dashboard() {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [appointments, setAppointments] = useState<AppointmentSummary[]>([]);
   const [loading, setLoading] = useState(false);
   const [viewAll, setViewAll] = useState(false);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<
     "all" | "scheduled" | "checked_in" | "no_show" | "cancelled" | "remaining"
   >("all");
+  const [createOpen, setCreateOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [selectedAppointment, setSelectedAppointment] =
+    useState<FullAppointment | null>(null);
+  const [detailsLoading, setDetailsLoading] = useState(false);
 
   useEffect(() => {
     fetchToday();
@@ -79,6 +87,56 @@ export default function Dashboard() {
     const interval = setInterval(fetchToday, 60000);
     return () => clearInterval(interval);
   }, []);
+
+  const openDetails = async (id: string) => {
+    try {
+      setDetailsLoading(true);
+      setDetailsOpen(true);
+
+      const res = await api.get(`/appointments/${id}`);
+      const appt = res.data.data.appointment;
+
+      const normalized = {
+        ...appt,
+        id: String(appt.id),
+        specialist: appt.specialist
+          ? { ...appt.specialist, id: String(appt.specialist.id) }
+          : undefined,
+        client: appt.client
+          ? { ...appt.client, id: String(appt.client.id) }
+          : undefined,
+        guestClient: appt.guestClient
+          ? { ...appt.guestClient, id: String(appt.guestClient.id) }
+          : undefined,
+      };
+
+      setSelectedAppointment(normalized);
+    } catch (err: any) {
+      message.error(err?.response?.data?.message || "Failed to load details");
+      setDetailsOpen(false);
+    } finally {
+      setDetailsLoading(false);
+    }
+  };
+
+  const handleAddNote = async (text: string) => {
+    if (!selectedAppointment) return;
+
+    try {
+      const res = await api.patch(
+        `/appointments/${selectedAppointment.id}/notes`,
+        { note: text },
+      );
+
+      setSelectedAppointment((prev) =>
+        prev ? { ...prev, notes: res.data.data.notes } : prev,
+      );
+
+      message.success(t("appointments.notes.added"));
+    } catch (err: any) {
+      message.error(err?.response?.data?.message);
+    }
+  };
 
   const fetchToday = async () => {
     try {
@@ -116,7 +174,7 @@ export default function Dashboard() {
     (a) => a.status === "scheduled" && new Date(a.startTime) > now,
   ).length;
 
-  const columns: ColumnsType<Appointment> = [
+  const columns: ColumnsType<AppointmentSummary> = [
     {
       title: t("dashboard.table.time"),
       dataIndex: "startTime",
@@ -232,6 +290,7 @@ export default function Dashboard() {
               icon={<MoreOutlined />}
               loading={updatingId === record.id}
               disabled={updatingId !== null}
+              onClick={(e) => e.stopPropagation()}
             />
           </Dropdown>
         );
@@ -239,7 +298,7 @@ export default function Dashboard() {
     },
   ];
 
-  const updateLocalStatus = (id: string, status: Appointment["status"]) => {
+  const updateLocalStatus = (id: string, status: AppointmentSummary["status"]) => {
     setAppointments((prev) =>
       prev.map((a) => (a.id === id ? { ...a, status } : a)),
     );
@@ -296,7 +355,15 @@ export default function Dashboard() {
   });
 
   return (
-    <PageLayout title={t("dashboard.title")} subtitle={t("dashboard.subtitle")}>
+    <PageLayout
+      title={t("dashboard.title")}
+      subtitle={t("dashboard.subtitle")}
+      primaryAction={
+        <Button type="primary" onClick={() => setCreateOpen(true)}>
+          {t("appointments.actions.create")}
+        </Button>
+      }
+    >
       <div className="dashboard-stats">
         <div className="dashboard-stat-card">
           <div className="dashboard-stat-label">
@@ -375,9 +442,30 @@ export default function Dashboard() {
             columns={columns}
             dataSource={filteredAppointments}
             pagination={false}
+            onRow={(record) => ({
+              onClick: () => openDetails(record.id),
+            })}
           />
         </>
       )}
+      <CreateAppointmentModal
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        onSuccess={() => {
+          setCreateOpen(false);
+          fetchToday();
+        }}
+      />
+      <AppointmentDetailsModal
+        open={detailsOpen}
+        loading={detailsLoading}
+        appointment={selectedAppointment}
+        onClose={() => {
+          setDetailsOpen(false);
+          setSelectedAppointment(null);
+        }}
+        onAddNote={handleAddNote}
+      />
     </PageLayout>
   );
 }

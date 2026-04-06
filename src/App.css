@@ -314,18 +314,54 @@ p {
 /* =========================
    AUTH
    ========================= */
+/* Kill extra spacing from PageLayout inside auth */
+.auth-content .page-header {
+  margin-bottom: var(--space-sm);
+  display: block;
+  text-align: center;
+}
+
+/* Reduce subtitle spacing */
+.auth-content .page-header .ant-typography {
+  margin-top: var(--space-xs);
+}
+
+/* Tighten content */
+.auth-content .page-content {
+  margin-top: var(--space-sm);
+}
+
+.auth-content .page-primary-action {
+  display: none;
+}
+
+.auth-content .page-header h3 {
+  text-align: center;
+}
+
+.auth-content .page-header .ant-typography {
+  display: block;
+  text-align: center;
+}
+
+.auth-content .page-content {
+  margin-top: var(--space-md);
+}
+
 .auth-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5f7f9;
+  background: var(--color-background);
   padding: 24px;
 }
 
 .auth-card {
-  width: 460px;
-  border-radius: 12px;
+  width: 10em;
+  border-radius: 1em;
+  background: var(--color-surface);
+  padding: 2em;
 }
 
 .auth-logo {
@@ -364,6 +400,7 @@ p {
 
 .auth-submit {
   margin-top: var(--space-sm);
+  width: 100%;
 }
 
 .auth-footer--secondary {
@@ -977,6 +1014,38 @@ p {
   overflow: hidden;
 }
 
+.service-specialists__description {
+  margin-bottom: 12px;
+  color: var(--color-text-secondary);
+}
+
+.service-specialists__search {
+  margin-bottom: 12px;
+}
+
+.service-specialists__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.service-specialists__item {
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.service-specialists__item:hover {
+  background: var(--color-bg-secondary);
+}
+
+.service-specialists__inactive {
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+}
+
 /* =========================
    DASHBOARD
    ========================= */
@@ -1421,6 +1490,16 @@ p {
   max-width: 720px;
   margin-left: 0;
   gap: var(--space-2);
+}
+
+/* =========================
+   SETTINGS PAGE
+   ========================= */
+
+.settings-scheduling-mode__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 /* =========================
@@ -2040,6 +2119,32 @@ p {
 
 .client-dashboard__section + .client-dashboard__section {
   margin-top: 32px;
+}
+
+.client-settings-card {
+  margin-bottom: var(--space-4);
+}
+
+.client-settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+.client-settings-submit {
+  margin-top: var(--space-md);
+  display: flex;
+  justify-content: flex-start;
+}
+.client-settings-card:last-of-type {
+  margin-bottom: 0;
+}
+
+.client-settings-security {
+  margin-top: var(--space-3);
+}
+
+.client-settings-action-control {
+  margin-right: 1em;
 }
 
 /* REVIEWS */

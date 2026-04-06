@@ -25,6 +25,9 @@ import Booking from "./app/pages/booking/Booking";
 import BookingConfirmed from "./app/pages/booking/BookingConfirmed";
 import ClientDashboard from "./app/pages/client/ClientDashboard";
 import RegisterClient from "./app/auth/RegisterClient";
+import ForgotPassword from "./app/pages/general/ForgotPassword";
+import ResetPassword from "./app/pages/general/ResetPassword";
+import UpdateEmail from "./app/pages/general/UpdateEmail";
 
 function App() {
   return (
@@ -48,7 +51,9 @@ function App() {
         element={<BookingConfirmed />}
       />
       <Route path="/demo/client" element={<ClientDashboard />} />
-
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Route path="/update-email/:token" element={<UpdateEmail />} />
       {/* Demo App */}
       <Route path="/demo/app" element={<AppShell />}>
         <Route path="onboarding" element={<Onboarding />} />

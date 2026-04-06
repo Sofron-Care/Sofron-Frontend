@@ -76,7 +76,7 @@ export default function CreateDocumentModal({
       open={open}
       title={t("documents.create")}
       onClose={handleClose}
-      width="100%"
+      size="100%"
       className="document-drawer"
     >
       <div className="document-drawer__content">

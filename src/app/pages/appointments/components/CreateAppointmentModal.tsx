@@ -96,22 +96,15 @@ export default function CreateAppointmentModal({
     form.resetFields();
     setSelectedTime(null);
 
-    if (initialValues?.clientId) {
-      setClientMode("existing");
-
+    if (initialValues) {
       form.setFieldsValue({
-        clientId: initialValues.clientId,
-      });
-    }
-
-    if (initialValues?.appointment) {
-      form.setFieldsValue({
+        ...initialValues,
         appointment: {
           ...initialValues.appointment,
         },
       });
     }
-  }, [open, dataLoaded, initialValues]);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;

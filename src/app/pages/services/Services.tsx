@@ -9,6 +9,7 @@ import { useAuth } from "../../auth/AuthContext";
 import { can } from "../../utils/permissions";
 import ServiceModal from "./components/ServiceModal";
 import type { ColumnsType } from "antd/es/table";
+import ManageServiceSpecialistsModal from "./components/ManageServiceSpecialistModal";
 
 export default function Services() {
   const { t } = useTranslation();
@@ -18,6 +19,10 @@ export default function Services() {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingService, setEditingService] = useState<Service | null>(null);
+  const [specialistsModalOpen, setSpecialistsModalOpen] = useState(false);
+  const [selectedServiceId, setSelectedServiceId] = useState<number | null>(
+    null,
+  );
 
   useEffect(() => {
     fetchServices();
@@ -31,6 +36,11 @@ export default function Services() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleManageSpecialists = (service: Service) => {
+    setSelectedServiceId(service.id);
+    setSpecialistsModalOpen(true);
   };
 
   const handleFeatureToggle = async (service: Service) => {
@@ -101,7 +111,7 @@ export default function Services() {
       dataIndex: "isFeatured",
       key: "isFeatured",
       render: (featured) =>
-        featured ? <StarFilled style={{ color: "#fadb14" }} /> : null,
+        featured ? <StarFilled style={{ color: "#0d9488" }} /> : null,
     },
   ];
 
@@ -129,6 +139,11 @@ export default function Services() {
                 label: t("common.delete"),
                 danger: true,
                 onClick: () => handleDelete(record),
+              },
+              {
+                key: "specialists",
+                label: t("services.actions.manageSpecialists"),
+                onClick: () => handleManageSpecialists(record),
               },
             ],
           }}
@@ -179,6 +194,15 @@ export default function Services() {
         }}
         onSuccess={fetchServices}
         service={editingService}
+      />
+
+      <ManageServiceSpecialistsModal
+        open={specialistsModalOpen}
+        serviceId={selectedServiceId}
+        onClose={() => {
+          setSpecialistsModalOpen(false);
+          setSelectedServiceId(null);
+        }}
       />
     </PageLayout>
   );

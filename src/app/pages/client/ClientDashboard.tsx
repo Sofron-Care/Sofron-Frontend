@@ -7,7 +7,8 @@ import OverviewTab from "./components/tabs/OverviewTab";
 import AppointmentsTab from "./components/tabs/AppointmentsTab";
 import FavoritesTab from "./components/tabs/FavoritesTab";
 import ReviewsTab from "./components/tabs/ReviewsTab";
-import Footer from "../home/components/Footer";
+import SettingsTab from "./components/tabs/SettingsTab"
+
 import { useAuth } from "../../auth/AuthContext";
 
 export default function ClientDashboard() {
@@ -43,6 +44,11 @@ export default function ClientDashboard() {
       label: t("clientDashboard.tabs.reviews"),
       children: <ReviewsTab />,
     },
+    {
+      key: "settings",
+      label: t("clientDashboard.tabs.settings"),
+      children: <SettingsTab />
+    }
   ];
 
   return (
@@ -67,7 +73,7 @@ export default function ClientDashboard() {
       <div className="client-dashboard">
         <Tabs activeKey={activeTab} items={items} onChange={setActiveTab} />
       </div>
-      <Footer />
+
     </PageLayout>
   );
 }

@@ -28,13 +28,18 @@ export default function OrganizationSettings() {
   const [policyLoading, setPolicyLoading] = useState(false);
   const [savingPolicy, setSavingPolicy] = useState(false);
   const [deactivating, setDeactivating] = useState(false);
+  const [schedulingMode, setSchedulingMode] = useState<
+    "organization" | "specialist"
+  >(organization?.schedulingMode || "specialist");
 
-  // 👇 watch fee type
+  const [updatingMode, setUpdatingMode] = useState(false);
+
   const feeType = Form.useWatch("feeType", policyForm);
 
   useEffect(() => {
     if (organization) {
       form.setFieldsValue(organization);
+      setSchedulingMode(organization.schedulingMode);
     }
 
     fetchPolicy();
@@ -62,6 +67,44 @@ export default function OrganizationSettings() {
     } finally {
       setPolicyLoading(false);
     }
+  };
+
+  const handleSchedulingModeChange = (mode: "organization" | "specialist") => {
+    if (mode === schedulingMode) return;
+
+    Modal.confirm({
+      title: t("settings.schedulingMode.confirmTitle"),
+      content: t("settings.schedulingMode.confirmDescription"),
+      okText: t("settings.schedulingMode.confirm"),
+      okButtonProps: { danger: true },
+      cancelText: t("common.cancel"),
+      onOk: async () => {
+        setUpdatingMode(true);
+        try {
+          await api.patch("/organizations/scheduling-mode", {
+            schedulingMode: mode,
+          });
+
+          setSchedulingMode(mode);
+
+          setOrganization((prev: any) =>
+            prev
+              ? {
+                  ...prev,
+                  schedulingMode: mode,
+                  publicFacing: false,
+                }
+              : prev,
+          );
+
+          message.success(t("settings.schedulingMode.updated"));
+        } catch (err: any) {
+          message.error(err?.response?.data?.message || t("common.error"));
+        } finally {
+          setUpdatingMode(false);
+        }
+      },
+    });
   };
 
   const handleSaveOrg = async (values: any) => {
@@ -198,16 +241,36 @@ export default function OrganizationSettings() {
       </div>
 
       <Divider />
+      {/* ================= SCHEDULING MODE ================= */}
+      <div>
+        <Title level={5}>{t("settings.schedulingMode.title")}</Title>
 
+        <Text type="secondary">{t("settings.schedulingMode.description")}</Text>
+
+        <div className="settings-scheduling-mode__actions">
+          <Button
+            type={schedulingMode === "organization" ? "primary" : "default"}
+            loading={updatingMode}
+            onClick={() => handleSchedulingModeChange("organization")}
+          >
+            {t("settings.schedulingMode.organization")}
+          </Button>
+
+          <Button
+            type={schedulingMode === "specialist" ? "primary" : "default"}
+            loading={updatingMode}
+            onClick={() => handleSchedulingModeChange("specialist")}
+          >
+            {t("settings.schedulingMode.specialist")}
+          </Button>
+        </div>
+      </div>
+      <Divider />
       {/* ================= CANCELLATION POLICY ================= */}
       <div>
         <Title level={5}>{t("settings.cancellationPolicy")}</Title>
 
-        <Form
-          form={policyForm}
-          layout="vertical"
-          onFinish={handleSavePolicy}
-        >
+        <Form form={policyForm} layout="vertical" onFinish={handleSavePolicy}>
           <Form.Item
             label={t("settings.minHours")}
             name="minHoursBefore"
@@ -226,9 +289,7 @@ export default function OrganizationSettings() {
             <Space>
               <Button
                 type={feeType === "flat" ? "primary" : "default"}
-                onClick={() =>
-                  policyForm.setFieldsValue({ feeType: "flat" })
-                }
+                onClick={() => policyForm.setFieldsValue({ feeType: "flat" })}
               >
                 Flat Fee
               </Button>
@@ -250,11 +311,7 @@ export default function OrganizationSettings() {
               name="feePercentage"
               rules={[{ required: true }]}
             >
-              <InputNumber
-                min={0}
-                max={100}
-                style={{ width: "100%" }}
-              />
+              <InputNumber min={0} max={100} style={{ width: "100%" }} />
             </Form.Item>
           )}
 

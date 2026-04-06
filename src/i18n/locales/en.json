@@ -177,7 +177,29 @@
     "rights": "All rights reserved."
   },
   "auth": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "backToLogin": "Back to login",
+    "forgotPassword": {
+      "title": "Forgot your password?",
+      "subtitle": "Enter your email and we’ll send you a reset link.",
+      "success": "Password reset email sent. Check your inbox."
+    },
+
+    "resetPassword": {
+      "title": "Reset your password",
+      "subtitle": "Enter a new password below.",
+      "success": "Your password has been successfully updated."
+    },
+
+    "updateEmail": {
+      "title": "Update your email",
+      "subtitle": "Enter your new email address.",
+      "success": "Your email has been successfully updated."
+    },
     "login": {
+      "forgotPassword": "Forgot Password",
       "title": "Login",
       "email": "Email",
       "password": "Password",
@@ -348,7 +370,13 @@
       "feePercentage": "Fee Percentage (%)",
       "flatFee": "Flat Fee",
       "durationMinutes": "Duration (minutes)"
-    }
+    },
+    "specialists": {
+      "title": "Manage Specialists",
+      "description": "Select which specialists can perform this service",
+      "updated": "Specialists updated successfully"
+    },
+    "actions": { "manageSpecialists": "Manage Specialists" }
   },
   "schedule": {
     "title": "Scheduling",
@@ -481,7 +509,8 @@
       "cancel": "Cancel",
       "checkin": "Check In",
       "noshow": "Mark No-Show",
-      "addNote": "Add Note"
+      "addNote": "Add Note",
+      "create": "Create Appointment"
     },
     "status": {
       "Tentative": "Tentative",
@@ -725,7 +754,17 @@
     "deactivateWarning": "Proceeding with this will deactivate your organization. You will need to contact administration to reactivate your business",
     "deactivateOrg": "Deactivate Organization",
     "confirmDeactivateTitle": "Deactivate Organization?",
-    "confirmDeactivate": "Deactivate"
+    "confirmDeactivate": "Deactivate",
+    "schedulingMode": {
+      "title": "Scheduling Mode",
+      "description": "Choose how availability is managed across your clinic.",
+      "organization": "Organization-wide schedule",
+      "specialist": "Per-specialist schedules",
+      "confirmTitle": "Change scheduling mode?",
+      "confirmDescription": "This will remove all existing schedules. You will need to set up availability again before accepting bookings.",
+      "confirm": "Change Mode",
+      "updated": "Scheduling mode updated"
+    }
   },
   "orgDeactivated": {
     "title": "Organization Deactivated",
@@ -875,12 +914,45 @@
       "overview": "Overview",
       "appointments": "Appointments",
       "favorites": "Favorites",
-      "reviews": "Reviews"
+      "reviews": "Reviews",
+      "settings": "Settings"
     },
     "favorites": {
       "title": "Favorite Clinics",
       "empty": "No favorite clinics yet. Start exploring to save your go-to providers.",
       "subtitle": "Quick access to clinics you trust"
+    },
+    "settings": {
+      "title": "Settings",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone",
+      "security": "Security",
+      "changeEmail": "Change Email",
+      "resetPassword": "Reset Password",
+
+      "account": "Account",
+      "personal": "Personal Information",
+      "address": "Address",
+      "medical": "Medical Information",
+
+      "dob": "Date of Birth",
+      "gender": "Gender",
+      "pronouns": "Pronouns",
+      "occupation": "Occupation",
+      "activityLevel": "Activity Level",
+
+      "street": "Street Address",
+      "city": "City",
+      "state": "State",
+      "zipcode": "Zip Code",
+
+      "medicalNotes": "Medical Notes",
+      "referral": "How did you hear about us?",
+
+      "updated": "Profile updated successfully",
+      "emailSent": "Email change request sent",
+      "passwordSent": "Password reset email sent"
     },
 
     "table": {
@@ -890,7 +962,8 @@
       "date": "Date",
       "time": "Time",
       "status": "Status",
-      "actions": "Actions"
+      "actions": "Actions",
+      "requiredForm": "Required Forms"
     },
     "status": {
       "scheduled": "Scheduled",
@@ -969,6 +1042,10 @@
     "loading": "Loading...",
     "logout": "Logout",
     "remove": "Remove",
+    "submit": "Submit",
+    "search": "Search",
+    "inactive": "Inactive",
+    "active": "Active",
     "days": {
       "sunday": "Sunday",
       "monday": "Monday",

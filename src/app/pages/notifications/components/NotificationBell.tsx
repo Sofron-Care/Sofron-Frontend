@@ -46,7 +46,7 @@ export default function NotificationBell() {
   );
 
   return (
-    <Dropdown trigger={["click"]} dropdownRender={() => overlay}>
+    <Dropdown trigger={["click"]} popupRender={() => overlay}>
       <Badge count={unreadCount} size="small" offset={[-2, 2]}>
         <BellOutlined style={{ fontSize: 18, cursor: "pointer" }} />
       </Badge>

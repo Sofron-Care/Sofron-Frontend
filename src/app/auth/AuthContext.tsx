@@ -1,6 +1,40 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import api from "./../../shared/api/axios";
 
+interface ClientProfile {
+  dob?: string | null;
+  gender?:
+    | "Male"
+    | "Female"
+    | "Nonbinary"
+    | "Agender"
+    | "Genderqueer"
+    | "GenderFluid"
+    | "Other"
+    | "Prefer not to say"
+    | null;
+  preferredPronouns?: string | null;
+  occupation?: string | null;
+  preferredCommunication?: "Email" | "SMS" | "Phone" | null;
+  activityLevel?:
+    | "Sedentary"
+    | "Lightly Active"
+    | "Active"
+    | "Very Active"
+    | null;
+  emergencyContact?: {
+    name?: string;
+    relationship?: string;
+    phone?: string;
+    email?: string;
+  } | null;
+  medicalNotes?: string | null;
+  referralSource?: string | null;
+  streetAddress?: string | null;
+  city?: string | null;
+  state?: string | null;
+  zipcode?: string | null;
+}
 
 interface User {
   id: string;
@@ -18,6 +52,7 @@ interface User {
   needsToAcceptTOS: boolean;
 
   orgAccessActive?: boolean;
+  clientProfile?: ClientProfile | null;
 }
 
 interface Organization {
@@ -93,7 +128,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setOrganization(orgRes.data.data.organizationDetails);
       }
 
-      return loggedInUser; 
+      return loggedInUser;
     } finally {
       setLoading(false);
     }

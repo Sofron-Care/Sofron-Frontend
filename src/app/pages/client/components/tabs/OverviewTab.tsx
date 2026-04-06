@@ -19,6 +19,7 @@ export default function OverviewTab() {
   const [nextAppointment, setNextAppointment] = useState<Appointment | null>(
     null,
   );
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

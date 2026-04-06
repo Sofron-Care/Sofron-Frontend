@@ -85,7 +85,12 @@ export default function Login() {
             {t("auth.login.submit")}
           </Button>
         </Form>
-
+        <div className="auth-footer">
+          {" "}
+          <a onClick={() => navigate("/forgot-password")}>
+            {t("auth.login.forgotPassword")}
+          </a>
+        </div>
         <div className="auth-footer">
           <Text>
             {t("auth.login.noAccount")}{" "}

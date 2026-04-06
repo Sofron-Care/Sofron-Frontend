@@ -37,6 +37,13 @@ interface AppointmentApi {
     firstName: string;
     lastName: string;
   };
+
+  requiredForms?: {
+    templateId: string;
+    title: string;
+    alreadySubmitted: boolean;
+    submissionId: string | null;
+  }[];
 }
 
 interface AppointmentResponse {
@@ -62,6 +69,8 @@ const mapAppointment = (appt: AppointmentApi): Appointment => ({
   serviceBooked: appt.serviceBooked,
   specialist: appt.specialist,
   organization: appt.organization,
+
+  requiredForms: appt.requiredForms || [],
 });
 
 /* =========================
@@ -191,6 +200,26 @@ export default function AppointmentsTab() {
       key: "time",
       render: (_: any, record: Appointment) =>
         dayjs(record.startTime).format("h:mm A"),
+    },
+    {
+      title: t("clientDashboard.table.requiredForm"),
+      key: "requiredForm",
+      render: (_: any, record: Appointment) => {
+        const forms = record.requiredForms || [];
+        if (!forms.length) return null;
+
+        const completed = forms.filter((f) => f.alreadySubmitted).length;
+
+        if (completed === forms.length) {
+          return <Tag color="green">Completed</Tag>;
+        }
+
+        return (
+          <Tag color="orange" style={{ cursor: "pointer" }}>
+            {forms.length - completed} Required
+          </Tag>
+        );
+      },
     },
     {
       title: t("clientDashboard.table.status"),
