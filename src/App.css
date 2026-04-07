@@ -304,6 +304,12 @@ p {
   max-width: 520px;
 }
 
+.hero-pitch {
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--color-primary);
+}
+
 .hero-cta-group {
   margin-top: var(--space-6);
   display: flex;

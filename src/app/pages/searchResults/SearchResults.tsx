@@ -5,6 +5,7 @@ import axios from "./../../../shared/api/axios";
 import OrganizationCard from "./components/OrganizationCard";
 import Nav from "../home/components/Nav";
 import Footer from "../home/components/Footer";
+import { useTranslation } from "react-i18next";
 
 type Organization = {
   publicId: string;
@@ -28,6 +29,11 @@ export default function SearchResultsPage() {
   const [loading, setLoading] = useState(false);
   const [orgs, setOrgs] = useState<Organization[]>([]);
   const [error, setError] = useState(false);
+  const { t } = useTranslation();
+
+  const businessTypeParam = params.get("businessType") || "";
+
+  const [businessType, setBusinessType] = useState(businessTypeParam);
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -35,7 +41,9 @@ export default function SearchResultsPage() {
         setLoading(true);
 
         const res = await axios.get(
-          `/organizations/search?city=${city}&radius=${radius}`,
+          `/organizations/search?city=${city}&radius=${radius}${
+            businessType ? `&businessType=${businessType}` : ""
+          }`,
         );
 
         setOrgs(res.data.data.organizations);
@@ -50,7 +58,6 @@ export default function SearchResultsPage() {
     if (city) {
       fetchResults();
     } else {
-      // Reset state when no search
       setOrgs([]);
       setLoading(false);
       setError(false);
@@ -72,6 +79,34 @@ export default function SearchResultsPage() {
               />
 
               <Select
+                allowClear
+                value={businessType || undefined}
+                onChange={(value) => setBusinessType(value)}
+                size="large"
+                style={{ width: 220 }}
+                placeholder={t("search.businessTypePlaceholder")}
+                options={[
+                  {
+                    value: "physical_therapy",
+                    label: t("businessTypes.physical_therapy"),
+                  },
+                  {
+                    value: "chiropractic",
+                    label: t("businessTypes.chiropractic"),
+                  },
+                  {
+                    value: "massage_therapy",
+                    label: t("businessTypes.massage_therapy"),
+                  },
+                  {
+                    value: "personal_training",
+                    label: t("businessTypes.personal_training"),
+                  },
+                  { value: "recovery", label: t("businessTypes.recovery") },
+                ]}
+              />
+
+              <Select
                 value={radiusInput}
                 onChange={(value) => setRadiusInput(value)}
                 size="large"
@@ -89,7 +124,9 @@ export default function SearchResultsPage() {
                 size="large"
                 onClick={() => {
                   navigate(
-                    `/demo/search?city=${cityInput}&radius=${radiusInput}`,
+                    `/demo/search?city=${cityInput}&radius=${radiusInput}${
+                      businessType ? `&businessType=${businessType}` : ""
+                    }`,
                   );
                 }}
               >
@@ -108,7 +145,11 @@ export default function SearchResultsPage() {
           {/* Results heading */}
           {city && (
             <h2 className="results-heading">
-              Results near "{city}" ({radius} miles)
+              {t("search.resultsHeading", {
+                city,
+                radius,
+                type: businessType ? t(`businessTypes.${businessType}`) : "",
+              })}
             </h2>
           )}
 
