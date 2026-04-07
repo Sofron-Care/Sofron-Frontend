@@ -969,7 +969,7 @@
       "scheduled": "Scheduled",
       "completed": "Completed",
       "cancelled": "Cancelled",
-      "noshow": "No-show",
+      "no-show": "No Show",
       "rescheduled": "Rescheduled"
     },
     "overview": {
@@ -1024,7 +1024,10 @@
       "deleteConfirmDesc": "This action cannot be undone."
     },
     "confirmCancelTitle": "Cancel Appointment",
-    "confirmCancelMessage": "Are you sure you want to cancel this appointment?"
+    "confirmCancelMessage": "Are you sure you want to cancel this appointment?",
+    "branding": {
+      "portal": "Client Portal"
+    }
   },
   "common": {
     "home": "Home",

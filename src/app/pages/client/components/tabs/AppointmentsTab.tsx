@@ -5,7 +5,7 @@ import { message, Modal, Table, Tag, Dropdown, Button } from "antd";
 import { MoreOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
-
+import RequiredFormsDrawer from "../RequiredFormsDrawer";
 import RescheduleAppointmentModal from "../../../appointments/components/RescheduleAppointmentModal";
 
 import type { Appointment } from "../../../appointments/types";
@@ -103,6 +103,7 @@ export default function AppointmentsTab() {
   const [selectedAppointment, setSelectedAppointment] =
     useState<Appointment | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   /* =========================
      FETCH
@@ -215,7 +216,14 @@ export default function AppointmentsTab() {
         }
 
         return (
-          <Tag color="orange" style={{ cursor: "pointer" }}>
+          <Tag
+            color="orange"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setSelectedAppointment(record);
+              setDrawerOpen(true);
+            }}
+          >
             {forms.length - completed} Required
           </Tag>
         );
@@ -306,6 +314,14 @@ export default function AppointmentsTab() {
           setModalOpen(false);
           fetchAppointments();
         }}
+      />
+      {/* REQUIRED FORM DRAWER */}
+      <RequiredFormsDrawer
+        open={drawerOpen}
+        appointmentId={selectedAppointment?.id || null}
+        forms={selectedAppointment?.requiredForms || []}
+        onClose={() => setDrawerOpen(false)}
+        onSuccess={fetchAppointments}
       />
     </div>
   );
