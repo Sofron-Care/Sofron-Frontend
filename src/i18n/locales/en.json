@@ -1,58 +1,59 @@
 {
   "landing": {
     "hero": {
-      "title": "Outcome-Focused Practice Management for Cash Care Physical Therapy",
-      "subtitle": "Scheduling, booking, intake documentation, and analytics — built specifically for direct-to-patient clinics.",
+      "title": "Practice Management for Cash-Based Health & Performance Businesses",
+      "subtitle": "Scheduling, booking, intake documentation, and analytics — built for modern direct-to-client practices.",
+      "pitch": "From physical therapy to personal training and recovery studios — Sofron adapts to your practice.",
       "cta_primary": "Register Interest",
       "cta_secondary": "Launch Demo"
     },
     "problem": {
-      "label": "The Cash Care Reality",
-      "headline": "Running a Direct-to-Patient Clinic Shouldn’t Require Five Different Tools.",
-      "intro": "Cash care clinics operate differently — but most software wasn’t built with that in mind.",
+      "label": "The Cash-Based Reality",
+      "headline": "Running a Modern Practice Shouldn’t Require Five Different Tools.",
+      "intro": "Cash-based businesses operate differently — but most software wasn’t built with that in mind.",
       "items": [
         "Too many disconnected tools to manage scheduling, intake, and payments.",
         "Manual scheduling that leads to missed appointments and lost revenue.",
-        "Clunky intake workflows that frustrate patients.",
+        "Clunky intake workflows that frustrate clients.",
         "Limited insight into performance and growth.",
         "Software designed for insurance billing — not direct care."
       ]
     },
     "solution": {
       "label": "The Solution",
-      "headline": "One Unified Platform Built for Cash Care Clinics.",
-      "intro": "Sofron replaces disconnected tools with a streamlined system designed specifically for direct-to-patient practices.",
+      "headline": "One Unified Platform Built for Cash-Based Practices.",
+      "intro": "Sofron replaces disconnected tools with a streamlined system designed for direct-to-client businesses.",
       "features": [
         {
           "title": "Scheduling",
-          "description": "Flexible clinic scheduling built for independent practitioners."
+          "description": "Flexible scheduling built for independent practitioners and small teams."
         },
         {
           "title": "Booking",
-          "description": "Simple, patient-friendly booking designed to reduce no-shows."
+          "description": "Simple, client-friendly booking designed to reduce no-shows."
         },
         {
           "title": "Documentation",
-          "description": "Intake forms and documentation workflows tailored for cash care."
+          "description": "Intake forms and workflows tailored to modern service-based businesses."
         },
         {
           "title": "Analytics",
-          "description": "Clear operational visibility into performance and growth."
+          "description": "Clear visibility into performance, revenue, and growth."
         }
       ]
     },
     "howItWorks": {
       "label": "How It Works",
-      "headline": "Set Up. Accept Bookings. Run Your Practice.",
-      "intro": "Sofron is designed to get your clinic operational quickly — without complicated onboarding.",
+      "headline": "Set Up. Accept Bookings. Run Your Business.",
+      "intro": "Sofron is designed to get you operational quickly — without complicated onboarding.",
       "steps": [
         {
-          "title": "Set Up Your Clinic",
+          "title": "Set Up Your Business",
           "description": "Configure services, availability, pricing, and intake workflows in minutes."
         },
         {
-          "title": "Accept Patient Bookings",
-          "description": "Patients book seamlessly through a direct, easy-to-use scheduling interface."
+          "title": "Accept Client Bookings",
+          "description": "Clients book seamlessly through a simple, easy-to-use scheduling experience."
         },
         {
           "title": "Run and Optimize",
@@ -61,7 +62,7 @@
       ]
     },
     "cta": {
-      "headline": "Built for Clinics That Value Independence.",
+      "headline": "Built for Independent Practices.",
       "subtext": "Sofron is currently in pre-release. Explore the demo or register your interest to receive early updates.",
       "primary": "Register Interest",
       "secondary": "Launch Demo"
@@ -69,12 +70,12 @@
   },
   "whyCashCare": {
     "hero": {
-      "headline": "Why Cash Care Clinics Need Different Software.",
-      "subtext": "Cash care physical therapy operates on a different model — but most practice management tools weren’t built for it."
+      "headline": "Why Cash-Based Practices Need Different Software.",
+      "subtext": "Direct-to-client businesses operate differently — but most tools weren’t built for that model."
     },
     "whatIs": {
-      "label": "What Is Cash Care PT?",
-      "text": "Cash care physical therapy clinics operate without insurance billing. Patients pay directly for services, allowing clinics to focus on outcomes, transparency, and patient experience."
+      "label": "What Is a Cash-Based Practice?",
+      "text": "Cash-based practices operate without insurance billing. Clients pay directly for services, allowing businesses to focus on outcomes, transparency, and experience."
     },
     "traditional": {
       "label": "Why Traditional Software Falls Short",
@@ -86,36 +87,36 @@
       ]
     },
     "needs": {
-      "label": "What Cash Care Clinics Actually Need",
+      "label": "What Modern Practices Actually Need",
       "points": [
         "Simple, flexible scheduling.",
         "Clear pricing and booking experience.",
         "Streamlined digital intake.",
-        "Operational visibility without insurance complexity."
+        "Operational visibility without unnecessary complexity."
       ]
     }
   },
   "product": {
     "hero": {
-      "headline": "A Modular Platform for Independent Clinics.",
-      "subtext": "Use what you need. Expand as you grow. Sofron is designed to adapt to the way cash care clinics operate."
+      "headline": "A Modular Platform for Independent Practices.",
+      "subtext": "Use what you need. Expand as you grow. Sofron adapts to the way modern service-based businesses operate."
     },
     "features": [
       {
         "title": "Scheduling",
-        "description": "Flexible weekly scheduling, availability controls, and override management built for direct care models."
+        "description": "Flexible availability, scheduling rules, and overrides built for modern service businesses."
       },
       {
         "title": "Booking",
-        "description": "A simple, patient-first booking flow designed to reduce friction and no-shows."
+        "description": "A simple, client-first booking flow designed to reduce friction and no-shows."
       },
       {
         "title": "Documentation",
-        "description": "Streamlined intake forms and digital documentation tailored to cash care workflows."
+        "description": "Streamlined intake forms and digital workflows tailored to your services."
       },
       {
         "title": "Analytics",
-        "description": "Clear operational insight into appointments, performance, and growth metrics."
+        "description": "Clear insight into appointments, performance, and growth."
       }
     ]
   },
@@ -148,10 +149,6 @@
       "error": "Something went wrong. Please try again."
     }
   },
-  "validation": {
-    "required": "This field is required.",
-    "email": "Please enter a valid email address."
-  },
   "nav": {
     "why": "Why Cash Care?",
     "product": "Product",
@@ -166,7 +163,7 @@
     "clinicDashboard": "Clinic Dashboard"
   },
   "footer": {
-    "tagline": "Outcome-focused clinic management software designed specifically for cash care physical therapy.",
+    "tagline": "Practice management software designed for cash-based health and performance businesses.",
     "product": "Product",
     "overview": "Overview",
     "demo": "Demo",
@@ -175,6 +172,10 @@
     "terms": "Terms",
     "privacy": "Privacy",
     "rights": "All rights reserved."
+  },
+  "validation": {
+    "required": "This field is required.",
+    "email": "Please enter a valid email address."
   },
   "auth": {
     "email": "Email",
@@ -266,6 +267,63 @@
     "notifications": "Notifications",
     "help": "Help",
     "logout": "Logout"
+  },
+  "onboarding": {
+    "title": "Complete Clinic Setup",
+    "sections": {
+      "organizationDetails": "Organization Details",
+      "scheduling": "Scheduling Configuration",
+      "professional": "Professional Details",
+      "cancellation": "Cancellation Policy"
+    },
+    "fields": {
+      "clinicName": "Clinic Name",
+      "ein": "EIN",
+      "einHelp": "Format: 12-3456789",
+      "businessEmail": "Business Email",
+      "phone": "Business Phone",
+      "streetAddress": "Street Address",
+      "suite": "Suite / Unit",
+      "city": "City",
+      "state": "State",
+      "zipcode": "Zipcode",
+      "npi": "NPI Number"
+    },
+    "businessType": {
+      "label": "Business Type",
+      "helper": "This helps tailor your services and experience."
+    },
+    "scheduling": {
+      "label": "How should scheduling work?",
+      "description": "This determines whether scheduling is controlled at the clinic level or per specialist. You can change this later, but existing schedules will be cleared.",
+      "organization": "Organization Level — One shared schedule for the entire clinic",
+      "specialist": "Specialist Level — Each specialist manages their own schedule"
+    },
+    "validation": {
+      "ein": "EIN must be in format XX-XXXXXXX"
+    },
+    "cancellation": {
+      "scope": "Policy Scope",
+      "organizationWide": "Organization Wide",
+      "perService": "Per Service",
+      "noFee": "No Fee",
+      "percentage": "Percentage",
+      "flat": "Flat Fee",
+      "minHours": "Minimum Hours Before",
+      "feeType": "Fee Type",
+      "feePercentage": "Fee Percentage (%)",
+      "flatFee": "Flat Fee"
+    },
+    "actions": {
+      "complete": "Complete Setup"
+    }
+  },
+  "businessTypes": {
+    "physical_therapy": "Physical Therapy",
+    "chiropractic": "Chiropractic",
+    "massage_therapy": "Massage Therapy",
+    "personal_training": "Personal Training",
+    "recovery": "Recovery"
   },
   "dashboard": {
     "welcome": "Welcome, {{name}}",
@@ -969,7 +1027,7 @@
       "scheduled": "Scheduled",
       "completed": "Completed",
       "cancelled": "Cancelled",
-      "noshow": "No-show",
+      "no-show": "No Show",
       "rescheduled": "Rescheduled"
     },
     "overview": {
@@ -1024,7 +1082,14 @@
       "deleteConfirmDesc": "This action cannot be undone."
     },
     "confirmCancelTitle": "Cancel Appointment",
-    "confirmCancelMessage": "Are you sure you want to cancel this appointment?"
+    "confirmCancelMessage": "Are you sure you want to cancel this appointment?",
+    "branding": {
+      "portal": "Client Portal"
+    }
+  },
+  "search": {
+    "businessTypePlaceholder": "Select service type",
+    "resultsHeading": "Results near \"{{city}}\" ({{radius}} miles) {{type}}"
   },
   "common": {
     "home": "Home",

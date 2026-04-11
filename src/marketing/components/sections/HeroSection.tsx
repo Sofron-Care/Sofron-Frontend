@@ -9,16 +9,13 @@ export default function HeroSection() {
   return (
     <section className="section">
       <div className="container hero-grid">
-        
         {/* LEFT COLUMN */}
         <div>
-          <h1 className="hero-title">
-            {t("landing.hero.title")}
-          </h1>
+          <h1 className="hero-title">{t("landing.hero.title")}</h1>
 
-          <p className="hero-subtitle">
-            {t("landing.hero.subtitle")}
-          </p>
+          <p className="hero-subtitle">{t("landing.hero.subtitle")}</p>
+
+          <p className="hero-pitch">{t("landing.hero.pitch")}</p>
 
           <div className="hero-cta-group">
             <Button
@@ -29,10 +26,7 @@ export default function HeroSection() {
               {t("landing.hero.cta_primary")}
             </Button>
 
-            <Button
-              size="large"
-              onClick={() => navigate("/demo")}
-            >
+            <Button size="large" onClick={() => navigate("/demo")}>
               {t("landing.hero.cta_secondary")}
             </Button>
           </div>
@@ -47,13 +41,12 @@ export default function HeroSection() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "var(--color-text-muted)"
+              color: "var(--color-text-muted)",
             }}
           >
             Product Preview Placeholder
           </div>
         </div>
-
       </div>
     </section>
   );

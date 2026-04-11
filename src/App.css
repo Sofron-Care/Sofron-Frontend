@@ -304,6 +304,12 @@ p {
   max-width: 520px;
 }
 
+.hero-pitch {
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--color-primary);
+}
+
 .hero-cta-group {
   margin-top: var(--space-6);
   display: flex;
@@ -1438,6 +1444,15 @@ p {
 }
 
 /* =========================
+   DOCUMENTS
+   ========================= */
+
+.required-forms-drawer__actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* =========================
    SEARCH RESULTS
    ========================= */
 
@@ -1874,6 +1889,74 @@ p {
 }
 
 /* CLIENT DASHBOARD */
+.client-dashboard-page {
+  min-height: 100vh;
+  background: var(--color-bg-page);
+}
+
+.client-dashboard-topbar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.client-dashboard-topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.client-dashboard-topbar__logo {
+  width: 1rem;
+  height: 3rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.client-dashboard-topbar__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.client-dashboard-topbar__eyebrow {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.client-dashboard-topbar__name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.client-dashboard-layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+}
+
+.client-dashboard {
+  margin-top: 8px;
+}
+
+.client-dashboard :where(.ant-tabs-nav) {
+  margin-bottom: 24px;
+}
+
+.client-dashboard :where(.ant-tabs-tab) {
+  padding-left: 4px;
+  padding-right: 4px;
+}
 
 .client-dashboard__overview {
   display: flex;
@@ -1892,6 +1975,24 @@ p {
   width: 100%;
   max-width: 100%;
   padding-inline: clamp(1rem, 3vw, 2.5rem);
+}
+
+.client-dashboard .ant-tabs-nav {
+  margin-bottom: 16px;
+}
+
+.client-dashboard .ant-tabs-tab {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.client-dashboard .ant-tabs-tab-active {
+  color: var(--color-primary);
+}
+
+.client-dashboard .ant-tabs-ink-bar {
+  height: 2px;
+  border-radius: 2px;
 }
 
 /* Let AntD handle base card styles */

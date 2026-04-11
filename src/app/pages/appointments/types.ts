@@ -15,6 +15,18 @@ export interface RequiredForm {
   submissionId: string | null;
 }
 
+export interface SubmittedDocument {
+  id: string;
+  responses: Record<string, any>;
+  submittedAt: string;
+
+  template: {
+    id: string;
+    title: string;
+    schema: any;
+  };
+}
+
 export interface Appointment {
   id: string;
   publicId: string;
@@ -58,4 +70,5 @@ export interface Appointment {
   }[];
 
   requiredForms?: RequiredForm[];
+  submittedDocuments?: SubmittedDocument[];
 }

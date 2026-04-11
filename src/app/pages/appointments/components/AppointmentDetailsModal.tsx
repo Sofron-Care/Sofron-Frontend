@@ -1,10 +1,23 @@
-import { Modal, Descriptions, Spin, Button, Space, Input } from "antd";
+import { Modal, Descriptions, Spin, Button, Space, Input, Card } from "antd";
 import { useTranslation } from "react-i18next";
 import AppointmentStatusBadge from "./AppointmentStatusBadge";
 import type { Appointment } from "../types";
 import dayjs from "dayjs";
 import { useAuth } from "../../../auth/AuthContext";
 import { useState } from "react";
+import FormSchemaRenderer from "../../client/components/FormSchemaRenderer";
+
+interface SubmittedDocument {
+  id: string;
+  responses: Record<string, any>;
+  submittedAt: string;
+
+  template: {
+    id: string;
+    title: string;
+    schema: any;
+  };
+}
 
 interface Props {
   open: boolean;
@@ -23,8 +36,12 @@ export default function AppointmentDetailsModal({
 }: Props) {
   const { t } = useTranslation();
   const { user } = useAuth();
+
   const [noteText, setNoteText] = useState("");
   const [noteLoading, setNoteLoading] = useState(false);
+
+  const [activeDocument, setActiveDocument] =
+    useState<SubmittedDocument | null>(null);
 
   if (!appointment) return null;
 
@@ -45,9 +62,7 @@ export default function AppointmentDetailsModal({
 
     try {
       setNoteLoading(true);
-
       await onAddNote(noteText.trim());
-
       setNoteText("");
     } finally {
       setNoteLoading(false);
@@ -60,10 +75,31 @@ export default function AppointmentDetailsModal({
       onCancel={onClose}
       footer={null}
       width={700}
-      title={t("appointments.details.title")}
+      title={
+        activeDocument
+          ? activeDocument.template.title
+          : t("appointments.details.title")
+      }
     >
       {loading ? (
         <Spin />
+      ) : activeDocument ? (
+        
+        <div>
+          <Button
+            type="link"
+            onClick={() => setActiveDocument(null)}
+            style={{ marginBottom: 12, padding: 0 }}
+          >
+            ← Back to appointment
+          </Button>
+
+          <FormSchemaRenderer
+            schema={activeDocument.template.schema.components}
+            initialValues={activeDocument.responses}
+            readOnly
+          />
+        </div>
       ) : (
         <>
           <Descriptions column={1} bordered size="small">
@@ -95,6 +131,39 @@ export default function AppointmentDetailsModal({
             </Descriptions.Item>
           </Descriptions>
 
+          {/* SUBMITTED FORMS */}
+          <div className="appointment-details__forms">
+            <h3 style={{ marginTop: 24 }}>Submitted Forms</h3>
+
+            {appointment.submittedDocuments?.length ? (
+              appointment.submittedDocuments.map((doc: SubmittedDocument) => (
+                <Card key={doc.id} style={{ marginBottom: 12 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div>
+                      <div>{doc.template.title}</div>
+                      <div style={{ fontSize: 12, color: "#888" }}>
+                        {dayjs(doc.submittedAt).format("MMM D, YYYY h:mm A")}
+                      </div>
+                    </div>
+
+                    <Button type="link" onClick={() => setActiveDocument(doc)}>
+                      View
+                    </Button>
+                  </div>
+                </Card>
+              ))
+            ) : (
+              <div style={{ color: "#888" }}>No forms submitted</div>
+            )}
+          </div>
+
+          {/* NOTES */}
           <div style={{ marginTop: 24 }}>
             <h4>{t("appointments.notes.title")}</h4>
 
@@ -112,6 +181,7 @@ export default function AppointmentDetailsModal({
             )}
           </div>
 
+          {/* ADD NOTE */}
           {canAddNote && (
             <div style={{ marginTop: 16 }}>
               <Input.TextArea

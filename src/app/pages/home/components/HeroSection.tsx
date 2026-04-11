@@ -9,12 +9,15 @@ export default function HeroSection() {
 
   const [query, setQuery] = useState("");
   const [radius, setRadius] = useState(25);
+  const [businessType, setBusinessType] = useState<string | undefined>();
 
   const handleSearch = () => {
     if (!query) return;
 
     navigate(
-      `/demo/search?city=${encodeURIComponent(query)}&radius=${radius}`,
+      `/demo/search?city=${encodeURIComponent(query)}&radius=${radius}${
+        businessType ? `&businessType=${businessType}` : ""
+      }`,
     );
   };
 
@@ -35,6 +38,34 @@ export default function HeroSection() {
               placeholder={t("entry.hero.searchPlaceholder")}
               style={{ maxWidth: 320 }}
               onPressEnter={handleSearch}
+            />
+
+            <Select
+              allowClear
+              size="large"
+              value={businessType}
+              onChange={setBusinessType}
+              style={{ width: 220 }}
+              placeholder={t("search.businessTypePlaceholder")}
+              options={[
+                {
+                  value: "physical_therapy",
+                  label: t("businessTypes.physical_therapy"),
+                },
+                {
+                  value: "chiropractic",
+                  label: t("businessTypes.chiropractic"),
+                },
+                {
+                  value: "massage_therapy",
+                  label: t("businessTypes.massage_therapy"),
+                },
+                {
+                  value: "personal_training",
+                  label: t("businessTypes.personal_training"),
+                },
+                { value: "recovery", label: t("businessTypes.recovery") },
+              ]}
             />
 
             <Select
