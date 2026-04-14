@@ -1,58 +1,59 @@
 {
   "landing": {
     "hero": {
-      "title": "Outcome-Focused Practice Management for Cash Care Physical Therapy",
-      "subtitle": "Scheduling, booking, intake documentation, and analytics — built specifically for direct-to-patient clinics.",
+      "title": "Practice Management for Cash-Based Health & Performance Businesses",
+      "subtitle": "Scheduling, booking, intake documentation, and analytics — built for modern direct-to-client practices.",
+      "pitch": "From physical therapy to personal training and recovery studios — Sofron adapts to your practice.",
       "cta_primary": "Register Interest",
       "cta_secondary": "Launch Demo"
     },
     "problem": {
-      "label": "The Cash Care Reality",
-      "headline": "Running a Direct-to-Patient Clinic Shouldn’t Require Five Different Tools.",
-      "intro": "Cash care clinics operate differently — but most software wasn’t built with that in mind.",
+      "label": "The Cash-Based Reality",
+      "headline": "Running a Modern Practice Shouldn’t Require Five Different Tools.",
+      "intro": "Cash-based businesses operate differently — but most software wasn’t built with that in mind.",
       "items": [
         "Too many disconnected tools to manage scheduling, intake, and payments.",
         "Manual scheduling that leads to missed appointments and lost revenue.",
-        "Clunky intake workflows that frustrate patients.",
+        "Clunky intake workflows that frustrate clients.",
         "Limited insight into performance and growth.",
         "Software designed for insurance billing — not direct care."
       ]
     },
     "solution": {
       "label": "The Solution",
-      "headline": "One Unified Platform Built for Cash Care Clinics.",
-      "intro": "Sofron replaces disconnected tools with a streamlined system designed specifically for direct-to-patient practices.",
+      "headline": "One Unified Platform Built for Cash-Based Practices.",
+      "intro": "Sofron replaces disconnected tools with a streamlined system designed for direct-to-client businesses.",
       "features": [
         {
           "title": "Scheduling",
-          "description": "Flexible clinic scheduling built for independent practitioners."
+          "description": "Flexible scheduling built for independent practitioners and small teams."
         },
         {
           "title": "Booking",
-          "description": "Simple, patient-friendly booking designed to reduce no-shows."
+          "description": "Simple, client-friendly booking designed to reduce no-shows."
         },
         {
           "title": "Documentation",
-          "description": "Intake forms and documentation workflows tailored for cash care."
+          "description": "Intake forms and workflows tailored to modern service-based businesses."
         },
         {
           "title": "Analytics",
-          "description": "Clear operational visibility into performance and growth."
+          "description": "Clear visibility into performance, revenue, and growth."
         }
       ]
     },
     "howItWorks": {
       "label": "How It Works",
-      "headline": "Set Up. Accept Bookings. Run Your Practice.",
-      "intro": "Sofron is designed to get your clinic operational quickly — without complicated onboarding.",
+      "headline": "Set Up. Accept Bookings. Run Your Business.",
+      "intro": "Sofron is designed to get you operational quickly — without complicated onboarding.",
       "steps": [
         {
-          "title": "Set Up Your Clinic",
+          "title": "Set Up Your Business",
           "description": "Configure services, availability, pricing, and intake workflows in minutes."
         },
         {
-          "title": "Accept Patient Bookings",
-          "description": "Patients book seamlessly through a direct, easy-to-use scheduling interface."
+          "title": "Accept Client Bookings",
+          "description": "Clients book seamlessly through a simple, easy-to-use scheduling experience."
         },
         {
           "title": "Run and Optimize",
@@ -61,7 +62,7 @@
       ]
     },
     "cta": {
-      "headline": "Built for Clinics That Value Independence.",
+      "headline": "Built for Independent Practices.",
       "subtext": "Sofron is currently in pre-release. Explore the demo or register your interest to receive early updates.",
       "primary": "Register Interest",
       "secondary": "Launch Demo"
@@ -69,12 +70,12 @@
   },
   "whyCashCare": {
     "hero": {
-      "headline": "Why Cash Care Clinics Need Different Software.",
-      "subtext": "Cash care physical therapy operates on a different model — but most practice management tools weren’t built for it."
+      "headline": "Why Cash-Based Practices Need Different Software.",
+      "subtext": "Direct-to-client businesses operate differently — but most tools weren’t built for that model."
     },
     "whatIs": {
-      "label": "What Is Cash Care PT?",
-      "text": "Cash care physical therapy clinics operate without insurance billing. Patients pay directly for services, allowing clinics to focus on outcomes, transparency, and patient experience."
+      "label": "What Is a Cash-Based Practice?",
+      "text": "Cash-based practices operate without insurance billing. Clients pay directly for services, allowing businesses to focus on outcomes, transparency, and experience."
     },
     "traditional": {
       "label": "Why Traditional Software Falls Short",
@@ -86,36 +87,56 @@
       ]
     },
     "needs": {
-      "label": "What Cash Care Clinics Actually Need",
+      "label": "What Modern Practices Actually Need",
       "points": [
         "Simple, flexible scheduling.",
         "Clear pricing and booking experience.",
         "Streamlined digital intake.",
-        "Operational visibility without insurance complexity."
+        "Operational visibility without unnecessary complexity."
       ]
     }
   },
   "product": {
     "hero": {
-      "headline": "A Modular Platform for Independent Clinics.",
-      "subtext": "Use what you need. Expand as you grow. Sofron is designed to adapt to the way cash care clinics operate."
+      "headline": "A Modular Platform for Independent Practices.",
+      "subtext": "Use what you need. Expand as you grow. Sofron adapts to the way modern service-based businesses operate."
     },
     "features": [
       {
+        "key": "scheduling",
         "title": "Scheduling",
-        "description": "Flexible weekly scheduling, availability controls, and override management built for direct care models."
+        "description": "Set your availability once and let Sofron handle the rest — including multi-block days and overrides.",
+        "image": "/images/previews/scheduling_preview.png"
       },
       {
+        "key": "booking",
         "title": "Booking",
-        "description": "A simple, patient-first booking flow designed to reduce friction and no-shows."
+        "description": "A frictionless booking flow that clients actually complete — reducing no-shows.",
+        "image": "/images/previews/booking_preview.png"
       },
       {
+        "key": "documentation",
         "title": "Documentation",
-        "description": "Streamlined intake forms and digital documentation tailored to cash care workflows."
+        "description": "Collect intake forms before appointments so sessions start on time.",
+        "image": "/images/previews/documentation_preview.png"
       },
       {
+        "key": "analytics",
         "title": "Analytics",
-        "description": "Clear operational insight into appointments, performance, and growth metrics."
+        "description": "Track revenue, cancellations, and performance at a glance.",
+        "image": "/images/previews/analytics_preview.png"
+      },
+      {
+        "key": "appointments",
+        "title": "Appointments",
+        "description": "Manage upcoming and past appointments with powerful filters and quick actions.",
+        "image": "/images/previews/appointments_preview.png"
+      },
+      {
+        "key": "services",
+        "title": "Services",
+        "description": "Define services, pricing, and who can perform each one.",
+        "image": "/images/previews/services_preview.png"
       }
     ]
   },
@@ -148,18 +169,21 @@
       "error": "Something went wrong. Please try again."
     }
   },
-  "validation": {
-    "required": "This field is required.",
-    "email": "Please enter a valid email address."
-  },
   "nav": {
     "why": "Why Cash Care?",
     "product": "Product",
     "demo": "Demo",
-    "cta": "Register Interest"
+    "cta": "Register Interest",
+    "login": "Login",
+    "signup": "Sign Up",
+    "forClinics": "For Clinics",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "clientDashboard": "Client Dashboard",
+    "clinicDashboard": "Clinic Dashboard"
   },
   "footer": {
-    "tagline": "Outcome-focused clinic management software designed specifically for cash care physical therapy.",
+    "tagline": "Practice management software designed for cash-based health and performance businesses.",
     "product": "Product",
     "overview": "Overview",
     "demo": "Demo",
@@ -168,5 +192,961 @@
     "terms": "Terms",
     "privacy": "Privacy",
     "rights": "All rights reserved."
+  },
+  "validation": {
+    "required": "This field is required.",
+    "email": "Please enter a valid email address."
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "backToLogin": "Back to login",
+    "forgotPassword": {
+      "title": "Forgot your password?",
+      "subtitle": "Enter your email and we’ll send you a reset link.",
+      "success": "Password reset email sent. Check your inbox."
+    },
+
+    "resetPassword": {
+      "title": "Reset your password",
+      "subtitle": "Enter a new password below.",
+      "success": "Your password has been successfully updated."
+    },
+
+    "updateEmail": {
+      "title": "Update your email",
+      "subtitle": "Enter your new email address.",
+      "success": "Your email has been successfully updated."
+    },
+    "login": {
+      "forgotPassword": "Forgot Password",
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "noAccount": "Don’t have an account?",
+      "signUp": "Sign up",
+      "registerClinic": "Register as a Clinic",
+      "invalidEmail": "Enter a valid email address",
+      "requiredEmail": "Please enter your email",
+      "requiredPassword": "Please enter your password",
+      "loginFailed": "Incorrect email or password",
+      "orgInactive": "Your organization is no longer active. You have been redirected to client mode."
+    },
+    "clinicRegister": {
+      "title": "Create your clinic account",
+      "subtitle": "Admins create accounts. Staff will be invited later.",
+      "accountTypeLabel": "Account type",
+      "accountTypeClinic": "Clinic",
+      "accountTypeFreelance": "Freelance",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirm": "Confirm password",
+      "tosLabel": "I agree to the Terms of Service",
+      "submit": "Create account",
+      "alreadyHave": "Already have an account?",
+      "login": "Login",
+      "required": "This field is required",
+      "invalidEmail": "Enter a valid email address",
+      "passwordsNoMatch": "Passwords do not match",
+      "tosRequired": "You must agree to the Terms of Service",
+      "success": "Account created. Please check your email to verify your account."
+    },
+    "clientRegister": {
+      "title": "Create Your Account",
+      "subtitle": "Book appointments and manage your care",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirm": "Confirm Password",
+      "required": "This field is required",
+      "invalidEmail": "Enter a valid email",
+      "passwordsNoMatch": "Passwords do not match",
+      "tosLabel": "I agree to the Terms of Service",
+      "tosRequired": "You must accept the Terms",
+      "submit": "Sign Up",
+      "success": "Account created successfully. Check your email.",
+      "alreadyHave": "Already have an account?",
+      "login": "Login"
+    }
+  },
+  "appnav": {
+    "dashboard": "Dashboard",
+    "appointments": "Appointments",
+    "specialists": "Specialists",
+    "services": "Services",
+    "schedule": "Schedule",
+    "patients": "Patients",
+    "documents": "Documents",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "help": "Help",
+    "logout": "Logout"
+  },
+  "onboarding": {
+    "title": "Complete Clinic Setup",
+    "sections": {
+      "organizationDetails": "Organization Details",
+      "scheduling": "Scheduling Configuration",
+      "professional": "Professional Details",
+      "cancellation": "Cancellation Policy"
+    },
+    "fields": {
+      "clinicName": "Clinic Name",
+      "ein": "EIN",
+      "einHelp": "Format: 12-3456789",
+      "businessEmail": "Business Email",
+      "phone": "Business Phone",
+      "streetAddress": "Street Address",
+      "suite": "Suite / Unit",
+      "city": "City",
+      "state": "State",
+      "zipcode": "Zipcode",
+      "npi": "NPI Number"
+    },
+    "businessType": {
+      "label": "Business Type",
+      "helper": "This helps tailor your services and experience."
+    },
+    "scheduling": {
+      "label": "How should scheduling work?",
+      "description": "This determines whether scheduling is controlled at the clinic level or per specialist. You can change this later, but existing schedules will be cleared.",
+      "organization": "Organization Level — One shared schedule for the entire clinic",
+      "specialist": "Specialist Level — Each specialist manages their own schedule"
+    },
+    "validation": {
+      "ein": "EIN must be in format XX-XXXXXXX"
+    },
+    "cancellation": {
+      "scope": "Policy Scope",
+      "organizationWide": "Organization Wide",
+      "perService": "Per Service",
+      "noFee": "No Fee",
+      "percentage": "Percentage",
+      "flat": "Flat Fee",
+      "minHours": "Minimum Hours Before",
+      "feeType": "Fee Type",
+      "feePercentage": "Fee Percentage (%)",
+      "flatFee": "Flat Fee"
+    },
+    "actions": {
+      "complete": "Complete Setup"
+    }
+  },
+  "businessTypes": {
+    "physical_therapy": "Physical Therapy",
+    "chiropractic": "Chiropractic",
+    "massage_therapy": "Massage Therapy",
+    "personal_training": "Personal Training",
+    "recovery": "Recovery"
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{name}}",
+    "title": "Dashboard",
+    "subtitle": "Overview of today's clinic activity",
+
+    "stats": {
+      "appointmentsToday": "Appointments Today",
+      "checkedIn": "Checked In",
+      "noShows": "No-Shows",
+      "remaining_today": "Remaining Today"
+    },
+
+    "filters": {
+      "all": "All",
+      "scheduled": "Scheduled",
+      "checkedIn": "Checked In",
+      "noShow": "No Show",
+      "cancelled": "Cancelled",
+      "remaining": "Remaining"
+    },
+
+    "table": {
+      "time": "Time",
+      "patient": "Patient",
+      "service": "Service",
+      "specialist": "Specialist",
+      "status": "Status",
+      "actions": "Actions",
+      "empty": "No appointments scheduled for today."
+    },
+    "confirm": {
+      "checkIn": {
+        "title": "Check in client?",
+        "content": "This will mark the appointment as checked in."
+      },
+      "noShow": {
+        "title": "Mark as no-show?",
+        "content": "This will mark the appointment as a no-show. This action can be reversed."
+      },
+      "cancel": {
+        "title": "Cancel appointment?",
+        "content": "This will cancel the appointment for today."
+      }
+    },
+
+    "actions": {
+      "checkIn": "Check In",
+      "noShow": "Mark No-Show",
+      "cancel": "Cancel"
+    },
+    "messages": {
+      "loadError": "Failed to load today's appointments",
+      "checkedInSuccess": "Client checked in successfully",
+      "noShowSuccess": "Appointment marked as no-show",
+      "actionError": "Failed to update appointment"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "checked_in": "Checked In",
+      "no_show": "No-Show",
+      "cancelled": "Cancelled"
+    },
+    "view": {
+      "mine": "View My Appointments",
+      "all": "View All Appointments"
+    }
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Manage your clinic's offerings",
+    "create": "Create Service",
+    "edit": "Edit Service",
+    "featured": "Featured",
+    "unfeatured": "Unfeatured",
+    "feature": "Feature",
+    "unfeature": "Unfeature",
+    "deleteConfirmTitle": "Delete Service",
+    "deleteConfirmMessage": "Are you sure you want to delete \"{{name}}\"?",
+    "deleteSuccess": "Service deleted",
+    "featureSuccess": "Service updated successfully",
+    "table": {
+      "name": "Name",
+      "category": "Category",
+      "price": "Price",
+      "duration": "Duration",
+      "featured": "Featured"
+    },
+    "form": {
+      "name": "Service Name",
+      "description": "Description",
+      "price": "Price",
+      "duration": "Duration (minutes)",
+      "category": "Category",
+      "selectCategory": "Select category",
+      "other": "Other",
+      "otherCategory": "Custom Category",
+      "cancellationPolicy": "Cancellation Policy",
+      "minHoursBefore": "Min. Hours Before Cancellation",
+      "feeType": "Fee Type",
+      "none": "None",
+      "feePercentage": "Fee Percentage (%)",
+      "flatFee": "Flat Fee",
+      "durationMinutes": "Duration (minutes)"
+    },
+    "specialists": {
+      "title": "Manage Specialists",
+      "description": "Select which specialists can perform this service",
+      "updated": "Specialists updated successfully"
+    },
+    "actions": { "manageSpecialists": "Manage Specialists" }
+  },
+  "schedule": {
+    "title": "Scheduling",
+    "subtitle": "Manage your weekly availability and overrides",
+
+    "tabs": {
+      "availability": "Availability",
+      "overrides": "Overrides"
+    },
+
+    "actions": {
+      "setAvailability": "Set Availability",
+      "editAvailability": "Edit Availability",
+      "createOverride": "Create Override"
+    },
+
+    "empty": {
+      "noAvailability": "No availability set yet.",
+      "noOverrides": "No overrides created yet."
+    },
+
+    "overrides": {
+      "deleteTitle": "Delete Override",
+      "deleteConfirm": "Are you sure you want to delete this override?",
+      "modalTitle": "Create Override",
+      "reasonPlaceholder": "Reason (optional)",
+      "errors": {
+        "required": "Date and time range are required.",
+        "invalidTime": "Start time must be before end time."
+      },
+      "types": {
+        "available": "Available",
+        "unavailable": "Unavailable"
+      },
+      "table": {
+        "date": "Date",
+        "timeRange": "Time Range",
+        "type": "Type",
+        "reason": "Reason"
+      }
+    },
+    "availability": {
+      "modalTitle": "Set Weekly Availability",
+      "addTimeBlock": "Add Time Block",
+      "errors": {
+        "missingTime": "All time blocks must have start and end times.",
+        "invalidOrder": "Start time must be before end time.",
+        "overlap": "Time blocks on {{day}} overlap."
+      },
+      "table": {
+        "day": "Day",
+        "availability": "Availability",
+        "unavailable": "Unavailable"
+      }
+    },
+
+    "messages": {
+      "loadScheduleError": "Failed to load schedule",
+      "loadOverridesError": "Failed to load overrides",
+      "saveError": "Failed to save schedule",
+      "overrideCreated": "Override created",
+      "overrideDeleted": "Override deleted",
+      "createOverrideError": "Failed to create override",
+      "deleteOverrideError": "Failed to delete override"
+    }
+  },
+  "appointments": {
+    "title": "Appointments",
+    "reschedule": {
+      "title": "Reschedule Appointment",
+      "fields": {
+        "date": "New Date",
+        "time": "New Time"
+      },
+      "messages": {
+        "success": "Appointment rescheduled successfully.",
+        "failed": "Failed to reschedule appointment.",
+        "availabilityFailed": "Failed to load availability.",
+        "timeRequired": "Please select a new time."
+      }
+    },
+    "create": {
+      "title": "Create Appointment",
+      "clientType": "Client Type",
+      "submit": "Submit",
+      "clientTypeOptions": {
+        "existing": "Existing Client",
+        "newUser": "Create New Client",
+        "guest": "Guest"
+      },
+      "fields": {
+        "selectClient": "Select Client",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "service": "Service",
+        "specialist": "Specialist",
+        "date": "Date",
+        "time": "Time"
+      },
+      "messages": {
+        "availabilityFailed": "Unable to load available times.",
+        "timeRequired": "Please select a time slot.",
+        "servicesFailed": "Failed to load services.",
+        "specialistsFailed": "Failed to load specialists.",
+        "patientsFailed": "Failed to load patients.",
+        "success": "Appointment successfully created."
+      }
+    },
+    "filters": {
+      "viewAll": "All Appointments",
+      "viewMine": "My Appointments",
+      "dateRange": "Date Range",
+      "status": "Status",
+      "search": "Search client..."
+    },
+    "columns": {
+      "date": "Date",
+      "time": "Time",
+      "client": "Client",
+      "service": "Service",
+      "specialist": "Specialist",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "actions": {
+      "view": "View",
+      "reschedule": "Reschedule",
+      "cancel": "Cancel",
+      "checkin": "Check In",
+      "noshow": "Mark No-Show",
+      "addNote": "Add Note",
+      "create": "Create Appointment"
+    },
+    "status": {
+      "Tentative": "Tentative",
+      "Confirmed": "Confirmed",
+      "Scheduled": "Scheduled",
+      "Completed": "Completed",
+      "Checked-In": "Checked In",
+      "Cancelled": "Cancelled",
+      "No-Show": "No Show",
+      "Rescheduled": "Rescheduled"
+    },
+    "messages": {
+      "checkedIn": "Client checked in successfully",
+      "cancelled": "Appointment cancelled successfully",
+      "noShow": "Marked as no-show",
+      "actionFailed": "Action failed",
+      "success": "Appointment created successfully.",
+      "failed": "Failed to create appointment."
+    },
+    "confirmations": {
+      "cancelTitle": "Cancel Appointment?",
+      "cancelContent": "This appointment will be cancelled and the client may be notified.",
+      "noShowTitle": "Mark as No-Show?",
+      "noShowContent": "This will mark the appointment as a no-show.",
+      "checkInTitle": "Check In Client?",
+      "checkInContent": "Confirm that the client has arrived."
+    },
+    "details": {
+      "title": "Appointment Details"
+    },
+
+    "notes": {
+      "title": "Add Notes",
+      "add": "Add Note",
+      "added": "Note added successfully.",
+      "empty": "No notes have been added for this appointment.",
+      "placeholder": "Enter appointment notes..."
+    }
+  },
+  "analytics": {
+    "title": "Analytics",
+    "errors": {
+      "fetchFailed": "Failed to load analytics data."
+    },
+    "ranges": {
+      "all": "All Time",
+      "last7": "Last 7 Days",
+      "last30": "Last 30 Days",
+      "last90": "Last 90 Days",
+      "ytd": "Year to Date"
+    },
+    "kpis": {
+      "totalAppointments": "Total Appointments",
+      "totalRevenue": "Total Revenue",
+      "utilizationRate": "Utilization Rate",
+      "newPatients": "New Patients"
+    },
+    "tabs": {
+      "appointments": "Appointments",
+      "revenue": "Revenue",
+      "scheduling": "Scheduling",
+      "demographics": "Demographics",
+      "services": "Services"
+    },
+    "sections": {
+      "appointmentOutcomes": "Appointment Outcomes",
+      "revenueByService": "Revenue by Service",
+      "ageDistribution": "Age Distribution",
+      "genderDistribution": "Gender Distribution",
+      "activityDistribution": "Activity Level",
+      "mostBookedServices": "Most Booked Services",
+      "scheduleUtilization": "Schedule Utilization"
+    },
+    "appointments": {
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "noShow": "No Show",
+      "rescheduled": "Rescheduled"
+    },
+    "services": {
+      "service": "Service",
+      "bookings": "Bookings",
+      "mostBooked": "Most Booked Services",
+      "highestRevenue": "Highest Revenue Services",
+      "mostCancelled": "Most Cancelled Services",
+      "revenueLost": "Revenue Lost From Cancellations"
+    },
+    "demographics": {
+      "ageDistribution": "Age Distribution",
+      "genderDistribution": "Gender Distribution",
+      "activityLevel": "Activity Level",
+      "visits": "Number of Visits"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": "Manage intake forms and templates",
+    "create": "Create Template",
+    "table": {
+      "title": "Title",
+      "services": "Services",
+      "status": "Status",
+      "updated": "Updated",
+      "actions": "Actions",
+      "noServices": "No services assigned"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "activate": "Activate",
+      "deactivate": "Deactivate"
+    },
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "services": "Services"
+    },
+    "messages": {
+      "created": "Document created",
+      "updated": "Document updated"
+    },
+    "builder": {
+      "title": "Form Builder",
+      "addField": "Add Field",
+      "text": "Text",
+      "textarea": "Textarea",
+      "select": "Select",
+      "checkbox": "Checkbox",
+      "empty": "Add fields to start building your form"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark All Read",
+    "clearAll": "Clear All",
+    "markSelectedRead": "Mark Selected Read",
+    "deleteSelected": "Delete Selected",
+    "empty": "You're all caught up",
+    "columns": {
+      "status": "Status",
+      "title": "Title",
+      "message": "Message",
+      "date": "Date",
+      "actions": "Actions"
+    },
+    "status": {
+      "read": "Read",
+      "unread": "Unread"
+    },
+    "actions": {
+      "markRead": "Mark Read",
+      "delete": "Delete",
+      "viewAll": "View All"
+    }
+  },
+  "patients": {
+    "title": "Patients",
+    "searchPlaceholder": "Search patients by name or email",
+    "drawer": {
+      "title": "Patient Details"
+    },
+    "table": {
+      "patient": "Patient",
+      "phone": "Phone",
+      "gender": "Gender",
+      "pronouns": "Pronouns",
+      "preferredCommunication": "Preferred Communication",
+      "actions": "Actions"
+    },
+    "sections": {
+      "personalInfo": "Personal Information",
+      "address": "Address",
+      "emergencyContact": "Emergency Contact",
+      "medicalInfo": "Medical Information",
+      "quickActions": "Quick Actions"
+    },
+    "fields": {
+      "dateOfBirth": "Date of Birth",
+      "occupation": "Occupation",
+      "gender": "Gender",
+      "pronouns": "Pronouns",
+      "preferredCommunication": "Preferred Communication",
+      "referralSource": "Referral Source",
+      "address": "Address",
+      "contactName": "Name",
+      "relationship": "Relationship",
+      "contactPhone": "Phone",
+      "contactEmail": "Email",
+      "activityLevel": "Activity Level",
+      "medicalNotes": "Medical Notes"
+    },
+    "actions": {
+      "view": "View",
+      "manage": "Manage",
+      "bookAppointment": "Book Appointment",
+      "viewAppointments": "View Appointments"
+    },
+    "empty": {
+      "default": "No patients found yet.",
+      "search": "No patients matched your search.",
+      "detail": "No patient details found.",
+      "emergencyContact": "No emergency contact on file."
+    },
+    "messages": {
+      "loadError": "Unable to load patients.",
+      "detailLoadError": "Unable to load patient details."
+    }
+  },
+  "settings": {
+    "orgInfo": "Organization Settings",
+    "profile": "Profile",
+    "notifications": "Notifications",
+    "organization": "Organization",
+    "profileInfo": "Profile Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone",
+    "emailSection": "Email",
+    "changeEmail": "Change Email",
+    "security": "Security",
+    "resetPassword": "Send Password Reset Email",
+    "notificationsTitle": "Email Notifications",
+    "notificationsDescription": "Manage which emails you receive from Sofron.",
+    "notificationEmails": "Notification Emails",
+    "notificationEmailsDesc": "Receive emails about appointments, updates, and activity.",
+    "marketingEmails": "Marketing Emails",
+    "marketingEmailsDesc": "Receive product updates, tips, and promotional content.",
+    "orgName": "Organization Name",
+    "businessEmail": "Business Email",
+    "website": "Website",
+    "logoUrl": "Logo",
+    "streetAddress": "Street Address",
+    "city": "City",
+    "state": "State",
+    "zipcode": "Postal Code",
+    "cancellationPolicy": "Cancellation Policy",
+    "minHours": "Minimum Hours",
+    "feePercentage": "Fee Percentage (%)",
+    "flatFee": "Flat Fee",
+    "dangerZone": "Danger Zone",
+    "deactivateWarning": "Proceeding with this will deactivate your organization. You will need to contact administration to reactivate your business",
+    "deactivateOrg": "Deactivate Organization",
+    "confirmDeactivateTitle": "Deactivate Organization?",
+    "confirmDeactivate": "Deactivate",
+    "schedulingMode": {
+      "title": "Scheduling Mode",
+      "description": "Choose how availability is managed across your clinic.",
+      "organization": "Organization-wide schedule",
+      "specialist": "Per-specialist schedules",
+      "confirmTitle": "Change scheduling mode?",
+      "confirmDescription": "This will remove all existing schedules. You will need to set up availability again before accepting bookings.",
+      "confirm": "Change Mode",
+      "updated": "Scheduling mode updated"
+    }
+  },
+  "orgDeactivated": {
+    "title": "Organization Deactivated",
+    "description": "This organization is no longer active. Please contact Sofron support if you believe this is a mistake."
+  },
+  "entry": {
+    "hero": {
+      "title": "Find and book care without the hassle",
+      "subtitle": "Search cash-pay clinics near you, compare services, and book instantly.",
+      "searchPlaceholder": "Enter city, state, or zip code",
+      "searchButton": "Search",
+      "visualPlaceholder": "Booking UI preview"
+    },
+    "problem": {
+      "label": "The Problem",
+      "title": "Finding care shouldn’t be this hard",
+      "subtitle": "Patients struggle to find and book quality care without jumping through hoops.",
+      "items": [
+        "Endless searching with no clear pricing",
+        "Confusing booking systems and availability",
+        "Insurance-first systems that slow everything down",
+        "No easy way to compare providers"
+      ]
+    },
+    "solution": {
+      "label": "The Solution",
+      "title": "A simpler way to book care",
+      "items": [
+        {
+          "title": "Search nearby clinics",
+          "description": "Find cash-pay providers near you instantly with accurate location search."
+        },
+        {
+          "title": "Transparent services",
+          "description": "See exactly what each clinic offers with clear pricing and descriptions."
+        },
+        {
+          "title": "Real-time booking",
+          "description": "Book appointments instantly without back-and-forth emails or calls."
+        },
+        {
+          "title": "Built for direct care",
+          "description": "Designed specifically for cash-based practices, not insurance workflows."
+        }
+      ]
+    },
+    "how": {
+      "label": "How It Works",
+      "title": "Book care in minutes",
+      "items": [
+        {
+          "title": "Search",
+          "description": "Enter your location to find clinics near you."
+        },
+        {
+          "title": "Compare",
+          "description": "Browse services, availability, and providers."
+        },
+        {
+          "title": "Book",
+          "description": "Schedule instantly with no friction."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to find your next appointment?",
+      "subtitle": "Search clinics near you or join Sofron to grow your practice.",
+      "primary": "Search Clinics",
+      "secondary": "For Clinics"
+    }
+  },
+  "booking": {
+    "steps": {
+      "service": "Service",
+      "specialist": "Specialist",
+      "datetime": "Date & Time",
+      "details": "Details",
+      "summary": "Summary"
+    },
+    "header": {
+      "addressSeparator": "•"
+    },
+    "service": {
+      "title": "Select a service",
+      "featured": "Featured",
+      "duration": "{{duration}} min",
+      "price": "{{price}}"
+    },
+    "specialist": {
+      "title": "Select a specialist",
+      "noSpecialists": "No specialists available"
+    },
+    "datetime": {
+      "title": "Select Date",
+      "availableTimes": "Available Times",
+      "noAvailability": "No availability for selected date"
+    },
+    "details": {
+      "title": "Additional Details (Optional)",
+      "placeholder": "Add any notes for your provider...",
+      "firstVisit": "First time visit?",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "summary": {
+      "title": "Your Appointment",
+      "confirm": "Confirm Appointment",
+      "service": "Service",
+      "specialist": "Specialist",
+      "date": "Date",
+      "time": "Time",
+      "duration": "Duration",
+      "price": "Price"
+    },
+    "actions": {
+      "next": "Next",
+      "back": "Back",
+      "book": "Book Now"
+    },
+    "messages": {
+      "loadServicesError": "Unable to load services.",
+      "loadSpecialistsError": "Unable to load specialists.",
+      "loadAvailabilityError": "Unable to load availability.",
+      "bookingSuccess": "Appointment booked successfully.",
+      "bookingError": "Unable to book appointment.",
+      "orgNotFound": "Organization not found"
+    },
+    "confirmed": {
+      "title": "Appointment Confirmed",
+      "subtitle": "Your appointment has been successfully booked.",
+      "service": "Service",
+      "date": "Date",
+      "time": "Time",
+      "clinic": "Clinic",
+      "note": "A confirmation email has been sent with your appointment details.",
+      "done": "Done",
+      "errorTitle": "Something went wrong",
+      "goHome": "Go home"
+    }
+  },
+  "clientDashboard": {
+    "title": "My Dashboard",
+    "subtitle": "Manage your appointments, forms, and activity in one place.",
+    "noUpcoming": "You don’t have any upcoming appointments.",
+    "noPast": "You don’t have any past appointments yet.",
+    "tabs": {
+      "overview": "Overview",
+      "appointments": "Appointments",
+      "favorites": "Favorites",
+      "reviews": "Reviews",
+      "settings": "Settings"
+    },
+    "favorites": {
+      "title": "Favorite Clinics",
+      "empty": "No favorite clinics yet. Start exploring to save your go-to providers.",
+      "subtitle": "Quick access to clinics you trust"
+    },
+    "settings": {
+      "title": "Settings",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone",
+      "security": "Security",
+      "changeEmail": "Change Email",
+      "resetPassword": "Reset Password",
+
+      "account": "Account",
+      "personal": "Personal Information",
+      "address": "Address",
+      "medical": "Medical Information",
+
+      "dob": "Date of Birth",
+      "gender": "Gender",
+      "pronouns": "Pronouns",
+      "occupation": "Occupation",
+      "activityLevel": "Activity Level",
+
+      "street": "Street Address",
+      "city": "City",
+      "state": "State",
+      "zipcode": "Zip Code",
+
+      "medicalNotes": "Medical Notes",
+      "referral": "How did you hear about us?",
+
+      "updated": "Profile updated successfully",
+      "emailSent": "Email change request sent",
+      "passwordSent": "Password reset email sent"
+    },
+
+    "table": {
+      "service": "Service",
+      "organization": "Clinic",
+      "specialist": "Provider",
+      "date": "Date",
+      "time": "Time",
+      "status": "Status",
+      "actions": "Actions",
+      "requiredForm": "Required Forms"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "no-show": "No Show",
+      "rescheduled": "Rescheduled",
+      "confirmed": "Confirmed"
+    },
+    "overview": {
+      "nextAppointment": "Next Appointment",
+      "noUpcoming": "You have no upcoming appointments.",
+      "quickActions": "Quick Actions"
+    },
+    "sections": {
+      "upcoming": "Upcoming Appointment",
+      "recent": "Recent Clinics",
+      "favorites": "Your Favorites",
+      "pastAppointments": "Past Appointments"
+    },
+    "actions": {
+      "bookAgain": "Book Again",
+      "leaveReview": "Leave Review",
+      "removeFavorite": "Remove",
+      "viewDocuments": "View Documents",
+      "findClinic": "Find a Clinic",
+      "viewAppointments": "View Appointments",
+      "reschedule": "Reschedule",
+      "cancel": "Cancel",
+      "view": "View",
+      "book": "Book",
+      "remove": "Remove",
+      "viewClinic": "View Clinic"
+    },
+    "messages": {
+      "cancelSuccess": "Appointment cancelled successfully",
+      "cancelError": "Failed to cancel appointment",
+      "removedFavorite": "Removed from favorites",
+      "error": "Something went wrong"
+    },
+
+    "reviews": {
+      "title": "Leave a Review",
+      "ratingRequired": "Please select a star rating.",
+      "empty": "No appointments available for review.",
+      "leaveReview": "Leave Review",
+      "service": "Service",
+      "clinic": "Clinic",
+      "time": "Time",
+      "modalTitle": "Write a Review",
+      "optionalText": "Share your experience (optional)",
+      "success": "Review submitted successfully",
+      "comingSoon": "Reviews coming soon",
+      "yourReviews": "Your Reviews",
+      "editTitle": "Edit Review",
+      "updated": "Review updated",
+      "deleted": "Review deleted",
+      "deleteConfirmTitle": "Delete review?",
+      "deleteConfirmDesc": "This action cannot be undone."
+    },
+    "confirmCancelTitle": "Cancel Appointment",
+    "confirmCancelMessage": "Are you sure you want to cancel this appointment?",
+    "branding": {
+      "portal": "Client Portal"
+    }
+  },
+  "search": {
+    "businessTypePlaceholder": "Select service type",
+    "resultsHeading": "Results near \"{{city}}\" ({{radius}} miles) {{type}}"
+  },
+  "common": {
+    "home": "Home",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "save": "Save",
+    "saved": "Changes saved successfully",
+    "error": "Something went wrong",
+    "cancel": "Cancel",
+    "close": "Close",
+    "feature": "Feature",
+    "unfeature": "Unfeature",
+    "notAvailable": "Not available",
+    "loading": "Loading...",
+    "logout": "Logout",
+    "remove": "Remove",
+    "submit": "Submit",
+    "search": "Search",
+    "inactive": "Inactive",
+    "active": "Active",
+    "days": {
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Page not found",
+      "description": "The page you’re looking for doesn’t exist or may have been moved.",
+      "cta": "Go to home"
+    }
   }
 }
