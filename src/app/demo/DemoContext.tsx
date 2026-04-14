@@ -28,10 +28,13 @@ export interface DemoContextType {
   loading: boolean;
   users: DemoUsers | null;
   role: Role | null;
+  demoPublicId: string | null;
   mode: "guided" | "free" | null;
   setRole: (role: Role) => void;
   setMode: (mode: "guided" | "free") => void;
   loginAs: (role: Role) => Promise<void>;
+  tabOverride: string | null;
+  setTabOverride: (tab: string | null) => void;
 }
 
 export const DemoContext = createContext<DemoContextType | null>(null);

@@ -6,7 +6,14 @@ export default function Product() {
 
   const features = t("product.features", {
     returnObjects: true,
-  }) as { title: string; description: string }[];
+  }) as {
+    key: string;
+    title: string;
+    description: string;
+    image: string;
+  }[];
+
+  console.log(features);
 
   return (
     <MarketingLayout>
@@ -34,18 +41,12 @@ export default function Product() {
             </p>
           </div>
 
-          <div className="card" style={{ minHeight: "320px" }}>
-            <div
-              style={{
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "var(--color-text-muted)",
-              }}
-            >
-              Product Overview Placeholder
-            </div>
+          <div className="card product-preview-card">
+            <img
+              src="/images/previews/product_preview.png"
+              alt="Sofron dashboard preview"
+              className="product-preview-image"
+            />
           </div>
         </div>
       </section>
@@ -66,10 +67,12 @@ export default function Product() {
               </div>
 
               {/* Placeholder Visual */}
-              <div className="feature-visual card">
-                <div className="placeholder-content">
-                  {feature.title} Preview Placeholder
-                </div>
+              <div className="feature-visual card product-preview-card">
+                <img
+                  src={feature.image}
+                  alt={`${feature.title} preview`}
+                  className="product-preview-image"
+                />
               </div>
             </div>
           </div>

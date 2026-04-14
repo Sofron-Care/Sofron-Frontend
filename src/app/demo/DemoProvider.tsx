@@ -11,7 +11,8 @@ export const DemoProvider = ({ children }: { children: React.ReactNode }) => {
   const [users, setUsers] = useState<DemoUsers | null>(null);
   const [role, setRole] = useState<Role | null>(null);
   const [mode, setMode] = useState<"guided" | "free" | null>(null);
-
+  const [tabOverride, setTabOverride] = useState<string | null>(null);
+  const demoPublicId = users?.clinicAdmin?.organization?.publicId || null;
   useEffect(() => {
     const path = window.location.pathname;
 
@@ -25,6 +26,7 @@ export const DemoProvider = ({ children }: { children: React.ReactNode }) => {
     const fetchDemoData = async () => {
       try {
         const res = await api.get("/demo/data");
+
         setUsers(res.data.data);
       } catch (err) {
         console.error("Failed to fetch demo data", err);
@@ -53,9 +55,12 @@ export const DemoProvider = ({ children }: { children: React.ReactNode }) => {
         users,
         role,
         mode,
+        demoPublicId,
         setRole,
         setMode,
         loginAs,
+        tabOverride,
+        setTabOverride,
       }}
     >
       {children}

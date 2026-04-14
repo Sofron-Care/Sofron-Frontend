@@ -17,7 +17,7 @@ export type InterestPayload = {
 };
 
 export async function postInterest(data: InterestPayload) {
-  const response = await fetch(`${API_BASE_URL}/interest`, {
+  const response = await fetch(`${API_BASE_URL}/demo`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

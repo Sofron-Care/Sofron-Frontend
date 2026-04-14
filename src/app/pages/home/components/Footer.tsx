@@ -29,9 +29,9 @@ export default function Footer() {
             <div className="footer-column">
               <div className="footer-title">{t("footer.company")}</div>
 
-              <Link className="nav-link" to="/contact">
+              {/* <Link className="nav-link" to="/contact">
                 {t("footer.contact")}
-              </Link>
+              </Link> */}
               <Link className="nav-link" to="/terms">
                 {t("footer.terms")}
               </Link>

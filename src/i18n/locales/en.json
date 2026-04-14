@@ -103,20 +103,40 @@
     },
     "features": [
       {
+        "key": "scheduling",
         "title": "Scheduling",
-        "description": "Flexible availability, scheduling rules, and overrides built for modern service businesses."
+        "description": "Set your availability once and let Sofron handle the rest — including multi-block days and overrides.",
+        "image": "/images/previews/scheduling_preview.png"
       },
       {
+        "key": "booking",
         "title": "Booking",
-        "description": "A simple, client-first booking flow designed to reduce friction and no-shows."
+        "description": "A frictionless booking flow that clients actually complete — reducing no-shows.",
+        "image": "/images/previews/booking_preview.png"
       },
       {
+        "key": "documentation",
         "title": "Documentation",
-        "description": "Streamlined intake forms and digital workflows tailored to your services."
+        "description": "Collect intake forms before appointments so sessions start on time.",
+        "image": "/images/previews/documentation_preview.png"
       },
       {
+        "key": "analytics",
         "title": "Analytics",
-        "description": "Clear insight into appointments, performance, and growth."
+        "description": "Track revenue, cancellations, and performance at a glance.",
+        "image": "/images/previews/analytics_preview.png"
+      },
+      {
+        "key": "appointments",
+        "title": "Appointments",
+        "description": "Manage upcoming and past appointments with powerful filters and quick actions.",
+        "image": "/images/previews/appointments_preview.png"
+      },
+      {
+        "key": "services",
+        "title": "Services",
+        "description": "Define services, pricing, and who can perform each one.",
+        "image": "/images/previews/services_preview.png"
       }
     ]
   },
@@ -706,7 +726,7 @@
     "clearAll": "Clear All",
     "markSelectedRead": "Mark Selected Read",
     "deleteSelected": "Delete Selected",
-    "empty": "You're all caught up 🎉",
+    "empty": "You're all caught up",
     "columns": {
       "status": "Status",
       "title": "Title",
@@ -1028,7 +1048,8 @@
       "completed": "Completed",
       "cancelled": "Cancelled",
       "no-show": "No Show",
-      "rescheduled": "Rescheduled"
+      "rescheduled": "Rescheduled",
+      "confirmed": "Confirmed"
     },
     "overview": {
       "nextAppointment": "Next Appointment",

@@ -72,6 +72,7 @@ export default function SearchResultsPage() {
           <div className="search-bar search-bar--results">
             <div className="search-bar-inner">
               <Input
+                className="search-bar__input"
                 value={cityInput}
                 onChange={(e) => setCityInput(e.target.value)}
                 placeholder="City, state, or zip"
@@ -80,10 +81,10 @@ export default function SearchResultsPage() {
 
               <Select
                 allowClear
+                className="search-bar__select search-bar__select--type"
                 value={businessType || undefined}
                 onChange={(value) => setBusinessType(value)}
                 size="large"
-                style={{ width: 220 }}
                 placeholder={t("search.businessTypePlaceholder")}
                 options={[
                   {
@@ -107,10 +108,10 @@ export default function SearchResultsPage() {
               />
 
               <Select
+                className="search-bar__select search-bar__select--radius"
                 value={radiusInput}
                 onChange={(value) => setRadiusInput(value)}
                 size="large"
-                style={{ width: 120 }}
                 options={[
                   { value: "5", label: "5 mi" },
                   { value: "10", label: "10 mi" },
@@ -120,6 +121,7 @@ export default function SearchResultsPage() {
               />
 
               <Button
+                className="search-bar__button"
                 type="primary"
                 size="large"
                 onClick={() => {

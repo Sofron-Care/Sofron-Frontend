@@ -33,19 +33,12 @@ export default function HeroSection() {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="card" style={{ minHeight: "320px" }}>
-          {/* Placeholder for product mockup */}
-          <div
-            style={{
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "var(--color-text-muted)",
-            }}
-          >
-            Product Preview Placeholder
-          </div>
+        <div className="card product-preview-card">
+          <img
+            src="/images/previews/product_preview.png"
+            alt="Sofron dashboard preview"
+            className="product-preview-image"
+          />
         </div>
       </div>
     </section>

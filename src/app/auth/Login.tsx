@@ -34,7 +34,7 @@ export default function Login() {
         {/* Logo (CLICKABLE) */}
         <div
           className="auth-logo auth-logo--clickable"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/demo")}
         >
           <img src="/images/brand/logo-teal.svg" alt="Sofron" />
         </div>

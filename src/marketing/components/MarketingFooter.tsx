@@ -64,9 +64,9 @@ export default function MarketingFooter() {
               <div
                 style={{ display: "flex", flexDirection: "column", gap: "8px" }}
               >
-                <Link className="nav-link" to="/contact">
+                {/* <Link className="nav-link" to="/contact">
                   {t("footer.contact")}
-                </Link>
+                </Link> */}
                 <Link className="nav-link" to="/terms">
                   {t("footer.terms")}
                 </Link>

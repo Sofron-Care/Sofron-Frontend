@@ -5,18 +5,43 @@ const api = axios.create({
   withCredentials: true,
 });
 
+api.interceptors.request.use((config) => {
+  const isDemo = window.location.pathname.startsWith("/demo");
+  const method = config.method?.toLowerCase();
+
+  // Allow auth routes
+  const allowedUrls = ["/auth/login", "/auth/refresh"];
+
+  const isAllowed = allowedUrls.some((url) => config.url?.includes(url));
+
+  if (
+    isDemo &&
+    ["post", "patch", "put", "delete"].includes(method || "") &&
+    !isAllowed
+  ) {
+    console.warn("🚫 Demo mode blocked:", config.url);
+
+    return Promise.reject({
+      isDemoBlocked: true,
+      message: "Demo mode: changes are disabled.",
+    });
+  }
+
+  return config;
+});
+
 // --- RESPONSE INTERCEPTOR ---
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalRequest = error.config;
+    const originalRequest = error.config || {};
 
     // If 401 and not already retrying
     if (
       error.response?.status === 401 &&
       !originalRequest._retry &&
-      !originalRequest.url.includes("/auth/login") &&
-      !originalRequest.url.includes("/auth/refresh")
+      !originalRequest.url?.includes("/auth/login") &&
+      !originalRequest.url?.includes("/auth/refresh")
     ) {
       originalRequest._retry = true;
 

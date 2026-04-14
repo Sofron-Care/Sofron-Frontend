@@ -28,7 +28,8 @@ import RegisterClient from "./app/auth/RegisterClient";
 import ForgotPassword from "./app/pages/general/ForgotPassword";
 import ResetPassword from "./app/pages/general/ResetPassword";
 import UpdateEmail from "./app/pages/general/UpdateEmail";
-
+import Terms from "./app/pages/general/Terms";
+import Privacy from "./app/pages/general/Privacy";
 import DemoLayout from "./app/demo/DemoLayout";
 
 function App() {
@@ -41,7 +42,8 @@ function App() {
       <Route path="/why-cash-care" element={<WhyCashCare />} />
       <Route path="/product" element={<Product />} />
       <Route path="/contact" element={<Interest />} />
-
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
       {/* Demo Wrapper Route */}
       <Route element={<DemoLayout />}>
         {/* Demo Public */}

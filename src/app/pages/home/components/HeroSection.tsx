@@ -2,6 +2,7 @@ import { Button, Input, Select } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { useDemo } from "../../../demo/useDemo";
 
 export default function HeroSection() {
   const { t } = useTranslation();
@@ -10,9 +11,17 @@ export default function HeroSection() {
   const [query, setQuery] = useState("");
   const [radius, setRadius] = useState(25);
   const [businessType, setBusinessType] = useState<string | undefined>();
+  const { isDemo } = useDemo();
 
   const handleSearch = () => {
-    if (!query) return;
+    if (isDemo) {
+      navigate(
+        `/demo/search?city=Boston&radius=25${
+          businessType ? `&businessType=${businessType}` : ""
+        }`,
+      );
+      return;
+    }
 
     navigate(
       `/demo/search?city=${encodeURIComponent(query)}&radius=${radius}${
@@ -33,8 +42,11 @@ export default function HeroSection() {
           <div className="hero-cta-group">
             <Input
               size="large"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              value={isDemo ? "Boston" : query}
+              disabled={isDemo}
+              onChange={(e) => {
+                if (!isDemo) setQuery(e.target.value);
+              }}
               placeholder={t("entry.hero.searchPlaceholder")}
               style={{ maxWidth: 320 }}
               onPressEnter={handleSearch}
@@ -90,7 +102,13 @@ export default function HeroSection() {
 
         {/* RIGHT */}
         <div>
-          <div className="card">{t("entry.hero.visualPlaceholder")}</div>
+          <div className="card product-preview-card">
+            <img
+              src="/images/previews/booking_preview.png"
+              alt="Sofron dashboard preview"
+              className="product-preview-image"
+            />
+          </div>
         </div>
       </div>
     </section>

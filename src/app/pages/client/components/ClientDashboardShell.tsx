@@ -3,12 +3,13 @@ import PageLayout from "../../../layout/PageLayout";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../auth/AuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import OverviewTab from "./../components/tabs/OverviewTab";
 import AppointmentsTab from "./../components/tabs/AppointmentsTab";
 import FavoritesTab from "./../components/tabs/FavoritesTab";
 import ReviewsTab from "./../components/tabs/ReviewsTab";
 import SettingsTab from "./../components/tabs/SettingsTab";
+import { useDemo } from "../../../demo/useDemo";
 
 function ClientDashboardShell() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -21,6 +22,14 @@ function ClientDashboardShell() {
 
     navigate("/demo");
   };
+
+  const { tabOverride } = useDemo();
+
+  useEffect(() => {
+    if (tabOverride) {
+      setActiveTab(tabOverride);
+    }
+  }, [tabOverride]);
 
   const items = [
     {
@@ -68,7 +77,7 @@ function ClientDashboardShell() {
         </div>
 
         <Space>
-          <Button type="text" onClick={() => navigate("/")}>
+          <Button type="text" onClick={() => navigate("/demo")}>
             {t("common.home")}
           </Button>
 
