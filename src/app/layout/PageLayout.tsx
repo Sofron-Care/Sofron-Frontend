@@ -9,7 +9,7 @@ interface PageLayoutProps {
   primaryAction?: ReactNode;
   secondaryActions?: ReactNode;
   children: ReactNode;
-  className?: string; // 👈 ADD THIS
+  className?: string; 
 }
 
 export default function PageLayout({
@@ -21,7 +21,7 @@ export default function PageLayout({
   className = "", // 👈 DEFAULT
 }: PageLayoutProps) {
   return (
-    <div className={`page-layout ${className}`}> {/* 👈 APPLY HERE */}
+    <div className={`page-layout ${className}`}> 
       {/* Header Row */}
       <div className="page-header">
         <div>
