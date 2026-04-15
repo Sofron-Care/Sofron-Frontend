@@ -16,6 +16,7 @@ export default function DemoEntryModal({
     <Modal open={open} footer={null} closable={false} centered>
       <h2>Explore Sofron</h2>
       <p>No signup required — jump right in.</p>
+      <p className="subtitle">Please Note: when selecting demo type please allow a few seconds for demo to launch.</p>
 
       <div style={{ marginTop: 20 }}>
         <h4>Guided Demo</h4>
