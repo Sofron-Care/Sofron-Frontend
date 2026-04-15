@@ -66,7 +66,6 @@ export default function CreateAppointmentModal({
   const [specialistsLoading, setSpecialistsLoading] = useState(false);
   const [patients, setPatients] = useState<any[]>([]);
   const [patientsLoading, setPatientsLoading] = useState(false);
-  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     if (!selectedServiceId || !selectedDate) {
@@ -118,6 +117,7 @@ export default function CreateAppointmentModal({
         setServices(res.data.data.services);
       } catch (err) {
         message.error(t("appointments.create.messages.servicesFailed"));
+        console.log(err);
       } finally {
         setServicesLoading(false);
       }
@@ -138,6 +138,7 @@ export default function CreateAppointmentModal({
         setSpecialists(onlySpecialists);
       } catch (err) {
         message.error(t("appointments.create.messages.specialistsFailed"));
+        console.log(err);
       } finally {
         setSpecialistsLoading(false);
       }
@@ -152,14 +153,13 @@ export default function CreateAppointmentModal({
         setPatients(res.data.data.patients);
       } catch (err) {
         message.error(t("appointments.create.messages.patientsFailed"));
+        console.log(err);
       } finally {
         setPatientsLoading(false);
       }
     };
 
-    Promise.all([fetchPatients(), fetchSpecialists(), fetchServices()]).then(
-      () => setDataLoaded(true),
-    );
+    Promise.all([fetchPatients(), fetchSpecialists(), fetchServices()]).then();
   }, [open]);
 
   const fetchAvailability = async () => {

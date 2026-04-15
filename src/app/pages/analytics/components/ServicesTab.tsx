@@ -9,17 +9,30 @@ export default function ServicesTab({ data = {} }: any) {
   const mostCancelled = data?.mostCancelled || [];
   const revenueLost = data?.revenueLost || [];
 
-  const renderList = (items: any[], labelKey: string, valueKey: string, isMoney = false) => (
+  const renderList = (
+    items: any[],
+    labelKey: string,
+    valueKey: string,
+    isMoney = false,
+  ) => (
     <List
       dataSource={items}
       renderItem={(item: any, index: number) => (
         <List.Item>
-          <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
             <span>
-              {index + 1}. {item.service_name}
+              {index + 1}. {item[labelKey]}
             </span>
             <strong>
-              {isMoney ? `$${Number(item[valueKey]).toFixed(2)}` : item[valueKey]}
+              {isMoney
+                ? `$${Number(item[valueKey]).toFixed(2)}`
+                : item[valueKey]}
             </strong>
           </div>
         </List.Item>

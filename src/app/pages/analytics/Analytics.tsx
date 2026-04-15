@@ -9,7 +9,6 @@ import AppointmentsTab from "./components/AppointmentsTab";
 import ServicesTab from "./components/ServicesTab";
 import RevenueTab from "./components/RevenueTab";
 import DemographicsTab from "./components/DemographicsTab";
-import SchedulingTab from "./components/SchedulingTab";
 
 export default function Analytics() {
   const { t } = useTranslation();
