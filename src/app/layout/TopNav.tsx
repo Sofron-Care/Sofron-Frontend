@@ -13,7 +13,7 @@ export default function TopNav() {
 
   const handleLogout = async () => {
     await logout();
-    navigate("/demo/login", { replace: true });
+    navigate("/demo", { replace: true });
   };
 
   return (
