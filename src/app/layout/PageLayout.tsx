@@ -18,7 +18,7 @@ export default function PageLayout({
   primaryAction,
   secondaryActions,
   children,
-  className = "", // 👈 DEFAULT
+  className = "",
 }: PageLayoutProps) {
   return (
     <div className={`page-layout ${className}`}> 

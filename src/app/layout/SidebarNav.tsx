@@ -3,7 +3,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { MenuProps } from "antd";
 
-export default function SidebarNav() {
+export default function SidebarNav({
+  onNavigate,
+}: {
+  onNavigate?: () => void;
+}) {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
@@ -21,7 +25,7 @@ export default function SidebarNav() {
     { key: "/demo/app/documents", label: t("appnav.documents") },
     { key: "/demo/app/analytics", label: t("appnav.analytics") },
     { type: "divider" },
-    {key: "/demo/app/notifications", label: t("appnav.notifications")},
+    { key: "/demo/app/notifications", label: t("appnav.notifications") },
     { key: "/demo/app/settings", label: t("appnav.settings") },
   ];
 
@@ -36,7 +40,10 @@ export default function SidebarNav() {
         mode="inline"
         selectedKeys={[location.pathname]}
         items={items}
-        onClick={({ key }) => navigate(key)}
+        onClick={({ key }) => {
+          navigate(key);
+          onNavigate?.();
+        }}
         style={{ borderRight: 0, flex: 1 }}
       />
     </div>
