@@ -10,7 +10,7 @@ api.interceptors.request.use((config) => {
   const method = config.method?.toLowerCase();
 
   // Allow auth routes
-  const allowedUrls = ["/auth/login", "/auth/refresh"];
+  const allowedUrls = ["/auth/login", "/auth/refresh", "/auth/logout"];
 
   const isAllowed = allowedUrls.some((url) => config.url?.includes(url));
 
