@@ -64,7 +64,7 @@ function ClientDashboardShell() {
       <div className="client-dashboard-topbar">
         <div className="client-dashboard-topbar__brand">
           <img
-            src="./../public/images/brand/icon-teal.svg"
+            src="/images/brand/icon-teal.svg"
             alt="Sofron"
             className="client-dashboard-topbar__logo"
           />
