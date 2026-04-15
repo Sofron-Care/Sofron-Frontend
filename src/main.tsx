@@ -4,10 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./app/auth/AuthContext";
 import { ConfigProvider } from "antd";
 import { App as AntApp } from "antd";
-import App from "./App";
 import "./App.css";
 import "./i18n";
 import "./shared/charts/chartSetup";
+import AppWrapper from "./app/AppWrapper";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <AntApp>
           <AuthProvider>
-            <App />
+            <AppWrapper />
           </AuthProvider>
         </AntApp>
       </BrowserRouter>

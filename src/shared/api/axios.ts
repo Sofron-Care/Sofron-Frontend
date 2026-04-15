@@ -53,7 +53,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (refreshError) {
         // Refresh failed → logout
-        window.location.href = "/demo/login";
+        window.dispatchEvent(new Event("auth:logout"));
         return Promise.reject(refreshError);
       }
     }
