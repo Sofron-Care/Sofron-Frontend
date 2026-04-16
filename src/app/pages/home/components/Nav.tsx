@@ -131,7 +131,7 @@ export default function Nav() {
           type="text"
           onClick={() => {
             setOpen(false);
-            navigate("/demo/app/client");
+            navigate("/demo/client");
           }}
         >
           {t("nav.clientDashboard")}

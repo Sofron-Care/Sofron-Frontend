@@ -21,7 +21,14 @@ type Props = {
   onOpenReviews?: () => void;
 };
 
-export default function BookingHeader({ organization, isAuthenticated, isFavorited, favLoading, onToggleFavorite, onOpenReviews }: Props) {
+export default function BookingHeader({
+  organization,
+  isAuthenticated,
+  isFavorited,
+  favLoading,
+  onToggleFavorite,
+  onOpenReviews,
+}: Props) {
   return (
     <div className="booking-org-header">
       <div className="booking-org-header__brand">
@@ -35,23 +42,18 @@ export default function BookingHeader({ organization, isAuthenticated, isFavorit
           <div className="booking-org-header__logo booking-org-header__logo--placeholder" />
         )}
 
-        <div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <h1 className="booking-org-header__title">{organization.name}</h1>
+        <div className="booking-org-header__content">
+          <h1 className="booking-org-header__title">{organization.name}</h1>
 
+          <div className="booking-org-header__meta">
             {organization.rating !== undefined && (
               <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 4,
-                  cursor: "pointer",
-                }}
+                className="booking-org-header__rating"
                 onClick={onOpenReviews}
               >
                 <StarFilled style={{ color: "var(--color-primary)" }} />
                 <span>{organization.rating || 0}</span>
-                <span style={{ opacity: 0.7 }}>
+                <span className="booking-org-header__reviews">
                   ({organization.reviewCount || 0})
                 </span>
               </div>

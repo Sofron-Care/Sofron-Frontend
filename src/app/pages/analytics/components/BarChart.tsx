@@ -29,9 +29,22 @@ export default function BarChart({ labels, values }: Props) {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: { size: 10 },
+        },
+      },
+      y: {
+        ticks: {
+          font: { size: 10 },
+        },
       },
     },
   };

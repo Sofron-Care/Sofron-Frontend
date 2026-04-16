@@ -1,30 +1,30 @@
-import { Bar } from "react-chartjs-2";
+import { List } from "antd";
 import ChartContainer from "../components/ChartContainer";
 import { useTranslation } from "react-i18next";
 
 export default function RevenueTab({ data = [] }: any) {
   const { t } = useTranslation();
-  const rows = [...data].sort((a, b) => b.revenue - a.revenue);
-  const chartData = {
-    labels: data.map((s: any) => s.serviceName),
-    datasets: [
-      {
-        label: t("analytics.sections.revenueByService"),
-        data: rows.map((s: any) => s.revenue),
-        backgroundColor: "#0D9488",
-      },
-    ],
-  };
 
-  const options = {
-    indexAxis: "y" as const,
-    responsive: true,
-    maintainAspectRatio: false,
-  };
+  const rows = [...data].sort((a, b) => b.revenue - a.revenue).slice(0, 8);
 
   return (
     <ChartContainer title={t("analytics.sections.revenueByService")}>
-      <Bar data={chartData} options={options} />
+      <List
+        dataSource={rows}
+        renderItem={(item: any, index: number) => (
+          <List.Item>
+            <div className="analytics-revenue-row">
+              <span className="analytics-revenue-name">
+                {index + 1}. {item.serviceName}
+              </span>
+
+              <strong className="analytics-revenue-value">
+                ${Number(item.revenue).toFixed(2)}
+              </strong>
+            </div>
+          </List.Item>
+        )}
+      />
     </ChartContainer>
   );
 }

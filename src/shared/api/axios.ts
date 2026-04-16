@@ -1,4 +1,5 @@
 import axios from "axios";
+import { message } from "antd";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -19,7 +20,7 @@ api.interceptors.request.use((config) => {
     ["post", "patch", "put", "delete"].includes(method || "") &&
     !isAllowed
   ) {
-    console.warn("🚫 Demo mode blocked:", config.url);
+    message.warning("Demo mode: changes are disabled.");
 
     return Promise.reject({
       isDemoBlocked: true,

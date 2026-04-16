@@ -158,6 +158,7 @@ export default function NotificationsPage() {
           rowClassName={(record) =>
             record.isRead ? "notification-read" : "notification-unread"
           }
+          scroll={{ x: 600 }}
         />
       </div>
     </PageLayout>

@@ -51,5 +51,11 @@ export default function WeeklyAvailabilityTable({ weeklyPattern }: Props) {
     },
   ];
 
-  return <Table columns={columns} dataSource={grouped} pagination={false} />;
+  return (
+    <Table
+      columns={columns}
+      dataSource={grouped}
+      pagination={false}
+    />
+  );
 }

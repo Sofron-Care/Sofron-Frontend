@@ -84,6 +84,7 @@ export default function PatientAppointmentsDrawer({
         columns={columns}
         dataSource={data}
         pagination={{ pageSize: 8 }}
+        scroll={{ x: 700 }}
       />
     );
   };

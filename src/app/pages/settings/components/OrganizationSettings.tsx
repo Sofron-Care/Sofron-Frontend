@@ -242,7 +242,7 @@ export default function OrganizationSettings() {
 
       <Divider />
       {/* ================= SCHEDULING MODE ================= */}
-      <div>
+      <div className="settings-toggle">
         <Title level={5}>{t("settings.schedulingMode.title")}</Title>
 
         <Text type="secondary">{t("settings.schedulingMode.description")}</Text>
@@ -279,7 +279,7 @@ export default function OrganizationSettings() {
             <InputNumber min={1} style={{ width: "100%" }} />
           </Form.Item>
 
-          {/* 🔥 Fee Type Toggle */}
+          {/* Fee Type Toggle */}
           <Form.Item
             label="Fee Type"
             name="feeType"
@@ -304,7 +304,7 @@ export default function OrganizationSettings() {
             </Space>
           </Form.Item>
 
-          {/* 🔄 Conditional Inputs */}
+          {/* Conditional Inputs */}
           {feeType === "percentage" && (
             <Form.Item
               label={t("settings.feePercentage")}

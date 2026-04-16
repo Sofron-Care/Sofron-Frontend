@@ -72,6 +72,7 @@ export default function OverridesTable({
       dataSource={overrides}
       loading={loading}
       pagination={{ pageSize: 10 }}
+      scroll={{x: 600}}
     />
   );
 }

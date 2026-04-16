@@ -42,7 +42,13 @@ export default function AppointmentsTab({ data }: any) {
         options={{
           maintainAspectRatio: false,
           plugins: {
-            legend: { position: "top" },
+            legend: {
+              position: "bottom",
+              labels: {
+                boxWidth: 12,
+                font: { size: 10 },
+              },
+            },
           },
         }}
       />

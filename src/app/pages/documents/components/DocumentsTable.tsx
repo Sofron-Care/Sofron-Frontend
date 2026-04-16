@@ -68,6 +68,6 @@ export default function DocumentsTable({
   ];
 
   return (
-    <Table rowKey="id" dataSource={data} columns={columns} loading={loading} />
+    <Table rowKey="id" dataSource={data} columns={columns} loading={loading} scroll={{x: 600}}/>
   );
 }

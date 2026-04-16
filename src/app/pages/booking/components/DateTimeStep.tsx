@@ -55,7 +55,7 @@ export default function DateTimeStep({
                 key={slot.start}
                 onClick={() => onSlotSelect(selectedDate, slot)}
               >
-                {formatTimeRange(slot.start, slot.end)}
+                {dayjs(slot.start).format("h:mm A")}
               </Button>
             ))}
           </div>

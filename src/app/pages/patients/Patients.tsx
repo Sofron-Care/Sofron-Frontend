@@ -236,6 +236,7 @@ export default function PatientsPage() {
                 />
               ),
             }}
+            scroll={{ x: 700 }}
           />
         </Card>
       </PageLayout>
