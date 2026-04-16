@@ -215,6 +215,7 @@ export default function AppointmentTable({
         onClick: () => onOpenDetails(record.id),
       })}
       rowClassName={() => "clickable-row"}
+      scroll={{x: 600}}
     />
   );
 }

@@ -29,7 +29,7 @@ export default function SpecialistStep({
     );
   }
 
-  console.log(specialists)
+  console.log(specialists);
 
   return (
     <div className="booking-panel">
@@ -52,10 +52,13 @@ export default function SpecialistStep({
                 className="booking-specialist-card__avatar"
               />
             ) : (
-              <div className="booking-specialist-card__avatar booking-specialist-card__avatar--placeholder" />
+              <div className="booking-specialist-card__avatar booking-specialist-card__avatar--placeholder">
+                {specialist.firstName?.[0]}
+                {specialist.lastName?.[0]}
+              </div>
             )}
 
-            <div>
+            <div className="booking-specialist-card__content">
               <div className="booking-specialist-card__name">
                 {specialist.firstName} {specialist.lastName}
               </div>

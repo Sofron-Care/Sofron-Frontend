@@ -11,6 +11,7 @@ import {
   Tag,
   Typography,
   message,
+  Grid,
 } from "antd";
 import {
   CalendarOutlined,
@@ -45,6 +46,8 @@ export default function PatientDetailsDrawer({
 
   const [patient, setPatient] = useState<Patient | null>(null);
   const [loading, setLoading] = useState(false);
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
 
   const fetchPatient = async (id: number) => {
     try {
@@ -177,7 +180,12 @@ export default function PatientDetailsDrawer({
           </Card>
 
           <Card title={t("patients.sections.personalInfo")}>
-            <Descriptions column={2} size="middle" labelStyle={{ width: 180 }} colon={false}>
+            <Descriptions
+              column={screens.md ? 2 : 1}
+              size="middle"
+              labelStyle={{ width: 180 }}
+              colon={false}
+            >
               <Descriptions.Item label={t("patients.fields.dateOfBirth")}>
                 {patient.clientProfile?.dob
                   ? dayjs(patient.clientProfile.dob).format("MMM D, YYYY")
@@ -264,7 +272,11 @@ export default function PatientDetailsDrawer({
 
           <Card title={t("patients.sections.quickActions")}>
             <Space wrap>
-              <Button type="primary" icon={<CalendarOutlined />}>
+              <Button type="primary" icon={<CalendarOutlined />}  onClick={() => {
+              if (patient && onBookAppointment) {
+                onBookAppointment(patient);
+              }
+            }}>
                 {t("patients.actions.bookAppointment")}
               </Button>
 

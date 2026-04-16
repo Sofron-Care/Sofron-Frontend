@@ -134,6 +134,7 @@ const columns: ColumnsType<Employee> = [
       dataSource={employees}
       loading={loading}
       pagination={{ pageSize: 10 }}
+      scroll={{x: 600}}
     />
   );
 }

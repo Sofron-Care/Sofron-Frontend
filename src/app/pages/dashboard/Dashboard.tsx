@@ -437,6 +437,7 @@ export default function Dashboard() {
             />
           </div>
           <Table
+            scroll={{x: 600}}
             rowKey="id"
             size="middle"
             columns={columns}

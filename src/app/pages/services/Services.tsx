@@ -183,6 +183,7 @@ export default function Services() {
             pageSize: 10,
             showSizeChanger: false,
           }}
+          scroll={{ x: 600 }}
         />
       </div>
 

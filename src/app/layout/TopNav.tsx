@@ -1,5 +1,5 @@
-import { Space, Typography, Button, Avatar } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import { Space, Typography, Button, Avatar, Dropdown } from "antd";
+import { MenuOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useAuth } from "../auth/AuthContext";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +23,15 @@ export default function TopNav({
     navigate("/demo", { replace: true });
   };
 
+  const menuItems = [
+    {
+      key: "logout",
+      label: t("appnav.logout"),
+      icon: <LogoutOutlined />,
+      onClick: handleLogout,
+    },
+  ];
+
   return (
     <div className="topnav">
       <div className="topnav-left">
@@ -34,8 +43,13 @@ export default function TopNav({
 
       <Space align="center" size={12}>
         <NotificationBell />
-        <Avatar>{user?.firstName?.[0]}</Avatar>
 
+        {/* 🔥 Avatar dropdown */}
+        <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
+          <Avatar style={{ cursor: "pointer" }}>{user?.firstName?.[0]}</Avatar>
+        </Dropdown>
+
+        {/* Desktop logout stays */}
         {!isMobile && (
           <Button type="text" onClick={handleLogout}>
             {t("appnav.logout")}
